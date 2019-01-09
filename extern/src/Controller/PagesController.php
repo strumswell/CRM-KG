@@ -18,6 +18,9 @@ use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Datasource\ConnectionManager;
+use Cake\Event\Event;
+
 
 /**
  * Static content controller
@@ -28,6 +31,26 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+
+    function beforeRender(Event $event) {
+        /**
+         * DB Connection
+         */
+        $connection = ConnectionManager::get('default');
+
+        /**
+         * Username
+         */
+        $username = $this->request->getSession()->read('Auth.User')['Username'];
+        $kdnr = $connection->execute('SELECT KDNr FROM kunde WHERE Username = '.'"' . $username . '"')->fetchAll('assoc');
+        $this->set('kdnr', reset($kdnr[0]));
+
+        /**
+         * SQL-Abfrage
+         */
+        $results = $connection->execute('SELECT * FROM projekt')->fetchAll('assoc');
+        $this->set('results', $results);
+    }
 
     /**
      * Displays a view
