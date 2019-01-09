@@ -39,17 +39,35 @@ class PagesController extends AppController
         $connection = ConnectionManager::get('default');
 
         /**
-         * Username
+         * Username & KDNr
          */
         $username = $this->request->getSession()->read('Auth.User')['Username'];
         $kdnr = $connection->execute('SELECT KDNr FROM kunde WHERE Username = '.'"' . $username . '"')->fetchAll('assoc');
         $this->set('kdnr', reset($kdnr[0]));
 
         /**
-         * SQL-Abfrage
+         * Open Projects
          */
-        $results = $connection->execute('SELECT * FROM projekt')->fetchAll('assoc');
-        $this->set('results', $results);
+        $openprojects = $connection->execute('SELECT COUNT(ProjektID) FROM projekt WHERE Abgeschlossen = 0 AND KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $this->set('openprojects', reset($openprojects[0]));
+
+        /**
+         * Finished Tasks
+         */
+        $finishedtasks = $connection->execute('SELECT COUNT(TaskID) FROM arbeitspaket, projekt WHERE arbeitspaket.ProjektID = projekt.ProjektID AND arbeitspaket.Fortschritt = 100 AND projekt.Abgeschlossen = 0 AND projekt.KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $this->set('finishedtasks', reset($finishedtasks[0]));
+
+        /**
+         * Open Tasks
+         */
+        $opentasks = $connection->execute('SELECT COUNT(TaskID) FROM arbeitspaket, projekt WHERE arbeitspaket.ProjektID = projekt.ProjektID AND arbeitspaket.Fortschritt < 100 AND projekt.Abgeschlossen = 0 AND projekt.KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $this->set('opentasks', reset($opentasks[0]));
+
+        /**
+         * Cost
+         */
+        $cost = $connection->execute('SELECT SUM(arbeitspaket.Kosten) FROM arbeitspaket, projekt WHERE arbeitspaket.ProjektID = projekt.ProjektID AND projekt.Abgeschlossen = 0 AND projekt.KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $this->set('cost', reset($cost[0]));
     }
 
     /**
