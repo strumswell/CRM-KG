@@ -24,7 +24,7 @@ class Projekt extends Entity
      * @var array
      */
     protected $_accessible = [
-        'Name' => true,
+        'Projektname' => true,
         'Beschreibung' => true,
         'KDNr' => true
     ];
