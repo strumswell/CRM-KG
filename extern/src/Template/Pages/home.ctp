@@ -93,40 +93,26 @@
                 </div>
             </form>
             <!-- Navigation -->
+            <!-- Heading -->
+            <h6 class="navbar-heading text-muted">Kundenbereich</h6>
             <ul class="navbar-nav">
                 <li>
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-tv-2 text-primary'
-                        )).'Dashboard', '/', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).'Dashboard', '/', array('class' => 'nav-link active', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
-                            'class' => 'ni ni-user-run text-primary'
-                        )).'Userverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
-                </li>
-            </ul>
-            <!-- Divider -->
-            <hr class="my-3">
-            <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Documentation</h6>
-            <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-                        <i class="ni ni-spaceship"></i> Getting started
-                    </a>
+                            'class' => 'ni ni-badge text-primary'
+                        )).'Projekte', '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-                        <i class="ni ni-palette"></i> Foundation
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-                        <i class="ni ni-ui-04"></i> Components
-                    </a>
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-calendar-grid-58 text-primary'
+                        )).'Termine', '/ereignis', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
         </div>
@@ -210,7 +196,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-bar"></i>
+                                            <i class="fas fa-folder"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -230,8 +216,8 @@
                                         <span class="h2 font-weight-bold mb-0"><?=$finishedTasksCount?></span>
                                     </div>
                                     <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-pie"></i>
+                                        <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                                            <i class="fas fa-check-double"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -252,7 +238,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                            <i class="fas fa-users"></i>
+                                            <i class="fas fa-clock"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +259,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="fas fa-percent"></i>
+                                            <i class="fas fa-dollar-sign"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -295,13 +281,13 @@
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Card tables</h3>
+                        <h3 class="mb-0">Offene Tasks</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Projekt</th>
+                                <th scope="col">Projektname</th>
                                 <th scope="col">Arbeitspaket</th>
                                 <th scope="col">Kosten</th>
                                 <th scope="col">Status</th>
@@ -311,48 +297,63 @@
                             <tbody>
                             <?php foreach ($openTasks as $item): ?>
                                 <tr>
-                                    <td><?= $item['Projektname'] ?></td>
+                                    <td><b><?= $item['Projektname'] ?></b></td>
                                     <td><?= $item['Name']?></td>
-                                    <td><?= $item['Kosten'] ?>€</td>
+                                    <td><?= str_replace('.', ',', $item['Kosten'])?> €</td>
                                     <td><?php
                                         if ($item['Fortschritt'] == 0) {
-                                            echo "offen";
+                                            echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-danger\"></i> offen</span>";
                                         } else if ($item['Fortschritt'] < 100) {
-                                            echo "in Bearbeitung";
+                                            echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-info\"></i> in Bearbeitung</span>";
                                         } else {
-                                            echo "beendet";
+                                            echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-success\"></i> beendet</span>";
                                         }
-                                        ?></td>
-                                    <td><?= $item['Fortschritt'] ?>%</td>
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="mr-2"><?=$item['Fortschritt']?> %</span>
+                                            <div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?=$item['Fortschritt']?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$item['Fortschritt']?>%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer py-4">
-                        <nav aria-label="...">
-                            <ul class="pagination justify-content-end mb-0">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1">
-                                        <i class="fas fa-angle-left"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">
-                                        <i class="fas fa-angle-right"></i>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Table -->
+        <div class="row mt-3">
+            <div class="col col-8">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Abgeschlossene Tasks</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Projektname</th>
+                                <th scope="col">Arbeitspaket</th>
+                                <th scope="col">Kosten</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($finishedTasks as $item): ?>
+                                <tr>
+                                    <td><b><?= $item['Projektname'] ?></b></td>
+                                    <td><?= $item['Name']?></td>
+                                    <td><?= str_replace('.', ',', $item['Kosten'])?> €</td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
