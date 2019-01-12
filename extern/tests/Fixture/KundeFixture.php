@@ -24,18 +24,19 @@ class KundeFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'KDNr' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'Name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'Ort' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'PLZ' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'Straße' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'Hausnummer' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'EMail' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'Tel' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'Username' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'Password' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'kunde_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'ort' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'plz' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'straße' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'hausnummer' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'email' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'telefon' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'username' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'passwort' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'registriert_am' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => '', 'precision' => null],
         '_constraints' => [
-            'primary' => ['type' => 'primary', 'columns' => ['KDNr'], 'length' => []],
+            'primary' => ['type' => 'primary', 'columns' => ['kunde_id'], 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -53,16 +54,17 @@ class KundeFixture extends TestFixture
     {
         $this->records = [
             [
-                'KDNr' => 1,
-                'Name' => 'Lorem ipsum dolor sit amet',
-                'Ort' => 'Lorem ipsum dolor sit amet',
-                'PLZ' => 1,
-                'Straße' => 'Lorem ipsum dolor sit amet',
-                'Hausnummer' => 1,
-                'EMail' => 'Lorem ipsum dolor sit amet',
-                'Tel' => 'Lorem ipsum dolor sit amet',
-                'Username' => 'Lorem ipsum dolor sit amet',
-                'Password' => 'Lorem ipsum dolor sit amet'
+                'kunde_id' => 1,
+                'name' => 'Lorem ipsum dolor sit amet',
+                'ort' => 'Lorem ipsum dolor sit amet',
+                'plz' => 1,
+                'straße' => 'Lorem ipsum dolor sit amet',
+                'hausnummer' => 1,
+                'email' => 'Lorem ipsum dolor sit amet',
+                'telefon' => 'Lorem ipsum dolor sit amet',
+                'username' => 'Lorem ipsum dolor sit amet',
+                'passwort' => 'Lorem ipsum dolor sit amet',
+                'registriert_am' => '2019-01-12 15:16:54'
             ],
         ];
         parent::init();

@@ -6,10 +6,15 @@ use Cake\ORM\Entity;
 /**
  * Projekt Entity
  *
- * @property int $ProjektID
- * @property string $Name
- * @property string $Beschreibung
- * @property int $KDNr
+ * @property int $projekt_id
+ * @property string $projektname
+ * @property string $beschreibung
+ * @property int $kunde_id
+ * @property bool $abgeschlossen
+ * @property \Cake\I18n\FrozenTime $hinzugefuegt_am
+ *
+ * @property \App\Model\Entity\Kunde $kunde
+ * @property \App\Model\Entity\Angestellter[] $angestellter
  */
 class Projekt extends Entity
 {
@@ -24,8 +29,12 @@ class Projekt extends Entity
      * @var array
      */
     protected $_accessible = [
-        'Projektname' => true,
-        'Beschreibung' => true,
-        'KDNr' => true
+        'projektname' => true,
+        'beschreibung' => true,
+        'kunde_id' => true,
+        'abgeschlossen' => true,
+        'hinzugefuegt_am' => true,
+        'kunde' => true,
+        'angestellter' => true
     ];
 }

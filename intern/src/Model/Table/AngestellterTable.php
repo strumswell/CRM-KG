@@ -9,6 +9,10 @@ use Cake\Validation\Validator;
 /**
  * Angestellter Model
  *
+ * @property \App\Model\Table\ArbeitspaketTable|\Cake\ORM\Association\BelongsToMany $Arbeitspaket
+ * @property \App\Model\Table\EreignisTable|\Cake\ORM\Association\BelongsToMany $Ereignis
+ * @property \App\Model\Table\ProjektTable|\Cake\ORM\Association\BelongsToMany $Projekt
+ *
  * @method \App\Model\Entity\Angestellter get($primaryKey, $options = [])
  * @method \App\Model\Entity\Angestellter newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Angestellter[] newEntities(array $data, array $options = [])
@@ -32,8 +36,24 @@ class AngestellterTable extends Table
         parent::initialize($config);
 
         $this->setTable('angestellter');
-        $this->setDisplayField('PNr');
-        $this->setPrimaryKey('PNr');
+        $this->setDisplayField('angestellter_id');
+        $this->setPrimaryKey('angestellter_id');
+
+        $this->belongsToMany('Arbeitspaket', [
+            'foreignKey' => 'angestellter_id',
+            'targetForeignKey' => 'arbeitspaket_id',
+            'joinTable' => 'angestellter_arbeitspaket'
+        ]);
+        $this->belongsToMany('Ereignis', [
+            'foreignKey' => 'angestellter_id',
+            'targetForeignKey' => 'ereigni_id',
+            'joinTable' => 'angestellter_ereignis'
+        ]);
+        $this->belongsToMany('Projekt', [
+            'foreignKey' => 'angestellter_id',
+            'targetForeignKey' => 'projekt_id',
+            'joinTable' => 'angestellter_projekt'
+        ]);
     }
 
     /**
@@ -45,51 +65,65 @@ class AngestellterTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->scalar('Name')
-            ->maxLength('Name', 255)
-            ->requirePresence('Name', 'create')
-            ->notEmpty('Name');
+            ->scalar('nachname')
+            ->maxLength('nachname', 255)
+            ->requirePresence('nachname', 'create')
+            ->notEmpty('nachname');
 
         $validator
-            ->scalar('Vorname')
-            ->maxLength('Vorname', 255)
-            ->requirePresence('Vorname', 'create')
-            ->notEmpty('Vorname');
+            ->scalar('vorname')
+            ->maxLength('vorname', 255)
+            ->requirePresence('vorname', 'create')
+            ->notEmpty('vorname');
 
         $validator
-            ->integer('PNr')
-            ->allowEmpty('PNr', 'create');
+            ->integer('angestellter_id')
+            ->allowEmpty('angestellter_id', 'create');
 
         $validator
-            ->scalar('Position')
-            ->maxLength('Position', 255)
-            ->requirePresence('Position', 'create')
-            ->notEmpty('Position');
+            ->scalar('position')
+            ->maxLength('position', 255)
+            ->requirePresence('position', 'create')
+            ->notEmpty('position');
 
         $validator
-            ->scalar('EMail')
-            ->maxLength('EMail', 255)
-            ->requirePresence('EMail', 'create')
-            ->notEmpty('EMail');
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
 
         $validator
-            ->scalar('Telefon')
-            ->maxLength('Telefon', 255)
-            ->requirePresence('Telefon', 'create')
-            ->notEmpty('Telefon');
+            ->scalar('telefon')
+            ->maxLength('telefon', 255)
+            ->requirePresence('telefon', 'create')
+            ->notEmpty('telefon');
 
         $validator
-            ->scalar('Username')
-            ->maxLength('Username', 255)
-            ->requirePresence('Username', 'create')
-            ->notEmpty('Username');
+            ->scalar('username')
+            ->maxLength('username', 255)
+            ->requirePresence('username', 'create')
+            ->notEmpty('username');
 
         $validator
-            ->scalar('Password')
-            ->maxLength('Password', 255)
-            ->requirePresence('Password', 'create')
-            ->notEmpty('Password');
+            ->scalar('passwort')
+            ->maxLength('passwort', 255)
+            ->requirePresence('passwort', 'create')
+            ->notEmpty('passwort');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['username']));
+
+        return $rules;
     }
 }

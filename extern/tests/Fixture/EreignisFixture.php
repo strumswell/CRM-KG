@@ -17,17 +17,17 @@ class EreignisFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'EventID' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'Datum' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'Art' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'Bezeichnung' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'ProjektID' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'ereignis_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'datum' => ['type' => 'date', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'art' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'bezeichnung' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'projekt_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
-            'ProjektID' => ['type' => 'index', 'columns' => ['ProjektID'], 'length' => []],
+            'ProjektID' => ['type' => 'index', 'columns' => ['projekt_id'], 'length' => []],
         ],
         '_constraints' => [
-            'primary' => ['type' => 'primary', 'columns' => ['EventID'], 'length' => []],
-            'ereignis_ibfk_1' => ['type' => 'foreign', 'columns' => ['ProjektID'], 'references' => ['projekt', 'ProjektID'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'primary' => ['type' => 'primary', 'columns' => ['ereignis_id'], 'length' => []],
+            'ereignis_ibfk_1' => ['type' => 'foreign', 'columns' => ['projekt_id'], 'references' => ['projekt', 'projekt_id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -45,11 +45,11 @@ class EreignisFixture extends TestFixture
     {
         $this->records = [
             [
-                'EventID' => 1,
-                'Datum' => '2019-01-09',
-                'Art' => 'Lorem ipsum dolor sit amet',
-                'Bezeichnung' => 'Lorem ipsum dolor sit amet',
-                'ProjektID' => 1
+                'ereignis_id' => 1,
+                'datum' => '2019-01-12',
+                'art' => 'Lorem ipsum dolor sit amet',
+                'bezeichnung' => 'Lorem ipsum dolor sit amet',
+                'projekt_id' => 1
             ],
         ];
         parent::init();

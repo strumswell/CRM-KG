@@ -8,6 +8,12 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Angestellter'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Arbeitspaket'), ['controller' => 'Arbeitspaket', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Arbeitspaket'), ['controller' => 'Arbeitspaket', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Ereignis'), ['controller' => 'Ereignis', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Ereigni'), ['controller' => 'Ereignis', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Projekt'), ['controller' => 'Projekt', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Projekt'), ['controller' => 'Projekt', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="angestellter form large-9 medium-8 columns content">
@@ -15,13 +21,16 @@
     <fieldset>
         <legend><?= __('Add Angestellter') ?></legend>
         <?php
-            echo $this->Form->control('Name');
-            echo $this->Form->control('Vorname');
-            echo $this->Form->control('Position');
-            echo $this->Form->control('EMail');
-            echo $this->Form->control('Telefon');
-            echo $this->Form->control('Username');
-            echo $this->Form->control('Password');
+            echo $this->Form->control('nachname');
+            echo $this->Form->control('vorname');
+            echo $this->Form->control('position');
+            echo $this->Form->control('email');
+            echo $this->Form->control('telefon');
+            echo $this->Form->control('username');
+            echo $this->Form->control('password');
+            echo $this->Form->control('arbeitspaket._ids', ['options' => $arbeitspaket]);
+            echo $this->Form->control('ereignis._ids', ['options' => $ereignis]);
+            echo $this->Form->control('projekt._ids', ['options' => $projekt]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

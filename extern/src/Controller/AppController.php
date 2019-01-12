@@ -44,8 +44,8 @@ class AppController extends Controller
             'authenticate' => [
                 'Form' => [
                     'fields' => [
-                        'username' => 'Username',
-                        'password' => 'Password'
+                        'username' => 'username',
+                        'password' => 'password'
                     ],
                     'userModel' => 'Kunde'
                 ]
@@ -61,11 +61,4 @@ class AppController extends Controller
         // continues to work.
         $this->Auth->allow(['display']);
     }
-
-    //public function beforeRender(Event $event) {
-    //    $this->set('user', $this->Auth->user());
-    //     if(!isset($user)){
-    //         return $this->redirect('/benutzer/login/');
-    //     }
-    // }
 }

@@ -2,15 +2,13 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\ProjektController;
-use Cake\TestSuite\IntegrationTestTrait;
-use Cake\TestSuite\TestCase;
+use Cake\TestSuite\IntegrationTestCase;
 
 /**
  * App\Controller\ProjektController Test Case
  */
-class ProjektControllerTest extends TestCase
+class ProjektControllerTest extends IntegrationTestCase
 {
-    use IntegrationTestTrait;
 
     /**
      * Fixtures
@@ -18,7 +16,10 @@ class ProjektControllerTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.Projekt'
+        'app.projekt',
+        'app.kunde',
+        'app.angestellter',
+        'app.angestellter_projekt'
     ];
 
     /**

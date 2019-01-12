@@ -1,23 +1,23 @@
 <?php
 namespace App\Model\Entity;
 
+use Cake\Auth\DefaultPasswordHasher; //include this line
 use Cake\ORM\Entity;
-use Cake\Auth\DefaultPasswordHasher;
-
 
 /**
  * Kunde Entity
  *
- * @property int $KDNr
- * @property string $Name
- * @property string $Ort
- * @property int $PLZ
- * @property string $Straße
- * @property int $Hausnummer
- * @property string $EMail
- * @property string $Tel
- * @property string $Username
- * @property string $Password
+ * @property int $kunde_id
+ * @property string $name
+ * @property string $ort
+ * @property int $plz
+ * @property string $straße
+ * @property int $hausnummer
+ * @property string $email
+ * @property string $telefon
+ * @property string $username
+ * @property string $passwort
+ * @property \Cake\I18n\FrozenTime $registriert_am
  */
 class Kunde extends Entity
 {
@@ -32,15 +32,16 @@ class Kunde extends Entity
      * @var array
      */
     protected $_accessible = [
-        'Name' => true,
-        'Ort' => true,
-        'PLZ' => true,
-        'Straße' => true,
-        'Hausnummer' => true,
-        'EMail' => true,
-        'Tel' => true,
-        'Username' => true,
-        'Password' => true
+        'name' => true,
+        'ort' => true,
+        'plz' => true,
+        'straße' => true,
+        'hausnummer' => true,
+        'email' => true,
+        'telefon' => true,
+        'username' => true,
+        'password' => true,
+        'registriert_am' => true
     ];
 
     protected function _setPassword($value)

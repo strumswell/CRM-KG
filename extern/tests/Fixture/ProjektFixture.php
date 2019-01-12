@@ -24,16 +24,18 @@ class ProjektFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'ProjektID' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'Name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'Beschreibung' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'KDNr' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'projekt_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'projektname' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'beschreibung' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'kunde_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'abgeschlossen' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'hinzugefuegt_am' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'KDNr' => ['type' => 'index', 'columns' => ['KDNr'], 'length' => []],
+            'KDNr' => ['type' => 'index', 'columns' => ['kunde_id'], 'length' => []],
         ],
         '_constraints' => [
-            'primary' => ['type' => 'primary', 'columns' => ['ProjektID'], 'length' => []],
-            'projekt_ibfk_1' => ['type' => 'foreign', 'columns' => ['KDNr'], 'references' => ['kunde', 'KDNr'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'primary' => ['type' => 'primary', 'columns' => ['projekt_id'], 'length' => []],
+            'projekt_ibfk_1' => ['type' => 'foreign', 'columns' => ['kunde_id'], 'references' => ['kunde', 'kunde_id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -51,10 +53,12 @@ class ProjektFixture extends TestFixture
     {
         $this->records = [
             [
-                'ProjektID' => 1,
-                'Name' => 'Lorem ipsum dolor sit amet',
-                'Beschreibung' => 'Lorem ipsum dolor sit amet',
-                'KDNr' => 1
+                'projekt_id' => 1,
+                'projektname' => 'Lorem ipsum dolor sit amet',
+                'beschreibung' => 'Lorem ipsum dolor sit amet',
+                'kunde_id' => 1,
+                'abgeschlossen' => 1,
+                'hinzugefuegt_am' => '2019-01-12 15:17:00'
             ],
         ];
         parent::init();

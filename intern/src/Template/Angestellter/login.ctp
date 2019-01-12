@@ -38,7 +38,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
-                                    <?= $this->Form->control('Username',array(
+                                    <?= $this->Form->control('username',array(
                                             'class' => 'form-control',
                                             'placeholder' => 'Username',
                                             'templates' => ['inputContainer' => '{{content}}'],
@@ -50,7 +50,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <?= $this->Form->control('Password',array(
+                                    <?= $this->Form->control('password',array(
                                         'class' => 'form-control',
                                         'placeholder' => 'Passwort',
                                         'type' => 'password',

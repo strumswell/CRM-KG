@@ -40,38 +40,38 @@ class PagesController extends AppController
         /**
          * Username & KDNr
          */
-        $username = $this->request->getSession()->read('Auth.User')['Username'];
-        $kdnr = $connection->execute('SELECT KDNr FROM kunde WHERE Username = '.'"' . $username . '"')->fetchAll('assoc');
+        $username = $this->request->getSession()->read('Auth.User')['username'];
+        $kdnr = $connection->execute('SELECT kunde_id FROM kunde WHERE username = '.'"' . $username . '"')->fetchAll('assoc');
         $this->set('kdnr', reset($kdnr[0]));
 
         /**
          * Open Projects
          */
-        $openProjectsCount = $connection->execute('SELECT COUNT(ProjektID) FROM projekt WHERE Abgeschlossen = 0 AND KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $openProjectsCount = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0 AND kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
         $this->set('openProjectsCount', reset($openProjectsCount[0]));
 
         /**
          * Finished Tasks
          */
-        $finishedTasksCount = $connection->execute('SELECT COUNT(TaskID) FROM arbeitspaket, projekt WHERE arbeitspaket.ProjektID = projekt.ProjektID AND arbeitspaket.Fortschritt = 100 AND projekt.Abgeschlossen = 0 AND projekt.KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $finishedTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt = 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
         $this->set('finishedTasksCount', reset($finishedTasksCount[0]));
 
-        $finishedTasks = $connection->execute('SELECT projekt.Projektname, arbeitspaket.Name, arbeitspaket.Kosten FROM arbeitspaket, projekt WHERE arbeitspaket.ProjektID = projekt.ProjektID AND arbeitspaket.Fortschritt = 100 AND projekt.Abgeschlossen = 0 AND projekt.KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $finishedTasks = $connection->execute('SELECT projekt.projektname, arbeitspaket.name, arbeitspaket.kosten FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt = 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
         $this->set('finishedTasks', $finishedTasks);
 
         /**
          * Open Tasks
          */
-        $openTasksCount = $connection->execute('SELECT COUNT(TaskID) FROM arbeitspaket, projekt WHERE arbeitspaket.ProjektID = projekt.ProjektID AND arbeitspaket.Fortschritt < 100 AND projekt.Abgeschlossen = 0 AND projekt.KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $openTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
         $this->set('openTasksCount', reset($openTasksCount[0]));
 
-        $openTasks = $connection->execute('SELECT projekt.Projektname, arbeitspaket.Name, arbeitspaket.Kosten, arbeitspaket.Fortschritt FROM arbeitspaket, projekt WHERE arbeitspaket.ProjektID = projekt.ProjektID AND arbeitspaket.Fortschritt < 100 AND projekt.Abgeschlossen = 0 AND projekt.KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $openTasks = $connection->execute('SELECT projekt.projektname, arbeitspaket.name, arbeitspaket.kosten, arbeitspaket.fortschritt FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
         $this->set('openTasks', $openTasks);
 
         /**
          * Cost Of Current Projects
          */
-        $cost = $connection->execute('SELECT SUM(arbeitspaket.Kosten) FROM arbeitspaket, projekt WHERE arbeitspaket.ProjektID = projekt.ProjektID AND projekt.Abgeschlossen = 0 AND projekt.KDNr = '.reset($kdnr[0]))->fetchAll('assoc');
+        $cost = $connection->execute('SELECT SUM(arbeitspaket.kosten) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
         $costFormatted = str_replace('.', ',', reset($cost[0]));
         $this->set('cost', $costFormatted);
     }

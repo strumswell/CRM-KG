@@ -15,36 +15,38 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('KDNr') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Ort') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('PLZ') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Straße') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Hausnummer') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('EMail') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Tel') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Username') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Password') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('kunde_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ort') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('plz') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('straße') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('hausnummer') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('telefon') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('passwort') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('registriert_am') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($kunde as $kunde): ?>
             <tr>
-                <td><?= $this->Number->format($kunde->KDNr) ?></td>
-                <td><?= h($kunde->Name) ?></td>
-                <td><?= h($kunde->Ort) ?></td>
-                <td><?= $this->Number->format($kunde->PLZ) ?></td>
-                <td><?= h($kunde->Straße) ?></td>
-                <td><?= $this->Number->format($kunde->Hausnummer) ?></td>
-                <td><?= h($kunde->EMail) ?></td>
-                <td><?= h($kunde->Tel) ?></td>
-                <td><?= h($kunde->Username) ?></td>
-                <td><?= h($kunde->Password) ?></td>
+                <td><?= $this->Number->format($kunde->kunde_id) ?></td>
+                <td><?= h($kunde->name) ?></td>
+                <td><?= h($kunde->ort) ?></td>
+                <td><?= $this->Number->format($kunde->plz) ?></td>
+                <td><?= h($kunde->straße) ?></td>
+                <td><?= $this->Number->format($kunde->hausnummer) ?></td>
+                <td><?= h($kunde->email) ?></td>
+                <td><?= h($kunde->telefon) ?></td>
+                <td><?= h($kunde->username) ?></td>
+                <td><?= h($kunde->passwort) ?></td>
+                <td><?= h($kunde->registriert_am) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $kunde->KDNr]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $kunde->KDNr]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $kunde->KDNr], ['confirm' => __('Are you sure you want to delete # {0}?', $kunde->KDNr)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $kunde->kunde_id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $kunde->kunde_id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $kunde->kunde_id], ['confirm' => __('Are you sure you want to delete # {0}?', $kunde->kunde_id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

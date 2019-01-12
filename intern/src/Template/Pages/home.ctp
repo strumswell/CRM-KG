@@ -1,6 +1,6 @@
 <?php
     $this->assign('title', 'Dashboard');
-    $username = $this->request->getSession()->read('Auth.User')['Vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['Name'];
+    $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['nachname'];
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -188,7 +188,7 @@
                             $this->Html->tag('i', '', array(
                                     'class' => 'ni ni-user-run'
                                 )
-                            ).'Logout', '/benutzer/logout', array('class' => 'dropdown-item', 'escape' => false)) ?>
+                            ).'Logout', '/angestellter/logout', array('class' => 'dropdown-item', 'escape' => false)) ?>
                     </div>
                 </li>
             </ul>
@@ -226,8 +226,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                                        <span class="h2 font-weight-bold mb-0">2,356</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Laufende Projekte</h5>
+                                        <span class="h2 font-weight-bold mb-0"><?=$openProjectsCounts?></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -296,25 +296,10 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                                <h2 class="text-white mb-0">Sales value</h2>
+                                <h6 class="text-uppercase text-light ls-1 mb-1">Übersicht</h6>
+                                <h2 class="text-white mb-0">Auftragsvolumen</h2>
                             </div>
-                            <div class="col">
-                                <ul class="nav nav-pills justify-content-end">
-                                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                                        <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                                            <span class="d-none d-md-block">Month</span>
-                                            <span class="d-md-none">M</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                                        <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                                            <span class="d-none d-md-block">Week</span>
-                                            <span class="d-md-none">W</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
                     <div class="card-body">
@@ -331,8 +316,8 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                <h2 class="mb-0">Total orders</h2>
+                                <h6 class="text-uppercase text-muted ls-1 mb-1">Übersicht</h6>
+                                <h2 class="mb-0">Abgeschlossene Tasks</h2>
                             </div>
                         </div>
                     </div>

@@ -6,21 +6,18 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Navigation')?></li>
-        <li><?= $this->Html->link(__('Dashboard'), '/') ?></li>
-        <li><?= $this->Html->link(__('Projekte'), '/projekt') ?></li>
-        <li><?= $this->Html->link(__('Arbeitspakete'), '/arbeitspaket') ?></li>
-        <li><?= $this->Html->link(__('Ereignisse'), '/ereignis') ?></li>
-        <li><?= $this->Html->link(__('Kunden'), '/kunde') ?></li>
-        <li><?= $this->Html->link(__('Angestellte'), '/angestellter') ?></li>
-        <li class="heading"><?= __('Aktionen') ?></li>
+        <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $ereigni->EventID],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $ereigni->EventID)]
+                ['action' => 'delete', $ereigni->ereignis_id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $ereigni->ereignis_id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Ereignis'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Projekt'), ['controller' => 'Projekt', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Projekt'), ['controller' => 'Projekt', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Angestellter'), ['controller' => 'Angestellter', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Angestellter'), ['controller' => 'Angestellter', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="ereignis form large-9 medium-8 columns content">
@@ -28,10 +25,11 @@
     <fieldset>
         <legend><?= __('Edit Ereigni') ?></legend>
         <?php
-            echo $this->Form->control('Datum');
-            echo $this->Form->control('Art');
-            echo $this->Form->control('Bezeichnung');
-            echo $this->Form->control('ProjektID');
+            echo $this->Form->control('datum');
+            echo $this->Form->control('art');
+            echo $this->Form->control('bezeichnung');
+            echo $this->Form->control('projekt_id', ['options' => $projekt]);
+            echo $this->Form->control('angestellter._ids', ['options' => $angestellter]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

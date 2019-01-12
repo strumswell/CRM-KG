@@ -2,15 +2,13 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\EreignisController;
-use Cake\TestSuite\IntegrationTestTrait;
-use Cake\TestSuite\TestCase;
+use Cake\TestSuite\IntegrationTestCase;
 
 /**
  * App\Controller\EreignisController Test Case
  */
-class EreignisControllerTest extends TestCase
+class EreignisControllerTest extends IntegrationTestCase
 {
-    use IntegrationTestTrait;
 
     /**
      * Fixtures
@@ -18,7 +16,10 @@ class EreignisControllerTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.Ereignis'
+        'app.ereignis',
+        'app.projekt',
+        'app.angestellter',
+        'app.angestellter_ereignis'
     ];
 
     /**

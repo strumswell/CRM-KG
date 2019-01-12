@@ -8,6 +8,12 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Angestellter'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Arbeitspaket'), ['controller' => 'Arbeitspaket', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Arbeitspaket'), ['controller' => 'Arbeitspaket', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Ereignis'), ['controller' => 'Ereignis', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Ereigni'), ['controller' => 'Ereignis', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Projekt'), ['controller' => 'Projekt', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Projekt'), ['controller' => 'Projekt', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="angestellter index large-9 medium-8 columns content">
@@ -15,32 +21,32 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('Name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Vorname') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('PNr') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Position') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('EMail') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Telefon') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Username') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('Password') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('nachname') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('vorname') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('angestellter_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('position') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('telefon') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($angestellter as $angestellter): ?>
             <tr>
-                <td><?= h($angestellter->Name) ?></td>
-                <td><?= h($angestellter->Vorname) ?></td>
-                <td><?= $this->Number->format($angestellter->PNr) ?></td>
-                <td><?= h($angestellter->Position) ?></td>
-                <td><?= h($angestellter->EMail) ?></td>
-                <td><?= h($angestellter->Telefon) ?></td>
-                <td><?= h($angestellter->Username) ?></td>
-                <td><?= h($angestellter->Password) ?></td>
+                <td><?= h($angestellter->nachname) ?></td>
+                <td><?= h($angestellter->vorname) ?></td>
+                <td><?= $this->Number->format($angestellter->angestellter_id) ?></td>
+                <td><?= h($angestellter->position) ?></td>
+                <td><?= h($angestellter->email) ?></td>
+                <td><?= h($angestellter->telefon) ?></td>
+                <td><?= h($angestellter->username) ?></td>
+                <td><?= h($angestellter->password) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $angestellter->PNr]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $angestellter->PNr]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $angestellter->PNr], ['confirm' => __('Are you sure you want to delete # {0}?', $angestellter->PNr)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $angestellter->angestellter_id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $angestellter->angestellter_id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $angestellter->angestellter_id], ['confirm' => __('Are you sure you want to delete # {0}?', $angestellter->angestellter_id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

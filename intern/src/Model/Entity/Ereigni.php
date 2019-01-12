@@ -6,11 +6,14 @@ use Cake\ORM\Entity;
 /**
  * Ereigni Entity
  *
- * @property int $EventID
- * @property \Cake\I18n\FrozenDate $Datum
- * @property string $Art
- * @property string $Bezeichnung
- * @property int $ProjektID
+ * @property int $ereignis_id
+ * @property \Cake\I18n\FrozenDate $datum
+ * @property string $art
+ * @property string $bezeichnung
+ * @property int $projekt_id
+ *
+ * @property \App\Model\Entity\Projekt $projekt
+ * @property \App\Model\Entity\Angestellter[] $angestellter
  */
 class Ereigni extends Entity
 {
@@ -25,9 +28,11 @@ class Ereigni extends Entity
      * @var array
      */
     protected $_accessible = [
-        'Datum' => true,
-        'Art' => true,
-        'Bezeichnung' => true,
-        'ProjektID' => true
+        'datum' => true,
+        'art' => true,
+        'bezeichnung' => true,
+        'projekt_id' => true,
+        'projekt' => true,
+        'angestellter' => true
     ];
 }

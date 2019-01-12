@@ -9,8 +9,8 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $kunde->KDNr],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $kunde->KDNr)]
+                ['action' => 'delete', $kunde->kunde_id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $kunde->kunde_id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Kunde'), ['action' => 'index']) ?></li>
@@ -21,15 +21,16 @@
     <fieldset>
         <legend><?= __('Edit Kunde') ?></legend>
         <?php
-            echo $this->Form->control('Name');
-            echo $this->Form->control('Ort');
-            echo $this->Form->control('PLZ');
-            echo $this->Form->control('Straße');
-            echo $this->Form->control('Hausnummer');
-            echo $this->Form->control('EMail');
-            echo $this->Form->control('Tel');
-            echo $this->Form->control('Username');
-            echo $this->Form->control('Password');
+            echo $this->Form->control('name');
+            echo $this->Form->control('ort');
+            echo $this->Form->control('plz');
+            echo $this->Form->control('straße');
+            echo $this->Form->control('hausnummer');
+            echo $this->Form->control('email');
+            echo $this->Form->control('telefon');
+            echo $this->Form->control('username');
+            echo $this->Form->control('passwort');
+            echo $this->Form->control('registriert_am');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

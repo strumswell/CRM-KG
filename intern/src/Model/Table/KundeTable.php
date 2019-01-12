@@ -32,8 +32,8 @@ class KundeTable extends Table
         parent::initialize($config);
 
         $this->setTable('kunde');
-        $this->setDisplayField('KDNr');
-        $this->setPrimaryKey('KDNr');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('kunde_id');
     }
 
     /**
@@ -45,61 +45,80 @@ class KundeTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('KDNr')
-            ->allowEmpty('KDNr', 'create');
+            ->integer('kunde_id')
+            ->allowEmpty('kunde_id', 'create');
 
         $validator
-            ->scalar('Name')
-            ->maxLength('Name', 255)
-            ->requirePresence('Name', 'create')
-            ->notEmpty('Name');
+            ->scalar('name')
+            ->maxLength('name', 255)
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         $validator
-            ->scalar('Ort')
-            ->maxLength('Ort', 255)
-            ->requirePresence('Ort', 'create')
-            ->notEmpty('Ort');
+            ->scalar('ort')
+            ->maxLength('ort', 255)
+            ->requirePresence('ort', 'create')
+            ->notEmpty('ort');
 
         $validator
-            ->integer('PLZ')
-            ->requirePresence('PLZ', 'create')
-            ->notEmpty('PLZ');
+            ->integer('plz')
+            ->requirePresence('plz', 'create')
+            ->notEmpty('plz');
 
         $validator
-            ->scalar('Straße')
-            ->maxLength('Straße', 255)
-            ->requirePresence('Straße', 'create')
-            ->notEmpty('Straße');
+            ->scalar('straße')
+            ->maxLength('straße', 255)
+            ->requirePresence('straße', 'create')
+            ->notEmpty('straße');
 
         $validator
-            ->integer('Hausnummer')
-            ->requirePresence('Hausnummer', 'create')
-            ->notEmpty('Hausnummer');
+            ->integer('hausnummer')
+            ->requirePresence('hausnummer', 'create')
+            ->notEmpty('hausnummer');
 
         $validator
-            ->scalar('EMail')
-            ->maxLength('EMail', 255)
-            ->requirePresence('EMail', 'create')
-            ->notEmpty('EMail');
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
 
         $validator
-            ->scalar('Tel')
-            ->maxLength('Tel', 255)
-            ->requirePresence('Tel', 'create')
-            ->notEmpty('Tel');
+            ->scalar('telefon')
+            ->maxLength('telefon', 255)
+            ->requirePresence('telefon', 'create')
+            ->notEmpty('telefon');
 
         $validator
-            ->scalar('Username')
-            ->maxLength('Username', 255)
-            ->requirePresence('Username', 'create')
-            ->notEmpty('Username');
+            ->scalar('username')
+            ->maxLength('username', 255)
+            ->requirePresence('username', 'create')
+            ->notEmpty('username');
 
         $validator
-            ->scalar('Password')
-            ->maxLength('Password', 255)
-            ->requirePresence('Password', 'create')
-            ->notEmpty('Password');
+            ->scalar('password')
+            ->maxLength('password', 255)
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
+
+        $validator
+            ->dateTime('registriert_am')
+            ->requirePresence('registriert_am', 'create')
+            ->notEmpty('registriert_am');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['username']));
+
+        return $rules;
     }
 }

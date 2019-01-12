@@ -9,6 +9,9 @@ use Cake\Validation\Validator;
 /**
  * Ereignis Model
  *
+ * @property \App\Model\Table\ProjektTable|\Cake\ORM\Association\BelongsTo $Projekt
+ * @property \App\Model\Table\AngestellterTable|\Cake\ORM\Association\BelongsToMany $Angestellter
+ *
  * @method \App\Model\Entity\Ereigni get($primaryKey, $options = [])
  * @method \App\Model\Entity\Ereigni newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Ereigni[] newEntities(array $data, array $options = [])
@@ -32,8 +35,18 @@ class EreignisTable extends Table
         parent::initialize($config);
 
         $this->setTable('ereignis');
-        $this->setDisplayField('EventID');
-        $this->setPrimaryKey('EventID');
+        $this->setDisplayField('ereignis_id');
+        $this->setPrimaryKey('ereignis_id');
+
+        $this->belongsTo('Projekt', [
+            'foreignKey' => 'projekt_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsToMany('Angestellter', [
+            'foreignKey' => 'ereigni_id',
+            'targetForeignKey' => 'angestellter_id',
+            'joinTable' => 'angestellter_ereignis'
+        ]);
     }
 
     /**
@@ -45,31 +58,40 @@ class EreignisTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('EventID')
-            ->allowEmpty('EventID', 'create');
+            ->integer('ereignis_id')
+            ->allowEmpty('ereignis_id', 'create');
 
         $validator
-            ->date('Datum')
-            ->requirePresence('Datum', 'create')
-            ->notEmpty('Datum');
+            ->date('datum')
+            ->requirePresence('datum', 'create')
+            ->notEmpty('datum');
 
         $validator
-            ->scalar('Art')
-            ->maxLength('Art', 255)
-            ->requirePresence('Art', 'create')
-            ->notEmpty('Art');
+            ->scalar('art')
+            ->maxLength('art', 255)
+            ->requirePresence('art', 'create')
+            ->notEmpty('art');
 
         $validator
-            ->scalar('Bezeichnung')
-            ->maxLength('Bezeichnung', 255)
-            ->requirePresence('Bezeichnung', 'create')
-            ->notEmpty('Bezeichnung');
-
-        $validator
-            ->integer('ProjektID')
-            ->requirePresence('ProjektID', 'create')
-            ->notEmpty('ProjektID');
+            ->scalar('bezeichnung')
+            ->maxLength('bezeichnung', 255)
+            ->requirePresence('bezeichnung', 'create')
+            ->notEmpty('bezeichnung');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['projekt_id'], 'Projekt'));
+
+        return $rules;
     }
 }

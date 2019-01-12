@@ -1,6 +1,6 @@
 <?php
     $this->assign('title', 'Dashboard');
-    $username = $this->request->getSession()->read('Auth.User')['Name'];
+    $username = $this->request->getSession()->read('Auth.User')['name'];
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -297,13 +297,13 @@
                             <tbody>
                             <?php foreach ($openTasks as $item): ?>
                                 <tr>
-                                    <td><b><?= $item['Projektname'] ?></b></td>
-                                    <td><?= $item['Name']?></td>
-                                    <td><?= str_replace('.', ',', $item['Kosten'])?> €</td>
+                                    <td><b><?= $item['projektname'] ?></b></td>
+                                    <td><?= $item['name']?></td>
+                                    <td><?= str_replace('.', ',', $item['kosten'])?> €</td>
                                     <td><?php
-                                        if ($item['Fortschritt'] == 0) {
+                                        if ($item['fortschritt'] == 0) {
                                             echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-danger\"></i> offen</span>";
-                                        } else if ($item['Fortschritt'] < 100) {
+                                        } else if ($item['fortschritt'] < 100) {
                                             echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-info\"></i> in Bearbeitung</span>";
                                         } else {
                                             echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-success\"></i> beendet</span>";
@@ -312,10 +312,10 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <span class="mr-2"><?=$item['Fortschritt']?> %</span>
+                                            <span class="mr-2"><?=$item['fortschritt']?> %</span>
                                             <div>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?=$item['Fortschritt']?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$item['Fortschritt']?>%;"></div>
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?=$item['fortschritt']?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$item['Fortschritt']?>%;"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -347,9 +347,9 @@
                             <tbody>
                             <?php foreach ($finishedTasks as $item): ?>
                                 <tr>
-                                    <td><b><?= $item['Projektname'] ?></b></td>
-                                    <td><?= $item['Name']?></td>
-                                    <td><?= str_replace('.', ',', $item['Kosten'])?> €</td>
+                                    <td><b><?= $item['projektname'] ?></b></td>
+                                    <td><?= $item['name']?></td>
+                                    <td><?= str_replace('.', ',', $item['kosten'])?> €</td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
