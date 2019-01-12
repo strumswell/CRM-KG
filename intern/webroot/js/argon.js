@@ -935,7 +935,7 @@ var OrdersChart = (function() {
 					yAxes: [{
 						ticks: {
 							callback: function(value) {
-								if (!(value % 10)) {
+								if (!(value % 1)) {
 									//return '$' + value + 'k'
 									return value
 								}
@@ -962,10 +962,10 @@ var OrdersChart = (function() {
 				}
 			},
 			data: {
-				labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				labels: [month[5], month[4], month[3], month[2], month[1], month[0]],
 				datasets: [{
-					label: 'Sales',
-					data: [25, 20, 30, 22, 17, 29]
+					label: 'Abgeschlossene Tasks',
+					data: [allFinishedTasks[5],allFinishedTasks[4],allFinishedTasks[3],allFinishedTasks[2],allFinishedTasks[1],allFinishedTasks[0]]
 				}]
 			}
 		});
@@ -1014,8 +1014,8 @@ var SalesChart = (function() {
 						},
 						ticks: {
 							callback: function(value) {
-								if (!(value % 10)) {
-									return '$' + value + 'k';
+								if (!(value % 1)) {
+									return '' + value + ' €';
 								}
 							}
 						}
@@ -1032,17 +1032,17 @@ var SalesChart = (function() {
 								content += '<span class="popover-body-label mr-auto">' + label + '</span>';
 							}
 
-							content += '<span class="popover-body-value">$' + yLabel + 'k</span>';
+							content += '<span class="popover-body-value">' + yLabel + ' €</span>';
 							return content;
 						}
 					}
 				}
 			},
 			data: {
-				labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				labels: [month[7], month[6], month[5], month[4], month[3], month[2], month[1], month[0]],
 				datasets: [{
-					label: 'Performance',
-					data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
+					label: 'Auftragsvolumen',
+					data: [orderVolume[7], orderVolume[6], orderVolume[5], orderVolume[4], orderVolume[3], orderVolume[2], orderVolume[1], orderVolume[0]]
 				}]
 			}
 		});
