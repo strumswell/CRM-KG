@@ -29,9 +29,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
-              <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="./img/theme/team-1-800x800.jpg">
-              </span>
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="./img/theme/team-1-800x800.jpg">
+                  </span>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
@@ -93,40 +93,26 @@
                 </div>
             </form>
             <!-- Navigation -->
+            <!-- Heading -->
+            <h6 class="navbar-heading text-muted">Kundenbereich</h6>
             <ul class="navbar-nav">
                 <li>
                     <?= $this->Html->link(
-                            $this->Html->tag('i', '', array(
-                                    'class' => 'ni ni-tv-2 text-primary'
-                            )).'Dashboard', '/', array('class' => 'nav-link active', 'escape' => false)) ?>
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-tv-2 text-primary'
+                        )).'Dashboard', '/', array('class' => 'nav-link active', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
-                            'class' => 'ni ni-user-run text-primary'
-                        )).'Userverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
-                </li>
-            </ul>
-            <!-- Divider -->
-            <hr class="my-3">
-            <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Documentation</h6>
-            <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-                        <i class="ni ni-spaceship"></i> Getting started
-                    </a>
+                            'class' => 'ni ni-badge text-primary'
+                        )).'Projekte', '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-                        <i class="ni ni-palette"></i> Foundation
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-                        <i class="ni ni-ui-04"></i> Components
-                    </a>
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-calendar-grid-58 text-primary'
+                        )).'Termine', '/ereignis', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
         </div>
@@ -134,7 +120,7 @@
 </nav>
 <!-- Main content -->
 <div class="main-content">
-    <!-- Top navbar -->
+    <!-- Top navbar - USERNAME & PICTURE-->
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
@@ -194,7 +180,7 @@
             </ul>
         </div>
     </nav>
-    <!-- Header -->
+    <!-- Header - CARDS -->
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
             <div class="header-body">
@@ -205,12 +191,12 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                                        <span class="h2 font-weight-bold mb-0">350,897</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Laufende Projekte</h5>
+                                        <span class="h2 font-weight-bold mb-0"><?=$openProjectsCount?></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-bar"></i>
+                                            <i class="fas fa-folder"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -226,12 +212,12 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                                        <span class="h2 font-weight-bold mb-0">2,356</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Abgeschlossene Tasks</h5>
+                                        <span class="h2 font-weight-bold mb-0"><?=$finishedTasksCount?></span>
                                     </div>
                                     <div class="col-auto">
-                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                            <i class="fas fa-chart-pie"></i>
+                                        <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                                            <i class="fas fa-check-double"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -247,12 +233,12 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                                        <span class="h2 font-weight-bold mb-0">924</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Offene Tasks</h5>
+                                        <span class="h2 font-weight-bold mb-0"><?=$openTasksCount?></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                            <i class="fas fa-users"></i>
+                                            <i class="fas fa-clock"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -268,12 +254,12 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                                        <span class="h2 font-weight-bold mb-0">49,65%</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Voraussichtliche Kosten</h5>
+                                        <span class="h2 font-weight-bold mb-0"><?=$cost?> €</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                                            <i class="fas fa-percent"></i>
+                                            <i class="fas fa-dollar-sign"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -290,274 +276,82 @@
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7">
+        <!-- Table -->
         <div class="row">
-            <div class="col-xl-8 mb-5 mb-xl-0">
-                <div class="card bg-gradient-default shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                                <h2 class="text-white mb-0">Sales value</h2>
-                            </div>
-                            <div class="col">
-                                <ul class="nav nav-pills justify-content-end">
-                                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                                        <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                                            <span class="d-none d-md-block">Month</span>
-                                            <span class="d-md-none">M</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                                        <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                                            <span class="d-none d-md-block">Week</span>
-                                            <span class="d-md-none">W</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <!-- Chart -->
-                        <div class="chart">
-                            <!-- Chart wrapper -->
-                            <canvas id="chart-sales" class="chart-canvas"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                <h2 class="mb-0">Total orders</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <!-- Chart -->
-                        <div class="chart">
-                            <canvas id="chart-orders" class="chart-canvas"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-xl-8 mb-5 mb-xl-0">
+            <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Page visits</h3>
-                            </div>
-                            <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                            </div>
-                        </div>
+                        <h3 class="mb-0">Offene Tasks</h3>
                     </div>
                     <div class="table-responsive">
-                        <!-- Projects table -->
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Page name</th>
-                                <th scope="col">Visitors</th>
-                                <th scope="col">Unique users</th>
-                                <th scope="col">Bounce rate</th>
+                                <th scope="col">Projektname</th>
+                                <th scope="col">Arbeitspaket</th>
+                                <th scope="col">Kosten</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Fortschritt</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">
-                                    /argon/
-                                </th>
-                                <td>
-                                    4,569
-                                </td>
-                                <td>
-                                    340
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/index.html
-                                </th>
-                                <td>
-                                    3,985
-                                </td>
-                                <td>
-                                    319
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/charts.html
-                                </th>
-                                <td>
-                                    3,513
-                                </td>
-                                <td>
-                                    294
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/tables.html
-                                </th>
-                                <td>
-                                    2,050
-                                </td>
-                                <td>
-                                    147
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/profile.html
-                                </th>
-                                <td>
-                                    1,795
-                                </td>
-                                <td>
-                                    190
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                                </td>
-                            </tr>
+                            <?php foreach ($openTasks as $item): ?>
+                                <tr>
+                                    <td><b><?= $item['Projektname'] ?></b></td>
+                                    <td><?= $item['Name']?></td>
+                                    <td><?= str_replace('.', ',', $item['Kosten'])?> €</td>
+                                    <td><?php
+                                        if ($item['Fortschritt'] == 0) {
+                                            echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-danger\"></i> offen</span>";
+                                        } else if ($item['Fortschritt'] < 100) {
+                                            echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-info\"></i> in Bearbeitung</span>";
+                                        } else {
+                                            echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-success\"></i> beendet</span>";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="mr-2"><?=$item['Fortschritt']?> %</span>
+                                            <div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?=$item['Fortschritt']?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$item['Fortschritt']?>%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4">
+        </div>
+        <!-- Table -->
+        <div class="row mt-3">
+            <div class="col col-8">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Social traffic</h3>
-                            </div>
-                            <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                            </div>
-                        </div>
+                        <h3 class="mb-0">Abgeschlossene Tasks</h3>
                     </div>
                     <div class="table-responsive">
-                        <!-- Projects table -->
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Referral</th>
-                                <th scope="col">Visitors</th>
-                                <th scope="col"></th>
+                                <th scope="col">Projektname</th>
+                                <th scope="col">Arbeitspaket</th>
+                                <th scope="col">Kosten</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">
-                                    Facebook
-                                </th>
-                                <td>
-                                    1,480
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">60%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Facebook
-                                </th>
-                                <td>
-                                    5,480
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">70%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Google
-                                </th>
-                                <td>
-                                    4,807
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">80%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Instagram
-                                </th>
-                                <td>
-                                    3,678
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">75%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    twitter
-                                </th>
-                                <td>
-                                    2,645
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">30%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php foreach ($finishedTasks as $item): ?>
+                                <tr>
+                                    <td><b><?= $item['Projektname'] ?></b></td>
+                                    <td><?= $item['Name']?></td>
+                                    <td><?= str_replace('.', ',', $item['Kosten'])?> €</td>
+                                </tr>
+                            <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

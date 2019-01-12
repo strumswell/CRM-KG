@@ -49,7 +49,7 @@ class ProjektTable extends Table
             ->allowEmpty('ProjektID', 'create');
 
         $validator
-            ->scalar('Name')
+            ->scalar('Projektname')
             ->maxLength('Name', 255)
             ->requirePresence('Name', 'create')
             ->notEmpty('Name');
