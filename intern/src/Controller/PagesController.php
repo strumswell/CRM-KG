@@ -42,16 +42,20 @@ class PagesController extends AppController
          */
         $month = date("M");
         for ($i = 1; $i < 9; ++$i) {
-            $array[] = $month;
+            $lastEightMonths[] = $month;
             $month = date("M", strtotime("-$i months"));
         }
-
-        $openProjectsCounts = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0')->fetchAll('assoc');
-        $this->set('openProjectsCounts', reset($openProjectsCounts[0]));
         echo "
         <script>
-            var month ="; echo json_encode($array, JSON_HEX_TAG); //Don't forget the extra semicolon!
-       echo "</script>";
+            var month ="; echo json_encode($lastEightMonths, JSON_HEX_TAG); //Don't forget the extra semicolon!
+        echo "</script>";
+
+        /**
+         * Query für laufende Projekte
+         */
+        $openProjectsCounts = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0')->fetchAll('assoc');
+        $this->set('openProjectsCounts', reset($openProjectsCounts[0]));
+
 
         /**
          * Query für aktuelles Auftragsvolumen
@@ -140,7 +144,7 @@ class PagesController extends AppController
         <script>
             var orderVolume ="; echo json_encode($orderVolume, JSON_HEX_TAG); //Don't forget the extra semicolon!
         echo "</script>";
-
+        $this->set('orderVolume', str_replace('.', ',', $orderVolume));
         /**
          * Query für abgeschlossene Tasks aktueller Monat
          */
@@ -207,6 +211,24 @@ class PagesController extends AppController
         <script>
             var allFinishedTasks ="; echo json_encode($allFinishedTasks, JSON_HEX_TAG); //Don't forget the extra semicolon!
         echo "</script>";
+
+
+
+
+        /**
+         * Query für Nekunden seit Jahresbeginn
+         */
+        $actualYear = date("Y");
+        $newCustomers = $connection->execute("SELECT COUNT(kunde.`registriert_am`) FROM kunde WHERE (YEAR(`registriert_am`) =$actualYear)")->fetchAll('assoc');
+        $newCustomers = reset($newCustomers[0]);
+        $this->set('newCustomers', $newCustomers);
+
+        /**
+         * Query für offene Tasks
+         */
+        $openTasks = $connection->execute("SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0")->fetchAll('assoc');
+        $openTasks = reset($openTasks[0]);
+        $this->set('openTasks', $openTasks);
     }
 
     /**
