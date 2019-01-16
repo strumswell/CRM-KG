@@ -1,6 +1,8 @@
 <?php
 $this->assign('title', 'Projekte');
-$username = $this->request->getSession()->read('Auth.User')['name'];
+$name = $this->request->getSession()->read('Auth.User')['name'];
+$username = $this->request->getSession()->read('Auth.User')['username'];
+
 //debug($query);
 ?>
 <!-- Sidenav -->
@@ -31,7 +33,7 @@ $username = $this->request->getSession()->read('Auth.User')['name'];
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="./img/theme/team-1-800x800.jpg">
+                    <img alt="Image placeholder" src="./img/profilbilder/<?=$username?>">
                   </span>
                     </div>
                 </a>
@@ -127,10 +129,10 @@ $username = $this->request->getSession()->read('Auth.User')['name'];
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="./img/theme/team-4-800x800.jpg">
+                    <img alt="Image placeholder" src="./img/profilbilder/<?=$username?>">
                 </span>
                             <div class="media-body ml-2 d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold"><?=$username?></span>
+                                <span class="mb-0 text-sm  font-weight-bold"><?=$name?></span>
                             </div>
                         </div>
                     </a>

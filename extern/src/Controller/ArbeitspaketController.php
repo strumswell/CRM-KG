@@ -40,7 +40,7 @@ class ArbeitspaketController extends AppController
          * Convert zustaendiger id to name
          */
 
-        $zustaendige = $connection->execute('SELECT angestellter_id, vorname, nachname FROM angestellter')->fetchAll('assoc');
+        $zustaendige = $connection->execute('SELECT angestellter_id, vorname, nachname, username FROM angestellter')->fetchAll('assoc');
         $this->set('zustaendige', $zustaendige);
 
         /**

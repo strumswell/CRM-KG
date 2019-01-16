@@ -1,6 +1,7 @@
 <?php
 $this->assign('title', __('Arbeitspaket'));
-$username = $this->request->getSession()->read('Auth.User')['name'];
+$name= $this->request->getSession()->read('Auth.User')['name'];
+$username = $this->request->getSession()->read('Auth.User')['username'];
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -30,7 +31,7 @@ $username = $this->request->getSession()->read('Auth.User')['name'];
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="./img/theme/team-1-800x800.jpg">
+                  <img alt="Image placeholder" src="./img/profilbilder/<?=$username?>">
                   </span>
                     </div>
                 </a>
@@ -126,10 +127,10 @@ $username = $this->request->getSession()->read('Auth.User')['name'];
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="./img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="./img/profilbilder/<?=$username?>">
                 </span>
                             <div class="media-body ml-2 d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold"><?=$username?></span>
+                                <span class="mb-0 text-sm  font-weight-bold"><?=$name?></span>
                             </div>
                         </div>
                     </a>
@@ -291,7 +292,7 @@ $username = $this->request->getSession()->read('Auth.User')['name'];
                                             foreach ($zustaendige as $zustaendig) {
                                                 if ($item2->zustaendiger == $zustaendig['angestellter_id']) {
                                                     print('<a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="'.$zustaendig['vorname'] .' ' . $zustaendig['nachname'].'">');
-                                                    print('<img alt="Image placeholder" src="./img/theme/team-1-800x800.jpg" class="rounded-circle">');
+                                                    print('<img alt="Image placeholder" src="./img/profilbilder/'.$zustaendig['username'].'.jpg" class="rounded-circle">');
                                                     print('</a>');
                                                 }
                                             }

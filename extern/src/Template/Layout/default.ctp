@@ -24,7 +24,8 @@ $cakeDescription = 'CRM K&G Webservice';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->Html->meta('icon') ?>
+    <!--<?= $this->Html->meta('icon') ?>-->
+    <link href="/~bolte/cakephp/extern/favicon.png" type="image/x-icon" rel="icon"/>
 
     <?= $this->Html->css('argon.css') ?>
     <?= $this->Html->css('../vendor/@fortawesome/fontawesome-free/css/all.min.css') ?>
