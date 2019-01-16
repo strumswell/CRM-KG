@@ -2,15 +2,13 @@
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\ArbeitspaketController;
-use Cake\TestSuite\IntegrationTestTrait;
-use Cake\TestSuite\TestCase;
+use Cake\TestSuite\IntegrationTestCase;
 
 /**
  * App\Controller\ArbeitspaketController Test Case
  */
-class ArbeitspaketControllerTest extends TestCase
+class ArbeitspaketControllerTest extends IntegrationTestCase
 {
-    use IntegrationTestTrait;
 
     /**
      * Fixtures
@@ -18,7 +16,10 @@ class ArbeitspaketControllerTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.Arbeitspaket'
+        'app.arbeitspaket',
+        'app.projekt',
+        'app.angestellter',
+        'app.angestellter_arbeitspaket'
     ];
 
     /**

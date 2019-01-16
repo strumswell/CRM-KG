@@ -47,6 +47,11 @@ class ProjektTable extends Table
             'targetForeignKey' => 'angestellter_id',
             'joinTable' => 'angestellter_projekt'
         ]);
+
+        $this->hasMany('Arbeitspaket')
+            ->setForeignKey(['projekt_id'])
+            ->setBindingKey(['projekt_id'])
+            ->setStrategy('subquery');
     }
 
     /**

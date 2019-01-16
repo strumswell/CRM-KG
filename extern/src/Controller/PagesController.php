@@ -14,12 +14,18 @@
  */
 namespace App\Controller;
 
+use App\Model\Entity\Projekt;
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
+use Cake\Controller\Controller;
+use Cake\View\Helper\Paginator;
+use Cake\I18n\Time;
+use Cake\I18n\I18n;
+
 
 /**
  * Static content controller
@@ -30,7 +36,6 @@ use Cake\Event\Event;
  */
 class PagesController extends AppController
 {
-
     function beforeRender(Event $event) {
         /**
          * DB Connection
@@ -45,10 +50,28 @@ class PagesController extends AppController
         $this->set('kdnr', reset($kdnr[0]));
 
         /**
-         * Open Projects
+         * Lade Projekt Model
          */
-        $openProjectsCount = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0 AND kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
-        $this->set('openProjectsCount', reset($openProjectsCount[0]));
+        Controller::loadModel('Projekt');
+        Controller::loadModel('Arbeitspaket');
+
+
+        /**
+         * Open Tasks
+        $openTasks = $this->Projekt->find()
+            ->where(['Projekt.abgeschlossen' => 0])
+            ->where(['Projekt.kunde_id' => reset($kdnr[0])]);
+        $openTasks->matching('Arbeitspaket', function ($q) {
+            return $q
+                ->where(['Arbeitspaket.fortschritt <' => 100]);
+        })->order(['Arbeitspaket.frist' => 'ASC']);
+
+        $openTasks = $this->paginate($openTasks, ['scope' => 'openTasks']);
+        $this->set('openTasks', $openTasks);
+         */
+
+        $openTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
+        $this->set('openTasksCount', reset($openTasksCount[0]));
 
         /**
          * Finished Tasks
@@ -56,17 +79,59 @@ class PagesController extends AppController
         $finishedTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt = 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
         $this->set('finishedTasksCount', reset($finishedTasksCount[0]));
 
-        $finishedTasks = $connection->execute('SELECT projekt.projektname, arbeitspaket.name, arbeitspaket.kosten FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt = 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
+        $finishedTasks = $this->Projekt->find()
+            ->where(['Projekt.abgeschlossen' => 0])
+            ->where(['Projekt.kunde_id' => reset($kdnr[0])]);
+        $finishedTasks->matching('Arbeitspaket', function ($q) {
+            return $q
+                ->where(['Arbeitspaket.fortschritt' => 100]);
+        })->order(['Arbeitspaket.abgeschlossen_am' => 'DESC']);
+
+        $finishedTasks = $this->paginate($finishedTasks);
         $this->set('finishedTasks', $finishedTasks);
 
-        /**
-         * Open Tasks
-         */
-        $openTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
-        $this->set('openTasksCount', reset($openTasksCount[0]));
 
-        $openTasks = $connection->execute('SELECT projekt.projektname, arbeitspaket.name, arbeitspaket.kosten, arbeitspaket.fortschritt FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
-        $this->set('openTasks', $openTasks);
+
+        /**
+         * Open Projects
+         */
+        $openProjectsCount = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0 AND kunde_id = '.reset($kdnr[0]))->fetchAll('assoc');
+        $this->set('openProjectsCount', reset($openProjectsCount[0]));
+
+        /**
+         * Open Tasks with deadline (card: Aufgabeübersicht)
+         */
+
+        $openTasksDeadline = $connection->execute('SELECT projekt.projektname, arbeitspaket.name, arbeitspaket.kosten, arbeitspaket.fortschritt, arbeitspaket.frist FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '. reset($kdnr[0]) .' AND arbeitspaket.frist >= CURRENT_TIMESTAMP ORDER BY frist ASC LIMIT 3;')->fetchAll('assoc');
+        $this->set('openTasksDeadline', $openTasksDeadline);
+
+        foreach ($openTasksDeadline as $item) {
+            $time = new Time($item['frist']);
+            $time = $time->format('d-m-Y');
+
+            $openTasksDeadlineDates[] = str_replace('-', '.', $time);
+        }
+
+        $this->set('openTasksDeadlineDates', $openTasksDeadlineDates);
+
+        /**
+         * Open Meeting
+         */
+
+        $openMeetings = $connection->execute('SELECT ereignis.* from ereignis, projekt, kunde where ereignis.projekt_id = projekt.projekt_id and projekt.kunde_id = kunde.kunde_id and projekt.kunde_id = '. reset($kdnr[0]) .' AND ereignis.datum >= CURRENT_TIMESTAMP ORDER BY ereignis.datum ASC LIMIT 3;')->fetchAll('assoc');
+        foreach ($openMeetings as $item) {
+            $time = new Time($item['datum']);
+            $time = $time->format('d-m-Y');
+
+            $openMeetingsDates[] = str_replace('-', '.', $time);
+        }
+
+        $this->set('openMeetingsDates', $openMeetingsDates);
+        $this->set('openMeetings', $openMeetings);
+
+        //I18n::setLocale('de_DE');
+
+
 
         /**
          * Cost Of Current Projects

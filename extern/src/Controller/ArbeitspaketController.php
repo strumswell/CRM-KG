@@ -2,6 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
+
 
 /**
  * Arbeitspaket Controller
@@ -20,9 +23,65 @@ class ArbeitspaketController extends AppController
      */
     public function index()
     {
-        $arbeitspaket = $this->paginate($this->Arbeitspaket);
+        $projekt = TableRegistry::get('Projekt');
+        /**
+         * DB Connection
+         */
+        $connection = ConnectionManager::get('default');
 
-        $this->set(compact('arbeitspaket'));
+        /**
+         * Username & KDNr
+         */
+        $username = $this->request->getSession()->read('Auth.User')['username'];
+        $kdnr = $connection->execute('SELECT kunde_id FROM kunde WHERE username = '.'"' . $username . '"')->fetchAll('assoc');
+        $kdnr = reset($kdnr[0]);
+
+        /**
+         * Convert zustaendiger id to name
+         */
+
+        $zustaendige = $connection->execute('SELECT angestellter_id, vorname, nachname FROM angestellter')->fetchAll('assoc');
+        $this->set('zustaendige', $zustaendige);
+
+        /**
+         * Open Task List
+         */
+        $openTasks = $projekt->find()
+            ->where(['Projekt.abgeschlossen' => 0])
+            ->where(['Projekt.kunde_id' => $kdnr]);
+        $openTasks->matching('Arbeitspaket', function ($q) {
+            return $q
+                ->where(['Arbeitspaket.fortschritt <' => 100]);
+        })->order(['Arbeitspaket.frist' => 'ASC']);
+
+        $openTasks = $this->paginate($openTasks);
+
+        $this->set('openTasks', $openTasks);
+
+        /**
+         * Open Tasks
+         */
+        $openTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.$kdnr)->fetchAll('assoc');
+        $this->set('openTasksCount', reset($openTasksCount[0]));
+
+        /**
+         * Finished Tasks
+         */
+        $finishedTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt = 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.$kdnr)->fetchAll('assoc');
+        $this->set('finishedTasksCount', reset($finishedTasksCount[0]));
+
+        /**
+         * Open Projects
+         */
+        $openProjectsCount = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0 AND kunde_id = '.$kdnr)->fetchAll('assoc');
+        $this->set('openProjectsCount', reset($openProjectsCount[0]));
+
+        /**
+         * Cost Of Current Projects
+         */
+        $cost = $connection->execute('SELECT SUM(arbeitspaket.kosten) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.$kdnr)->fetchAll('assoc');
+        $costFormatted = str_replace('.', ',', reset($cost[0]));
+        $this->set('cost', $costFormatted);
     }
 
     /**
@@ -35,7 +94,7 @@ class ArbeitspaketController extends AppController
     public function view($id = null)
     {
         $arbeitspaket = $this->Arbeitspaket->get($id, [
-            'contain' => []
+            'contain' => ['Projekt', 'Angestellter']
         ]);
 
         $this->set('arbeitspaket', $arbeitspaket);
@@ -58,7 +117,9 @@ class ArbeitspaketController extends AppController
             }
             $this->Flash->error(__('The arbeitspaket could not be saved. Please, try again.'));
         }
-        $this->set(compact('arbeitspaket'));
+        $projekt = $this->Arbeitspaket->Projekt->find('list', ['limit' => 200]);
+        $angestellter = $this->Arbeitspaket->Angestellter->find('list', ['limit' => 200]);
+        $this->set(compact('arbeitspaket', 'projekt', 'angestellter'));
     }
 
     /**
@@ -71,7 +132,7 @@ class ArbeitspaketController extends AppController
     public function edit($id = null)
     {
         $arbeitspaket = $this->Arbeitspaket->get($id, [
-            'contain' => []
+            'contain' => ['Angestellter']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $arbeitspaket = $this->Arbeitspaket->patchEntity($arbeitspaket, $this->request->getData());
@@ -82,7 +143,9 @@ class ArbeitspaketController extends AppController
             }
             $this->Flash->error(__('The arbeitspaket could not be saved. Please, try again.'));
         }
-        $this->set(compact('arbeitspaket'));
+        $projekt = $this->Arbeitspaket->Projekt->find('list', ['limit' => 200]);
+        $angestellter = $this->Arbeitspaket->Angestellter->find('list', ['limit' => 200]);
+        $this->set(compact('arbeitspaket', 'projekt', 'angestellter'));
     }
 
     /**
