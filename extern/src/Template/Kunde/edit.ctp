@@ -29,7 +29,7 @@
             echo $this->Form->control('email');
             echo $this->Form->control('telefon');
             echo $this->Form->control('username');
-            echo $this->Form->control('passwort');
+            echo $this->Form->control('password');
             echo $this->Form->control('registriert_am');
         ?>
     </fieldset>

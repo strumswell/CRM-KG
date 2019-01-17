@@ -57,7 +57,7 @@
                 <th scope="col"><?= __('Email') ?></th>
                 <th scope="col"><?= __('Telefon') ?></th>
                 <th scope="col"><?= __('Username') ?></th>
-                <th scope="col"><?= __('Passwort') ?></th>
+                <th scope="col"><?= __('Password') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($projekt->angestellter as $angestellter): ?>
@@ -69,7 +69,7 @@
                 <td><?= h($angestellter->email) ?></td>
                 <td><?= h($angestellter->telefon) ?></td>
                 <td><?= h($angestellter->username) ?></td>
-                <td><?= h($angestellter->passwort) ?></td>
+                <td><?= h($angestellter->password) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Angestellter', 'action' => 'view', $angestellter->angestellter_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Angestellter', 'action' => 'edit', $angestellter->angestellter_id]) ?>

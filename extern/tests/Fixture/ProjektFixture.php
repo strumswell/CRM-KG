@@ -58,7 +58,7 @@ class ProjektFixture extends TestFixture
                 'beschreibung' => 'Lorem ipsum dolor sit amet',
                 'kunde_id' => 1,
                 'abgeschlossen' => 1,
-                'hinzugefuegt_am' => '2019-01-12 15:17:00'
+                'hinzugefuegt_am' => '2019-01-12 18:33:35'
             ],
         ];
         parent::init();

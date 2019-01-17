@@ -24,7 +24,9 @@ class ArbeitspaketTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.Arbeitspaket'
+        'app.arbeitspaket',
+        'app.projekt',
+        'app.angestellter'
     ];
 
     /**
@@ -67,6 +69,16 @@ class ArbeitspaketTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

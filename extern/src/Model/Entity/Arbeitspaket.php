@@ -6,13 +6,19 @@ use Cake\ORM\Entity;
 /**
  * Arbeitspaket Entity
  *
- * @property int $TaskID
- * @property int $Fortschritt
- * @property float $Kosten
- * @property string $Beschreibung
- * @property string $Name
- * @property int $ProjektID
- * @property int $Zustaendiger
+ * @property int $arbeitspaket_id
+ * @property int $fortschritt
+ * @property float $kosten
+ * @property string $beschreibung
+ * @property string $name
+ * @property int $projekt_id
+ * @property int $zustaendiger
+ * @property \Cake\I18n\FrozenTime $hinzugefuegt_am
+ * @property \Cake\I18n\FrozenTime|null $abgeschlossen_am
+ * @property \Cake\I18n\FrozenTime|null $frist
+ *
+ * @property \App\Model\Entity\Projekt $projekt
+ * @property \App\Model\Entity\Angestellter[] $angestellter
  */
 class Arbeitspaket extends Entity
 {
@@ -27,11 +33,16 @@ class Arbeitspaket extends Entity
      * @var array
      */
     protected $_accessible = [
-        'Fortschritt' => true,
-        'Kosten' => true,
-        'Beschreibung' => true,
-        'Name' => true,
-        'ProjektID' => true,
-        'Zustaendiger' => true
+        'fortschritt' => true,
+        'kosten' => true,
+        'beschreibung' => true,
+        'name' => true,
+        'projekt_id' => true,
+        'zustaendiger' => true,
+        'hinzugefuegt_am' => true,
+        'abgeschlossen_am' => true,
+        'frist' => true,
+        'projekt' => true,
+        'angestellter' => true
     ];
 }

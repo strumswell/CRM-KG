@@ -1,6 +1,9 @@
 <?php
     $this->assign('title', 'Dashboard');
-    $username = $this->request->getSession()->read('Auth.User')['name'];
+    $name = $this->request->getSession()->read('Auth.User')['name'];
+    $username = $this->request->getSession()->read('Auth.User')['username'];
+
+//debug($query);
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -30,7 +33,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="./img/theme/team-1-800x800.jpg">
+                    <img alt="Image placeholder" src="./img/profilbilder/<?=$username?>">
                   </span>
                     </div>
                 </a>
@@ -81,17 +84,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Form -->
-            <form class="mt-4 mb-3 d-md-none">
-                <div class="input-group input-group-rounded input-group-merge">
-                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <span class="fa fa-search"></span>
-                        </div>
-                    </div>
-                </div>
-            </form>
             <!-- Navigation -->
             <!-- Heading -->
             <h6 class="navbar-heading text-muted">Kundenbereich</h6>
@@ -105,8 +97,14 @@
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
-                            'class' => 'ni ni-badge text-primary'
+                            'class' => 'ni ni-app text-primary'
                         )).'Projekte', '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-bullet-list-67 text-primary'
+                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
@@ -125,27 +123,16 @@
         <div class="container-fluid">
             <!-- Brand -->
             <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
-            <!-- Form -->
-            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-                <div class="form-group mb-0">
-                    <div class="input-group input-group-alternative">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Search" type="text">
-                    </div>
-                </div>
-            </form>
             <!-- User -->
             <ul class="navbar-nav align-items-center d-none d-md-flex">
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="./img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="./img/profilbilder/<?=$username?>">
                 </span>
                             <div class="media-body ml-2 d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold"><?=$username?></span>
+                                <span class="mb-0 text-sm  font-weight-bold"><?=$name?></span>
                             </div>
                         </div>
                     </a>
@@ -191,7 +178,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Laufende Projekte</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Projekte</h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$openProjectsCount?></span>
                                     </div>
                                     <div class="col-auto">
@@ -201,8 +188,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                    <span class="text-nowrap">Since last month</span>
+                                    <span class="text-nowrap">aktuell laufend</span>
                                 </p>
                             </div>
                         </div>
@@ -212,7 +198,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Abgeschlossene Tasks</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Tasks</h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$finishedTasksCount?></span>
                                     </div>
                                     <div class="col-auto">
@@ -222,8 +208,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                                    <span class="text-nowrap">Since last week</span>
+                                    <span class="text-nowrap">abgeschlossen</span>
                                 </p>
                             </div>
                         </div>
@@ -233,7 +218,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Offene Tasks</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Tasks</h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$openTasksCount?></span>
                                     </div>
                                     <div class="col-auto">
@@ -243,8 +228,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                                    <span class="text-nowrap">Since yesterday</span>
+                                    <span class="text-nowrap">offen</span>
                                 </p>
                             </div>
                         </div>
@@ -254,7 +238,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Voraussichtliche Kosten</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Kosten</h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$cost?> €</span>
                                     </div>
                                     <div class="col-auto">
@@ -264,8 +248,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                                    <span class="text-nowrap">Since last month</span>
+                                    <span class="text-nowrap">aus laufenden Projekten</span>
                                 </p>
                             </div>
                         </div>
@@ -276,84 +259,187 @@
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7">
-        <!-- Table -->
         <div class="row">
-            <div class="col">
+            <!-- Aufgabenübersicht -->
+            <div class="col-sm-6">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Offene Tasks</h3>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-default text-white rounded-circle shadow">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h2 class="mt-2">Aufgabenübersicht</h2>
+                            </div>
+                        </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Projektname</th>
-                                <th scope="col">Arbeitspaket</th>
-                                <th scope="col">Kosten</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Fortschritt</th>
+                                <th scope="col"><h5>Anstehend</h5></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($openTasks as $item): ?>
                                 <tr>
-                                    <td><b><?= $item['projektname'] ?></b></td>
-                                    <td><?= $item['name']?></td>
-                                    <td><?= str_replace('.', ',', $item['kosten'])?> €</td>
-                                    <td><?php
-                                        if ($item['fortschritt'] == 0) {
-                                            echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-danger\"></i> offen</span>";
-                                        } else if ($item['fortschritt'] < 100) {
-                                            echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-info\"></i> in Bearbeitung</span>";
-                                        } else {
-                                            echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-success\"></i> beendet</span>";
-                                        }
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2"><?=$item['fortschritt']?> %</span>
-                                            <div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<?=$item['fortschritt']?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$item['Fortschritt']?>%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <td><b><?php print($openTasksDeadlineDates[0]); ?></b> – <b><?php print($openTasksDeadline[0]['name'])?></b> (<?php print($openTasksDeadline[0]['projektname'])?>) </td>
+                                    <?php array_splice($openTasksDeadlineDates, 0, 1); //Remove first element ?>
                                 </tr>
-                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col"><h5>Danach</h5></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $firstEvent = true;
+                                foreach ($openTasksDeadline as $item){
+                                    if ($firstEvent) {
+                                        $firstEvent = false;
+                                        //Leave first date out because it was used in 'Anstehend' -> older dates needed!
+                                    } else {
+                                        echo '<tr><td><b>';
+                                        print($openTasksDeadlineDates[0].'</b> – <b>');
+                                        //Remove first elment
+                                        array_splice($openTasksDeadlineDates, 0, 1);
+
+                                        print($item['name']);
+                                        echo '</b> ('.$item['projektname'].') ';
+                                        echo '</td></tr>';
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Terminübersicht -->
+            <div class="col-sm-6">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row">
+
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-default text-white rounded-circle shadow">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h2 class="mt-2">Terminübersicht</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col"><h5>Anstehend</h5></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><b><?php print($openMeetingsDates[0]);?></b> – <b><?php print($openMeetings[0]['bezeichnung'])?></b> (<?php print($openMeetings[0]['art'])?>)</td>
+                                <?php
+                                    array_splice($openMeetingsDates, 0, 1); //Remove first element
+                                ?>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col"><h5>Danach</h5></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $firstEvent = true;
+                                foreach ($openMeetings as $item){
+                                    if ($firstEvent) {
+                                        $firstEvent = false;
+                                        //Leave first date out because it was used in 'Anstehend' -> older dates needed!
+                                    } else {
+                                        echo '<tr><td><b>';
+                                        print($openMeetingsDates[0].'</b> – <b>');
+                                        //Remove first element
+                                        array_splice($openMeetingsDates, 0, 1); //Remove first element
+                                        print($item['bezeichnung']);
+                                        echo '</b> ('.$item['art'].') ';
+                                        echo '</td></tr>';
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Table -->
-        <div class="row mt-3">
-            <div class="col col-8">
+        <!-- Abgeschlossene Tasks -->
+        <div class="row mt-4">
+            <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Abgeschlossene Tasks</h3>
+                        <h2 class="mb-0"><?php echo __('Alle abgeschlossenen Tasks')?></h2>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Projektname</th>
-                                <th scope="col">Arbeitspaket</th>
-                                <th scope="col">Kosten</th>
+                                <th scope="col"><?php echo __('Projektname')?></th>
+                                <th scope="col"><?php echo __('Arbeitspaket')?></th>
+                                <th scope="col"><?php echo __('Beschreibung')?></th>
+                                <th scope="col"><?php echo __('Kosten')?></th>
+                                <th scope="col"><?php echo __('Status')?></th>
+                                <th scope="col"><?php echo __('Frist')?></th>
+                                <th scope="col"><?php echo __('Abgeschlossen am')?></th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php foreach ($finishedTasks as $item): ?>
-                                <tr>
-                                    <td><b><?= $item['projektname'] ?></b></td>
-                                    <td><?= $item['name']?></td>
-                                    <td><?= str_replace('.', ',', $item['kosten'])?> €</td>
-                                </tr>
+                                <?php foreach ($item->_matchingData as $item2): ?>
+                                    <tr>
+                                        <td><?=$item->projektname?></td>
+                                        <td><?=$item2->name?></td>
+                                        <td><?=$item2->beschreibung?></td>
+                                        <td><?=str_replace('.', ',', $item2->kosten)?> €</td>
+                                        <td>
+                                            <?php
+                                            if ($item2->fortschritt == 0) {
+                                                echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-danger\"></i>" . __('offen') . "</span>";
+                                            } else if ($item2->fortschritt < 100) {
+                                                echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-info\"></i>" . __('in Bearbeitung') . "</span>";
+                                            } else {
+                                                echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-success\"></i>" . __('beendet') . "</span>";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td><?=$item2->frist?></td>
+                                        <td><?=$item2->abgeschlossen_am?></td>
+                                    </tr>
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <?= $this->Paginator->prev('< ' . __('Zurück .... ')) ?>
+                                <?= $this->Paginator->numbers() ?>
+                                <?= $this->Paginator->next(__(' .... Weiter') . ' >') ?>
+                            </ul>
+                            <p class="text-center"><?= $this->Paginator->counter(['format' => __('Seite {{page}} von {{pages}} - Anzeigen von {{current}} Einträgen von insgesamt {{count}}')]) ?></p>
+                        </nav>
                     </div>
                 </div>
             </div>

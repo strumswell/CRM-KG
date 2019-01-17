@@ -42,7 +42,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Passwort') ?></th>
-            <td><?= h($kunde->passwort) ?></td>
+            <td><?= h($kunde->password) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Kunde Id') ?></th>

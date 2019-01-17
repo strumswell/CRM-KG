@@ -24,7 +24,7 @@
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('telefon') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('username') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('passwort') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('registriert_am') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -41,7 +41,7 @@
                 <td><?= h($kunde->email) ?></td>
                 <td><?= h($kunde->telefon) ?></td>
                 <td><?= h($kunde->username) ?></td>
-                <td><?= h($kunde->passwort) ?></td>
+                <td><?= h($kunde->password) ?></td>
                 <td><?= h($kunde->registriert_am) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $kunde->kunde_id]) ?>
