@@ -103,8 +103,14 @@
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
-                            'class' => 'ni ni-user-run text-primary'
-                        )).'Userverwaltung', '/angestellter', array('class' => 'nav-link', 'escape' => false)) ?>
+                            'class' => 'ni ni-single-02 text-primary'
+                        )).'Mitarbeiterverwaltung', '/angestellter', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-briefcase-24 text-primary'
+                        )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->

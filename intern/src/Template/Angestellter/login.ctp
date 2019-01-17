@@ -14,8 +14,8 @@
                 <div class="header-body text-center mb-7">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-6">
-                            <h1 class="text-white">Willkommen!</h1>
-                            <p class="text-lead text-light">Loggen Sie sich hier ein, um Zugriff auf Ihre Projekte zu erhalten.</p>
+                            <h1 class="text-white"><?=__('Willkommen!') ?></h1>
+                            <p class="text-lead text-light"><?=__('Loggen Sie sich hier ein, um Zugriff auf Ihre Projekte zu erhalten.')?></p>
                         </div>
                     </div>
                 </div>

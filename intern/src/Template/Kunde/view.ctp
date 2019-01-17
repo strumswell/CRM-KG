@@ -41,8 +41,8 @@
             <td><?= h($kunde->username) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Passwort') ?></th>
-            <td><?= h($kunde->passwort) ?></td>
+            <th scope="row"><?= __('Password') ?></th>
+            <td><?= h($kunde->password) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Kunde Id') ?></th>

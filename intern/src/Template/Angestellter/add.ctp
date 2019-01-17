@@ -10,8 +10,6 @@
         <li><?= $this->Html->link(__('List Angestellter'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Arbeitspaket'), ['controller' => 'Arbeitspaket', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Arbeitspaket'), ['controller' => 'Arbeitspaket', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Ereignis'), ['controller' => 'Ereignis', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Ereigni'), ['controller' => 'Ereignis', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Projekt'), ['controller' => 'Projekt', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Projekt'), ['controller' => 'Projekt', 'action' => 'add']) ?></li>
     </ul>
@@ -29,7 +27,6 @@
             echo $this->Form->control('username');
             echo $this->Form->control('password');
             echo $this->Form->control('arbeitspaket._ids', ['options' => $arbeitspaket]);
-            echo $this->Form->control('ereignis._ids', ['options' => $ereignis]);
             echo $this->Form->control('projekt._ids', ['options' => $projekt]);
         ?>
     </fieldset>

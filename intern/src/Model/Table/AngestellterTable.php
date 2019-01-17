@@ -10,8 +10,8 @@ use Cake\Validation\Validator;
  * Angestellter Model
  *
  * @property \App\Model\Table\ArbeitspaketTable|\Cake\ORM\Association\BelongsToMany $Arbeitspaket
- * @property \App\Model\Table\EreignisTable|\Cake\ORM\Association\BelongsToMany $Ereignis
  * @property \App\Model\Table\ProjektTable|\Cake\ORM\Association\BelongsToMany $Projekt
+ * @property |\Cake\ORM\Association\BelongsToMany $Termin
  *
  * @method \App\Model\Entity\Angestellter get($primaryKey, $options = [])
  * @method \App\Model\Entity\Angestellter newEntity($data = null, array $options = [])
@@ -44,15 +44,15 @@ class AngestellterTable extends Table
             'targetForeignKey' => 'arbeitspaket_id',
             'joinTable' => 'angestellter_arbeitspaket'
         ]);
-        $this->belongsToMany('Ereignis', [
-            'foreignKey' => 'angestellter_id',
-            'targetForeignKey' => 'ereigni_id',
-            'joinTable' => 'angestellter_ereignis'
-        ]);
         $this->belongsToMany('Projekt', [
             'foreignKey' => 'angestellter_id',
             'targetForeignKey' => 'projekt_id',
             'joinTable' => 'angestellter_projekt'
+        ]);
+        $this->belongsToMany('Termin', [
+            'foreignKey' => 'angestellter_id',
+            'targetForeignKey' => 'termin_id',
+            'joinTable' => 'angestellter_termin'
         ]);
     }
 
@@ -104,10 +104,10 @@ class AngestellterTable extends Table
             ->notEmpty('username');
 
         $validator
-            ->scalar('passwort')
-            ->maxLength('passwort', 255)
-            ->requirePresence('passwort', 'create')
-            ->notEmpty('passwort');
+            ->scalar('password')
+            ->maxLength('password', 255)
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
 
         return $validator;
     }

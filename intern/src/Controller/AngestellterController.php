@@ -35,7 +35,7 @@ class AngestellterController extends AppController
     public function view($id = null)
     {
         $angestellter = $this->Angestellter->get($id, [
-            'contain' => []
+            'contain' => ['Arbeitspaket', 'Termin', 'Projekt']
         ]);
 
         $this->set('angestellter', $angestellter);
@@ -58,7 +58,10 @@ class AngestellterController extends AppController
             }
             $this->Flash->error(__('The angestellter could not be saved. Please, try again.'));
         }
-        $this->set(compact('angestellter'));
+        $arbeitspaket = $this->Angestellter->Arbeitspaket->find('list', ['limit' => 200]);
+        $termin = $this->Angestellter->Termin->find('list', ['limit' => 200]);
+        $projekt = $this->Angestellter->Projekt->find('list', ['limit' => 200]);
+        $this->set(compact('angestellter', 'arbeitspaket', 'termin', 'projekt'));
     }
 
     /**
@@ -71,7 +74,7 @@ class AngestellterController extends AppController
     public function edit($id = null)
     {
         $angestellter = $this->Angestellter->get($id, [
-            'contain' => []
+            'contain' => ['Arbeitspaket', 'Termin', 'Projekt']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $angestellter = $this->Angestellter->patchEntity($angestellter, $this->request->getData());
@@ -82,7 +85,10 @@ class AngestellterController extends AppController
             }
             $this->Flash->error(__('The angestellter could not be saved. Please, try again.'));
         }
-        $this->set(compact('angestellter'));
+        $arbeitspaket = $this->Angestellter->Arbeitspaket->find('list', ['limit' => 200]);
+        $termin = $this->Angestellter->Termin->find('list', ['limit' => 200]);
+        $projekt = $this->Angestellter->Projekt->find('list', ['limit' => 200]);
+        $this->set(compact('angestellter', 'arbeitspaket', 'termin', 'projekt'));
     }
 
     /**
@@ -104,24 +110,18 @@ class AngestellterController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
     public function login()
     {
         if ($this->request->is('post')) {
-            $angestellter = $this->Auth->identify();
-            if ($angestellter) {
-                $this->Auth->setUser($angestellter);
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error('Your username or password is incorrect.dd');
+            $this->Flash->error('Your username or password is incorrect.');
         }
     }
 
-    public function initialize()
-    {
-        parent::initialize();
-        $this->Auth->allow(['logout']);
-    }
 
     public function logout()
     {

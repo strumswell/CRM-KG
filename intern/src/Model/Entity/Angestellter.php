@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Angestellter Entity
@@ -13,7 +14,7 @@ use Cake\ORM\Entity;
  * @property string $email
  * @property string $telefon
  * @property string $username
- * @property string $passwort
+ * @property string $password
  *
  * @property \App\Model\Entity\Arbeitspaket[] $arbeitspaket
  * @property \App\Model\Entity\Ereigni[] $ereignis
@@ -38,7 +39,7 @@ class Angestellter extends Entity
         'email' => true,
         'telefon' => true,
         'username' => true,
-        'passwort' => true,
+        'password' => true,
         'arbeitspaket' => true,
         'ereignis' => true,
         'projekt' => true

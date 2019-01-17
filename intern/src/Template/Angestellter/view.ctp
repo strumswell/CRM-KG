@@ -13,8 +13,6 @@
         <li><?= $this->Html->link(__('New Angestellter'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Arbeitspaket'), ['controller' => 'Arbeitspaket', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Arbeitspaket'), ['controller' => 'Arbeitspaket', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Ereignis'), ['controller' => 'Ereignis', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Ereigni'), ['controller' => 'Ereignis', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Projekt'), ['controller' => 'Projekt', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Projekt'), ['controller' => 'Projekt', 'action' => 'add']) ?> </li>
     </ul>
@@ -88,35 +86,6 @@
                     <?= $this->Html->link(__('View'), ['controller' => 'Arbeitspaket', 'action' => 'view', $arbeitspaket->arbeitspaket_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Arbeitspaket', 'action' => 'edit', $arbeitspaket->arbeitspaket_id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Arbeitspaket', 'action' => 'delete', $arbeitspaket->arbeitspaket_id], ['confirm' => __('Are you sure you want to delete # {0}?', $arbeitspaket->arbeitspaket_id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Ereignis') ?></h4>
-        <?php if (!empty($angestellter->ereignis)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Ereignis Id') ?></th>
-                <th scope="col"><?= __('Datum') ?></th>
-                <th scope="col"><?= __('Art') ?></th>
-                <th scope="col"><?= __('Bezeichnung') ?></th>
-                <th scope="col"><?= __('Projekt Id') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($angestellter->ereignis as $ereignis): ?>
-            <tr>
-                <td><?= h($ereignis->ereignis_id) ?></td>
-                <td><?= h($ereignis->datum) ?></td>
-                <td><?= h($ereignis->art) ?></td>
-                <td><?= h($ereignis->bezeichnung) ?></td>
-                <td><?= h($ereignis->projekt_id) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Ereignis', 'action' => 'view', $ereignis->ereignis_id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Ereignis', 'action' => 'edit', $ereignis->ereignis_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Ereignis', 'action' => 'delete', $ereignis->ereignis_id], ['confirm' => __('Are you sure you want to delete # {0}?', $ereignis->ereignis_id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
