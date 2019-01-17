@@ -108,7 +108,7 @@ $username = $this->request->getSession()->read('Auth.User')['username'];
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-calendar-grid-58 text-primary'
-                        )).'Termine', '/ereignis', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).'Termine', '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
         </div>
@@ -291,11 +291,12 @@ $username = $this->request->getSession()->read('Auth.User')['username'];
                                                 <?php
                                             foreach ($zustaendige as $zustaendig) {
                                                 if ($item2->zustaendiger == $zustaendig['angestellter_id']) {
-                                                    print('<a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="'.$zustaendig['vorname'] .' ' . $zustaendig['nachname'].'">');
+                                                    print('<a href="angestellter/view/'.$item2->zustaendiger.'" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="'.$zustaendig['vorname'] .' ' . $zustaendig['nachname'].'">');
                                                     print('<img alt="Image placeholder" src="./img/profilbilder/'.$zustaendig['username'].'.jpg" class="rounded-circle">');
                                                     print('</a>');
                                                 }
                                             }
+
                                             ?>
                                             </div>
                                         </td>

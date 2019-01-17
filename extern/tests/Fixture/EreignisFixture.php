@@ -46,7 +46,7 @@ class EreignisFixture extends TestFixture
         $this->records = [
             [
                 'ereignis_id' => 1,
-                'datum' => '2019-01-12',
+                'datum' => '2019-01-16',
                 'art' => 'Lorem ipsum dolor sit amet',
                 'bezeichnung' => 'Lorem ipsum dolor sit amet',
                 'projekt_id' => 1

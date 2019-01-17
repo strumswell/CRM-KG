@@ -110,7 +110,7 @@
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-calendar-grid-58 text-primary'
-                        )).'Termine', '/ereignis', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).'Termine', '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
         </div>
@@ -132,7 +132,7 @@
                   <img alt="Image placeholder" src="./img/profilbilder/<?=$username?>">
                 </span>
                             <div class="media-body ml-2 d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold"><?=$name?></span>
+                                <span class="mb-0 text-sm font-weight-bold"><?=$name?></span>
                             </div>
                         </div>
                     </a>

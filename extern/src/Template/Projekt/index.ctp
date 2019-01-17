@@ -110,7 +110,7 @@ $username = $this->request->getSession()->read('Auth.User')['username'];
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-calendar-grid-58 text-primary'
-                        )).'Termine', '/ereignis', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).'Termine', '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
         </div>

@@ -59,11 +59,11 @@ class PagesController extends AppController
         /**
          * Open Tasks
         $openTasks = $this->Projekt->find()
-            ->where(['Projekt.abgeschlossen' => 0])
-            ->where(['Projekt.kunde_id' => reset($kdnr[0])]);
+        ->where(['Projekt.abgeschlossen' => 0])
+        ->where(['Projekt.kunde_id' => reset($kdnr[0])]);
         $openTasks->matching('Arbeitspaket', function ($q) {
-            return $q
-                ->where(['Arbeitspaket.fortschritt <' => 100]);
+        return $q
+        ->where(['Arbeitspaket.fortschritt <' => 100]);
         })->order(['Arbeitspaket.frist' => 'ASC']);
 
         $openTasks = $this->paginate($openTasks, ['scope' => 'openTasks']);
@@ -118,7 +118,7 @@ class PagesController extends AppController
          * Open Meeting
          */
 
-        $openMeetings = $connection->execute('SELECT ereignis.* from ereignis, projekt, kunde where ereignis.projekt_id = projekt.projekt_id and projekt.kunde_id = kunde.kunde_id and projekt.kunde_id = '. reset($kdnr[0]) .' AND ereignis.datum >= CURRENT_TIMESTAMP ORDER BY ereignis.datum ASC LIMIT 3;')->fetchAll('assoc');
+        $openMeetings = $connection->execute('SELECT termin.* from termin, projekt, kunde where termin.projekt_id = projekt.projekt_id and projekt.kunde_id = kunde.kunde_id and projekt.kunde_id = '. reset($kdnr[0]) .' AND termin.datum >= CURRENT_TIMESTAMP ORDER BY termin.datum ASC LIMIT 3;')->fetchAll('assoc');
         foreach ($openMeetings as $item) {
             $time = new Time($item['datum']);
             $time = $time->format('d-m-Y');
@@ -157,7 +157,7 @@ class PagesController extends AppController
          */
         $user = $this->Auth->user();
         if (!isset($user)) {
-                 return $this->redirect('/kunde/login/');
+            return $this->redirect('/kunde/login/');
         }
 
         /**

@@ -42,31 +42,10 @@ class ProjektController extends AppController
         $kdnr = reset($kdnr[0]);
 
         /**
-         * Projekt List
-         */
-        $query = $projekt->find()->where(['Projekt.kunde_id' => $kdnr])->order(['Projekt.hinzugefuegt_am' => 'DESC']);;
-
-        $query = $this->paginate($query);
-
-        $this->set('query', $query);
-
-        /**
-         * Open Tasks
-         */
-        $openTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.$kdnr)->fetchAll('assoc');
-        $this->set('openTasksCount', reset($openTasksCount[0]));
-
-        /**
          * Finished Tasks
          */
         $finishedTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt = 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.$kdnr)->fetchAll('assoc');
         $this->set('finishedTasksCount', reset($finishedTasksCount[0]));
-
-        /**
-         * Open Projects
-         */
-        $openProjectsCount = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0 AND kunde_id = '.$kdnr)->fetchAll('assoc');
-        $this->set('openProjectsCount', reset($openProjectsCount[0]));
 
         /**
          * Cost Of Current Projects
@@ -75,6 +54,26 @@ class ProjektController extends AppController
         $costFormatted = str_replace('.', ',', reset($cost[0]));
         $this->set('cost', $costFormatted);
 
+        /**
+         * Open Projects
+         */
+        $openProjectsCount = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0 AND kunde_id = '.$kdnr)->fetchAll('assoc');
+        $this->set('openProjectsCount', reset($openProjectsCount[0]));
+
+        /**
+         * Open Tasks
+         */
+        $openTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '.$kdnr[0])->fetchAll('assoc');
+        $this->set('openTasksCount', reset($openTasksCount[0]));
+
+        /**
+         * Projekt List
+         */
+        $query = $projekt->find()->where(['Projekt.kunde_id' => $kdnr])->order(['Projekt.hinzugefuegt_am' => 'DESC']);;
+
+        $query = $this->paginate($query);
+
+        $this->set('query', $query);
     }
 
 
