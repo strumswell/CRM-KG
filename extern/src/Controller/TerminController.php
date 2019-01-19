@@ -79,11 +79,6 @@ class TerminController extends AppController
 
         $angestelltertermin = $connection->execute('SELECT termin.termin_id, angestellter.angestellter_id, angestellter.vorname, angestellter.nachname, angestellter.username  FROM angestellter, termin, angestellter_termin WHERE angestellter_termin.termin_id = termin.termin_id AND angestellter_termin.angestellter_id = angestellter.angestellter_id')->fetchAll('assoc');
         $this->set('angestelltertermin', $angestelltertermin);
-
-
-
-
-
     }
 
     /**
@@ -92,7 +87,7 @@ class TerminController extends AppController
      * @param string|null $id Termin id.
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function view($id = null)
     {
         $termin = $this->Termin->get($id, [
@@ -101,12 +96,13 @@ class TerminController extends AppController
 
         $this->set('termin', $termin);
     }
+     * */
 
     /**
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
+
     public function add()
     {
         $termin = $this->Termin->newEntity();
@@ -123,6 +119,7 @@ class TerminController extends AppController
         $angestellter = $this->Termin->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('termin', 'projekt', 'angestellter'));
     }
+     * */
 
     /**
      * Edit method
@@ -130,7 +127,7 @@ class TerminController extends AppController
      * @param string|null $id Termin id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function edit($id = null)
     {
         $termin = $this->Termin->get($id, [
@@ -149,6 +146,7 @@ class TerminController extends AppController
         $angestellter = $this->Termin->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('termin', 'projekt', 'angestellter'));
     }
+     * */
 
     /**
      * Delete method
@@ -156,7 +154,7 @@ class TerminController extends AppController
      * @param string|null $id Termin id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
@@ -168,5 +166,5 @@ class TerminController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }
+    }*/
 }

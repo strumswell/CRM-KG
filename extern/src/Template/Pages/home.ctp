@@ -1,9 +1,8 @@
 <?php
-    $this->assign('title', 'Dashboard');
+    $this->assign('title', __('Dashboard'));
     $name = $this->request->getSession()->read('Auth.User')['name'];
     $username = $this->request->getSession()->read('Auth.User')['username'];
-
-//debug($query);
+    $kunde_id = $this->request->getSession()->read('Auth.User')['kunde_id'];
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -19,17 +18,6 @@
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
             <li class="nav-item dropdown">
-                <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="ni ni-bell-55"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
@@ -39,30 +27,19 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome!</h6>
+                        <h6 class="text-overflow m-0"><?php echo __('Willkommen!')?>!</h6>
                     </div>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-single-02"></i>
-                        <span>My profile</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>Settings</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-calendar-grid-58"></i>
-                        <span>Activity</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-support-16"></i>
-                        <span>Support</span>
-                    </a>
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                                'class' => 'ni ni-single-02'
+                            )
+                        ).__('Mein Profil'), '/kunde/edit/'.$kunde_id, array('class' => 'dropdown-item', 'escape' => false)) ?>
                     <div class="dropdown-divider"></div>
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                                 'class' => 'ni ni-user-run'
                             )
-                        ).'Logout', '/kunde/logout', array('class' => 'dropdown-item', 'escape' => false)) ?>
+                        ).__('Logout'), '/kunde/logout', array('class' => 'dropdown-item', 'escape' => false)) ?>
                 </div>
             </li>
         </ul>
@@ -86,31 +63,31 @@
             </div>
             <!-- Navigation -->
             <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Kundenbereich</h6>
+            <h6 class="navbar-heading text-muted"><?php echo __('Kundenbereich')?></h6>
             <ul class="navbar-nav">
                 <li>
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-tv-2 text-primary'
-                        )).'Dashboard', '/', array('class' => 'nav-link active', 'escape' => false)) ?>
+                        )).__('Dashboard'), '/', array('class' => 'nav-link active', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-app text-primary'
-                        )).'Projekte', '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).__('Projekte'), '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-bullet-list-67 text-primary'
-                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).__('Arbeitspakete'), '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-calendar-grid-58 text-primary'
-                        )).'Termine', '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).__('Termine'), '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
         </div>
@@ -122,7 +99,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html"><?php echo __('Dashboard')?></a>
             <!-- User -->
             <ul class="navbar-nav align-items-center d-none d-md-flex">
                 <li class="nav-item dropdown">
@@ -137,31 +114,17 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-                        <div class=" dropdown-header noti-title">
-                            <h6 class="text-overflow m-0">Welcome!</h6>
-                        </div>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-single-02"></i>
-                            <span>My profile</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-settings-gear-65"></i>
-                            <span>Settings</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-calendar-grid-58"></i>
-                            <span>Activity</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-support-16"></i>
-                            <span>Support</span>
-                        </a>
+                        <?= $this->Html->link(
+                            $this->Html->tag('i', '', array(
+                                    'class' => 'ni ni-single-02'
+                                )
+                            ).__('Mein Profil'), '/kunde/edit/'.$kunde_id, array('class' => 'dropdown-item', 'escape' => false)) ?>
                         <div class="dropdown-divider"></div>
                         <?= $this->Html->link(
                             $this->Html->tag('i', '', array(
                                     'class' => 'ni ni-user-run'
                                 )
-                            ).'Logout', '/kunde/logout', array('class' => 'dropdown-item', 'escape' => false)) ?>
+                            ).__('Logout'), '/kunde/logout', array('class' => 'dropdown-item', 'escape' => false)) ?>
                     </div>
                 </li>
             </ul>
@@ -178,7 +141,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Projekte</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?php echo __('Projekte')?></h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$openProjectsCount?></span>
                                     </div>
                                     <div class="col-auto">
@@ -188,7 +151,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">aktuell laufend</span>
+                                    <span class="text-nowrap"><?php echo __('aktuell laufend')?></span>
                                 </p>
                             </div>
                         </div>
@@ -198,7 +161,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Tasks</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?php echo __('Arbeitspakete')?></h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$finishedTasksCount?></span>
                                     </div>
                                     <div class="col-auto">
@@ -208,7 +171,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">abgeschlossen</span>
+                                    <span class="text-nowrap"><?php echo __('abgeschlossen')?></span>
                                 </p>
                             </div>
                         </div>
@@ -218,7 +181,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Tasks</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?php echo __('Arbeitspakete')?></h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$openTasksCount?></span>
                                     </div>
                                     <div class="col-auto">
@@ -228,7 +191,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">offen</span>
+                                    <span class="text-nowrap"><?php echo __('offen')?></span>
                                 </p>
                             </div>
                         </div>
@@ -238,7 +201,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Kosten</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?php echo __('Kosten')?></h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$cost?> €</span>
                                     </div>
                                     <div class="col-auto">
@@ -248,7 +211,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">aus laufenden Projekten</span>
+                                    <span class="text-nowrap"><?php echo __('aus laufenden Projekten')?></span>
                                 </p>
                             </div>
                         </div>
@@ -271,7 +234,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <h2 class="mt-2">Aufgabenübersicht</h2>
+                                <h2 class="mt-2"><?php echo __('Aufgabenübersicht')?></h2>
                             </div>
                         </div>
                     </div>
@@ -279,7 +242,7 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col"><h5>Anstehend</h5></th>
+                                <th scope="col"><h5><?php echo __('Anstehend')?></h5></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -294,7 +257,7 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col"><h5>Danach</h5></th>
+                                <th scope="col"><h5><?php echo __('Danach')?></h5></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -333,7 +296,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <h2 class="mt-2">Terminübersicht</h2>
+                                <h2 class="mt-2"><?php echo __('Terminübersicht')?></h2>
                             </div>
                         </div>
                     </div>
@@ -341,7 +304,7 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col"><h5>Anstehend</h5></th>
+                                <th scope="col"><h5><?php echo __('Anstehend')?></h5></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -359,7 +322,7 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col"><h5>Danach</h5></th>
+                                <th scope="col"><h5><?php echo __('Danach')?></h5></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -449,23 +412,11 @@
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-6">
                     <div class="copyright text-center text-xl-left text-muted">
-                        &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+                        &copy; 2018 <a href="https://www.kg-webservice.de" class="font-weight-bold ml-1" target="_blank">K&G Webservice</a>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-                        </li>
                     </ul>
                 </div>
             </div>

@@ -17,7 +17,7 @@ class ErreichbarkeitController extends AppController
      * Index method
      *
      * @return \Cake\Http\Response|void
-     */
+
     public function index()
     {
         $this->paginate = [
@@ -27,6 +27,7 @@ class ErreichbarkeitController extends AppController
 
         $this->set(compact('erreichbarkeit'));
     }
+     * */
 
     /**
      * View method
@@ -34,7 +35,7 @@ class ErreichbarkeitController extends AppController
      * @param string|null $id Erreichbarkeit id.
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function view($id = null)
     {
         $erreichbarkeit = $this->Erreichbarkeit->get($id, [
@@ -43,12 +44,13 @@ class ErreichbarkeitController extends AppController
 
         $this->set('erreichbarkeit', $erreichbarkeit);
     }
+     * */
 
     /**
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
+
     public function add()
     {
         $erreichbarkeit = $this->Erreichbarkeit->newEntity();
@@ -65,6 +67,7 @@ class ErreichbarkeitController extends AppController
         $angestellter = $this->Erreichbarkeit->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('erreichbarkeit', 'erreichbarkeits', 'angestellter'));
     }
+*/
 
     /**
      * Edit method
@@ -72,7 +75,7 @@ class ErreichbarkeitController extends AppController
      * @param string|null $id Erreichbarkeit id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function edit($id = null)
     {
         $erreichbarkeit = $this->Erreichbarkeit->get($id, [
@@ -91,6 +94,7 @@ class ErreichbarkeitController extends AppController
         $angestellter = $this->Erreichbarkeit->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('erreichbarkeit', 'erreichbarkeits', 'angestellter'));
     }
+     * */
 
     /**
      * Delete method
@@ -98,7 +102,7 @@ class ErreichbarkeitController extends AppController
      * @param string|null $id Erreichbarkeit id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
@@ -111,4 +115,5 @@ class ErreichbarkeitController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+     * */
 }

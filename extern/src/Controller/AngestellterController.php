@@ -20,13 +20,14 @@ class AngestellterController extends AppController
      * Index method
      *
      * @return \Cake\Http\Response|void
-     */
+
     public function index()
     {
         $angestellter = $this->paginate($this->Angestellter);
 
         $this->set(compact('angestellter'));
     }
+     */
 
     /**
      * View method
@@ -106,7 +107,7 @@ class AngestellterController extends AppController
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
+
     public function add()
     {
         $angestellter = $this->Angestellter->newEntity();
@@ -124,6 +125,7 @@ class AngestellterController extends AppController
         $termin = $this->Angestellter->Termin->find('list', ['limit' => 200]);
         $this->set(compact('angestellter', 'arbeitspaket', 'projekt', 'termin'));
     }
+     * */
 
     /**
      * Edit method
@@ -131,7 +133,7 @@ class AngestellterController extends AppController
      * @param string|null $id Angestellter id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function edit($id = null)
     {
         $angestellter = $this->Angestellter->get($id, [
@@ -151,6 +153,7 @@ class AngestellterController extends AppController
         $termin = $this->Angestellter->Termin->find('list', ['limit' => 200]);
         $this->set(compact('angestellter', 'arbeitspaket', 'projekt', 'termin'));
     }
+     * */
 
     /**
      * Delete method
@@ -158,7 +161,7 @@ class AngestellterController extends AppController
      * @param string|null $id Angestellter id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
@@ -171,4 +174,5 @@ class AngestellterController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+     * */
 }

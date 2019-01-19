@@ -90,7 +90,7 @@ class ArbeitspaketController extends AppController
      * @param string|null $id Arbeitspaket id.
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function view($id = null)
     {
         $arbeitspaket = $this->Arbeitspaket->get($id, [
@@ -99,12 +99,13 @@ class ArbeitspaketController extends AppController
 
         $this->set('arbeitspaket', $arbeitspaket);
     }
+     * */
 
     /**
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
+
     public function add()
     {
         $arbeitspaket = $this->Arbeitspaket->newEntity();
@@ -121,6 +122,7 @@ class ArbeitspaketController extends AppController
         $angestellter = $this->Arbeitspaket->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('arbeitspaket', 'projekt', 'angestellter'));
     }
+     * */
 
     /**
      * Edit method
@@ -128,7 +130,7 @@ class ArbeitspaketController extends AppController
      * @param string|null $id Arbeitspaket id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function edit($id = null)
     {
         $arbeitspaket = $this->Arbeitspaket->get($id, [
@@ -147,6 +149,7 @@ class ArbeitspaketController extends AppController
         $angestellter = $this->Arbeitspaket->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('arbeitspaket', 'projekt', 'angestellter'));
     }
+     * */
 
     /**
      * Delete method
@@ -154,7 +157,7 @@ class ArbeitspaketController extends AppController
      * @param string|null $id Arbeitspaket id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
@@ -167,4 +170,5 @@ class ArbeitspaketController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+     * */
 }

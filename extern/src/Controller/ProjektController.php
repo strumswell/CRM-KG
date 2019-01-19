@@ -83,7 +83,7 @@ class ProjektController extends AppController
      * @param string|null $id Projekt id.
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function view($id = null)
     {
         $projekt = $this->Projekt->get($id, [
@@ -92,12 +92,13 @@ class ProjektController extends AppController
 
         $this->set('projekt', $projekt);
     }
+     *  */
 
     /**
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
+
     public function add()
     {
         $projekt = $this->Projekt->newEntity();
@@ -114,6 +115,7 @@ class ProjektController extends AppController
         $angestellter = $this->Projekt->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('projekt', 'kunde', 'angestellter'));
     }
+     * */
 
     /**
      * Edit method
@@ -121,7 +123,7 @@ class ProjektController extends AppController
      * @param string|null $id Projekt id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function edit($id = null)
     {
         $projekt = $this->Projekt->get($id, [
@@ -140,6 +142,7 @@ class ProjektController extends AppController
         $angestellter = $this->Projekt->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('projekt', 'kunde', 'angestellter'));
     }
+     * */
 
     /**
      * Delete method
@@ -147,7 +150,7 @@ class ProjektController extends AppController
      * @param string|null $id Projekt id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
@@ -160,4 +163,5 @@ class ProjektController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+     *  */
 }
