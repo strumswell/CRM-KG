@@ -1,5 +1,5 @@
 <?php
-    $this->assign('title', __('Dashboard'));
+$this->assign('title', __('Dashboard'));
     $name = $this->request->getSession()->read('Auth.User')['name'];
     $username = $this->request->getSession()->read('Auth.User')['username'];
     $kunde_id = $this->request->getSession()->read('Auth.User')['kunde_id'];
@@ -247,7 +247,16 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><b><?php print($openTasksDeadlineDates[0]); ?></b> – <b><?php print($openTasksDeadline[0]['name'])?></b> (<?php print($openTasksDeadline[0]['projektname'])?>) </td>
+                                    <td>
+                                        <b><?php print($openTasksDeadlineDates[0]); ?></b> – <b><?php print($openTasksDeadline[0]['name'])?></b> (<?php print($openTasksDeadline[0]['projektname'])?>) durch
+                                        <?php
+                                            foreach ($zustaendige as $zustaendig) {
+                                                if ($openTasksDeadline[0]['zustaendiger'] == $zustaendig['angestellter_id']) {
+                                                    print('<a href="angestellter/view/'.$openTasksDeadline[0]['zustaendiger'].'">'.$zustaendig['vorname'].' '.$zustaendig['nachname'].'</a>');
+                                                }
+                                            }
+                                        ?>
+                                    </td>
                                     <?php array_splice($openTasksDeadlineDates, 0, 1); //Remove first element ?>
                                 </tr>
                             </tbody>
@@ -274,7 +283,12 @@
                                         array_splice($openTasksDeadlineDates, 0, 1);
 
                                         print($item['name']);
-                                        echo '</b> ('.$item['projektname'].') ';
+                                        echo '</b> ('.$item['projektname'].') durch ';
+                                        foreach ($zustaendige as $zustaendig) {
+                                            if ($item['zustaendiger'] == $zustaendig['angestellter_id']) {
+                                                print('<a href="angestellter/view/'.$item['zustaendiger'].'">'.$zustaendig['vorname'].' '.$zustaendig['nachname'].'</a>');
+                                            }
+                                        }
                                         echo '</td></tr>';
                                     }
                                 }
@@ -309,7 +323,15 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td><b><?php print($openMeetingsDates[0]);?></b> – <b><?php print($openMeetings[0]['bezeichnung'])?></b> (<?php print($openMeetings[0]['art'])?>)</td>
+                                <td><b><?php print($openMeetingsDates[0]);?></b> – <b><?php print($openMeetings[0]['bezeichnung'])?></b> (<?php print($openMeetings[0]['art'])?>) mit
+                                <?php
+                                foreach ($zustaendige as $zustaendig) {
+                                    if ($openMeetings[0]['angestellter_id'] == $zustaendig['angestellter_id']) {
+                                        print('<a href="angestellter/view/'.$openMeetings[0]['angestellter_id'].'">'.$zustaendig['vorname'].' '.$zustaendig['nachname'].'</a>');
+                                    }
+                                }
+                                ?>
+                                </td>
                                 <?php
                                     array_splice($openMeetingsDates, 0, 1); //Remove first element
                                 ?>
@@ -338,7 +360,12 @@
                                         //Remove first element
                                         array_splice($openMeetingsDates, 0, 1); //Remove first element
                                         print($item['bezeichnung']);
-                                        echo '</b> ('.$item['art'].') ';
+                                        echo '</b> ('.$item['art'].') mit ';
+                                        foreach ($zustaendige as $zustaendig) {
+                                            if ($item['angestellter_id'] == $zustaendig['angestellter_id']) {
+                                                print('<a href="angestellter/view/'.$item['angestellter_id'].'">'.$zustaendig['vorname'].' '.$zustaendig['nachname'].'</a>');
+                                            }
+                                        }
                                         echo '</td></tr>';
                                     }
                                 }
@@ -417,6 +444,12 @@
                 </div>
                 <div class="col-xl-6">
                     <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                        <li class="nav-item">
+                            <?php echo $this->Html->link("English", array("controller" => "App", "action" => "changeLanguage",'en'), array("class"=> "nav-link")); ?>
+                        </li>
+                        <li class="nav-item">
+                            <?php echo $this->Html->link("Deutsch", array("controller" => "App", "action" => "changeLanguage",'de'), array("class"=> "nav-link")); ?>
+                        </li>
                     </ul>
                 </div>
             </div>

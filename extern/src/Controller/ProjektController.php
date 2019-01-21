@@ -15,7 +15,6 @@ use Cake\ORM\TableRegistry;
  */
 class ProjektController extends AppController
 {
-
     /**
      * Index method
      *
@@ -74,6 +73,10 @@ class ProjektController extends AppController
         $query = $this->paginate($query);
 
         $this->set('query', $query);
+
+        $projekt = $this->Projekt;
+
+        $this->set('projekt', $projekt);
     }
 
 

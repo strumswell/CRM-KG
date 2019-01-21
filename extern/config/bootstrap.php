@@ -43,6 +43,7 @@ use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
+use Cake\Routing\DispatcherFactory;
 
 /**
  * Uncomment block of code below if you want to use `.env` file during development.
@@ -197,3 +198,5 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+
+//DispatcherFactory::add('LocaleSelector', ['locales' => ['de_DE', 'en_US']]);

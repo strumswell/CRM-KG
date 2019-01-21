@@ -21,6 +21,7 @@ use Cake\Http\BaseApplication;
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use Cake\I18n\Middleware\LocaleSelectorMiddleware;
 
 /**
  * Application setup class.
@@ -84,8 +85,8 @@ class Application extends BaseApplication
             // Add csrf middleware.
             ->add(new CsrfProtectionMiddleware([
                 'httpOnly' => true
-            ]));
-
+            ]))
+            ->add(new LocaleSelectorMiddleware(['de_DE', 'en_US']));
         return $middlewareQueue;
     }
 }

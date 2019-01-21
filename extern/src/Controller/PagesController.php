@@ -102,7 +102,7 @@ class PagesController extends AppController
          * Open Tasks with deadline (card: Aufgabeübersicht)
          */
 
-        $openTasksDeadline = $connection->execute('SELECT projekt.projektname, arbeitspaket.name, arbeitspaket.kosten, arbeitspaket.fortschritt, arbeitspaket.frist FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '. reset($kdnr[0]) .' AND arbeitspaket.frist >= CURRENT_TIMESTAMP ORDER BY frist ASC LIMIT 3;')->fetchAll('assoc');
+        $openTasksDeadline = $connection->execute('SELECT projekt.projektname, arbeitspaket.name, arbeitspaket.kosten, arbeitspaket.fortschritt, arbeitspaket.frist, arbeitspaket.zustaendiger FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0 AND projekt.kunde_id = '. reset($kdnr[0]) .' AND arbeitspaket.frist >= CURRENT_TIMESTAMP ORDER BY frist ASC LIMIT 3;')->fetchAll('assoc');
         $this->set('openTasksDeadline', $openTasksDeadline);
 
         foreach ($openTasksDeadline as $item) {
@@ -115,10 +115,17 @@ class PagesController extends AppController
         $this->set('openTasksDeadlineDates', $openTasksDeadlineDates);
 
         /**
+         * Convert zustaendiger id to name
+         */
+
+        $zustaendige = $connection->execute('SELECT angestellter_id, vorname, nachname, username FROM angestellter')->fetchAll('assoc');
+        $this->set('zustaendige', $zustaendige);
+
+        /**
          * Open Meeting
          */
 
-        $openMeetings = $connection->execute('SELECT termin.* from termin, projekt, kunde where termin.projekt_id = projekt.projekt_id and projekt.kunde_id = kunde.kunde_id and projekt.kunde_id = '. reset($kdnr[0]) .' AND termin.datum >= CURRENT_TIMESTAMP ORDER BY termin.datum ASC LIMIT 3;')->fetchAll('assoc');
+        $openMeetings = $connection->execute('SELECT termin.*, angestellter_termin.angestellter_id from termin, projekt, kunde, angestellter_termin where termin.projekt_id = projekt.projekt_id and projekt.kunde_id = kunde.kunde_id and angestellter_termin.termin_id = termin.termin_id and projekt.kunde_id = '. reset($kdnr[0]) .' AND termin.datum >= CURRENT_TIMESTAMP ORDER BY termin.datum ASC LIMIT 3;')->fetchAll('assoc');
         foreach ($openMeetings as $item) {
             $time = new Time($item['datum']);
             $time = $time->format('d-m-Y');
