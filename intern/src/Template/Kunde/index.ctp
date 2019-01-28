@@ -308,7 +308,16 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Angestellte</h3>
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0"><?php echo __('Kunden')?></h3>
+                            </div>
+                            <div class="col-4 text-right">
+                                <button class="btn btn-sm btn-primary" type="button" onclick="location.href='./kunde/add'">
+                                    <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>Hinzufügen
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">

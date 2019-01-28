@@ -192,11 +192,12 @@ class PagesController extends AppController
          */
 
         $openMeetings = $connection->execute('SELECT termin.*,kunde.name from termin, projekt, kunde, angestellter_termin where termin.projekt_id = projekt.projekt_id and projekt.kunde_id = kunde.kunde_id AND angestellter_termin.termin_id = termin.termin_id AND angestellter_termin.angestellter_id = '.$angestellterid.' AND termin.datum >= CURRENT_TIMESTAMP ORDER BY termin.datum ASC LIMIT 3')->fetchAll('assoc');
+
         foreach ($openMeetings as $item) {
             $time = new Time($item['datum']);
-            $time = $time->format('d-m-Y');
+            $time = $time->format('d.m.Y H:i');
 
-            $openMeetingsDates[] = str_replace('-', '.', $time);
+            $openMeetingsDates[] = $time;
         }
 
         $this->set('openMeetingsDates', $openMeetingsDates);

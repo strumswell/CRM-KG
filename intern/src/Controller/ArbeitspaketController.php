@@ -119,13 +119,15 @@ class ArbeitspaketController extends AppController
 
         $arbeitspaket = $this->Arbeitspaket->newEntity();
         if ($this->request->is('post')) {
+            print_r($this->request->getData());
             $arbeitspaket = $this->Arbeitspaket->patchEntity($arbeitspaket, $this->request->getData());
             if ($this->Arbeitspaket->save($arbeitspaket)) {
                 $this->Flash->success(__('The arbeitspaket has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            print_r($this->request->getData());
+            //print_r($this->request->getData());
+
             $this->Flash->error(__('The arbeitspaket could not be saved. Please, try again.'));
         }
         $this->set(compact('arbeitspaket'));
@@ -143,6 +145,16 @@ class ArbeitspaketController extends AppController
         $arbeitspaket = $this->Arbeitspaket->get($id, [
             'contain' => []
         ]);
+
+        Controller::loadModel('Angestellter');
+
+        $query = $this->Angestellter->find('list', [
+            'keyField' => 'angestellter_id',
+            'valueField' => 'username'
+        ]);
+        $users = $query->toArray();
+        $this->set('users', $users);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $arbeitspaket = $this->Arbeitspaket->patchEntity($arbeitspaket, $this->request->getData());
             if ($this->Arbeitspaket->save($arbeitspaket)) {

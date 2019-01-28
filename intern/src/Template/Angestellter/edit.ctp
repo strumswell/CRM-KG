@@ -300,27 +300,32 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
     <div class="container-fluid mt--7">
         <div class="row mt-5">
             <div class="col">
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                        <h2 class="mb-0">Angestellten bearbeiten</h2>
+                <div class="card bg-secondary shadow">
+                    <?php echo $this->Form->create($angestellter,['class'=>'form-horizontal']);?>
+                    <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0"><?php echo __('Angestellten bearbeiten')?></h3>
+                            </div>
+                            <div class="col-4 text-right">
+                                <button id="singlebutton" name="singlebutton" class="btn btn-sm btn-primary"><?php echo __('Speichern')?></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
-
-                        <?php echo $this->Form->create($angestellter,['class'=>'form-horizontal']);?>
-                        <fieldset>
                             <!-- Username-->
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="textinput">Username</label>
-                                        <?php echo $this->Form->control('username', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false, 'disabled']); ?>
+                                        <?php echo $this->Form->control('username', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control form-control-alternative ', 'div'=>false, 'label'=>false, 'disabled']); ?>
                                     </div>
                                 </div>
                                 <!-- Passwort-->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="textinput">Passwort</label>
-                                        <?php echo $this->Form->control('password', ['type'=>'password', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
+                                        <?php echo $this->Form->control('password', ['type'=>'password', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control form-control-alternative ', 'div'=>false, 'label'=>false]); ?>
                                     </div>
                                 </div>
                             </div>
@@ -329,14 +334,14 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="textinput">Nachname</label>
-                                        <?php echo $this->Form->control('nachname', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
+                                        <?php echo $this->Form->control('nachname', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control form-control-alternative ', 'div'=>false, 'label'=>false]); ?>
                                     </div>
                                 </div>
                                 <!-- Vorname-->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="textinput">Vorname</label>
-                                        <?php echo $this->Form->control('vorname', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
+                                        <?php echo $this->Form->control('vorname', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control form-control-alternative ', 'div'=>false, 'label'=>false]); ?>
                                     </div>
                                 </div>
                             </div>
@@ -345,36 +350,25 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="textinput">Position</label>
-                                        <?php echo $this->Form->control('position', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
+                                        <?php echo $this->Form->control('position', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control form-control-alternative ', 'div'=>false, 'label'=>false]); ?>
                                     </div>
                                 </div>
                                 <!-- E-Mail-->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="textinput">E-Mail</label>
-                                        <?php echo $this->Form->control('email', ['type'=>'email', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
+                                        <?php echo $this->Form->control('email', ['type'=>'email', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control form-control-alternative ', 'div'=>false, 'label'=>false]); ?>
                                     </div>
                                 </div>
                                 <!-- Telefon-->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="textinput">Telefon</label>
-                                        <?php echo $this->Form->control('telefon', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
+                                        <?php echo $this->Form->control('telefon', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control form-control-alternative ', 'div'=>false, 'label'=>false]); ?>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Button -->
-                            <div class="form-group">
-
-                                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Übernehmen</button>
-
-                            </div>
                     </div>
-
-
-
-                    </fieldset>
                     <?php echo $this->Form->end(); ?>
                 </div>
 

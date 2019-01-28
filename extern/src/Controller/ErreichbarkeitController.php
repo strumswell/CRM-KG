@@ -17,17 +17,17 @@ class ErreichbarkeitController extends AppController
      * Index method
      *
      * @return \Cake\Http\Response|void
+     */
 
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Erreichbarkeits', 'Angestellter']
+            'contain' => ['Angestellter']
         ];
         $erreichbarkeit = $this->paginate($this->Erreichbarkeit);
 
         $this->set(compact('erreichbarkeit'));
     }
-     * */
 
     /**
      * View method
@@ -75,6 +75,7 @@ class ErreichbarkeitController extends AppController
      * @param string|null $id Erreichbarkeit id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
 
     public function edit($id = null)
     {
@@ -94,7 +95,6 @@ class ErreichbarkeitController extends AppController
         $angestellter = $this->Erreichbarkeit->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('erreichbarkeit', 'erreichbarkeits', 'angestellter'));
     }
-     * */
 
     /**
      * Delete method

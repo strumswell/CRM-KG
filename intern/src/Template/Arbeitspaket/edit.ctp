@@ -308,7 +308,7 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                                 <h3 class="mb-0"><?php echo __('Arbeitspaket bearbeiten')?></h3>
                             </div>
                             <div class="col-4 text-right">
-                                <button id="singlebutton" name="singlebutton" class="btn btn-sm btn-primary"><?php echo __('Speichern')?></button>
+                                <button id="singlebutton" name="singlebutton" onclick="func()" class="btn btn-sm btn-primary"><?php echo __('Speichern')?></button>
                             </div>
                         </div>
                     </div>
@@ -332,7 +332,8 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-email"><?php echo __('Zuständiger')?></label>
-                                        <?php echo $this->Form->control('zustaendiger', ['type'=>'text', 'id'=>'input-zustaendiger', 'placeholder'=>'Zuständiger', 'value'=>$arbeitspaket->zustaendiger, 'class'=>'form-control form-control-alternative', 'div'=>false, 'label'=>false]); ?>
+                                        <?php echo $this->Form->control('zustaendiger', ['options' => $users, 'id'=>'input-zustaendiger', 'placeholder'=>'Zuständiger', 'value'=>$arbeitspaket->zustaendiger, 'class'=>'form-control form-control-alternative', 'div'=>false, 'label'=>false]); ?>
+                                        <?php echo $this->Form->control('angestellter._ids', ['id' => 'test','options' => $users, 'hidden', 'label'=>false]); ?>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -382,3 +383,11 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
         </footer>
     </div>
 </div>
+<script>
+    function func() {
+        var e = document.getElementById("input-zustaendiger");
+        var selected = e.options[e.selectedIndex].value;
+        console.log(selected);
+        document.getElementById('test').value = selected;
+    }
+</script>

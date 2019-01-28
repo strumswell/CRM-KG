@@ -62,7 +62,7 @@ class TerminTable extends Table
             ->allowEmpty('termin_id', 'create');
 
         $validator
-            ->date('datum')
+            ->dateTime('datum')
             ->requirePresence('datum', 'create')
             ->notEmpty('datum');
 

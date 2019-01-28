@@ -1,6 +1,10 @@
 <?php
 $this->assign('title', 'Angestellte');
 $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['nachname'];
+
+$g2['ddd'] = 0;
+$g['angestellter']['_ids'] = 0;
+print_r(array_merge($g2, $g));
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -308,7 +312,7 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                                 <h3 class="mb-0"><?php echo __('Arbeitspaket anlegen')?></h3>
                             </div>
                             <div class="col-4 text-right">
-                                <button id="singlebutton" name="singlebutton" class="btn btn-sm btn-primary"><?php echo __('Speichern')?></button>
+                                <button id="singlebutton" name="singlebutton" onclick="func()" class="btn btn-sm btn-primary"><?php echo __('Speichern')?></button>
                             </div>
                         </div>
                     </div>
@@ -351,6 +355,7 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-email"><?php echo __('Fortschritt')?></label>
                                         <?php echo $this->Form->control('fortschritt', ['type'=>'number', 'id'=>'input-fortschritt', 'placeholder'=>'Fortschritt', 'class'=>'form-control form-control-alternative', 'div'=>false, 'label'=>false]); ?>
+                                        <?php echo $this->Form->control('angestellter._ids', ['id' => 'test','options' => $users, 'hidden', 'label'=>false]); ?>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group input-group-alternative">
@@ -396,4 +401,13 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
         </footer>
     </div>
 </div>
+
+<script>
+    function func() {
+        var e = document.getElementById("input-zustaendiger");
+        var selected = e.options[e.selectedIndex].value;
+        console.log(selected);
+        document.getElementById('test').value = selected;
+    }
+</script>
 

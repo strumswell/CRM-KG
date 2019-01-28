@@ -41,8 +41,8 @@ class Angestellter extends Entity
         'username' => true,
         'password' => true,
         'arbeitspaket' => true,
-        'ereignis' => true,
-        'projekt' => true
+        'projekt' => true,
+        'termin' => true
     ];
 
     protected function _setPassword($value)

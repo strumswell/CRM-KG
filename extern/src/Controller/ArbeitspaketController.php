@@ -105,7 +105,7 @@ class ArbeitspaketController extends AppController
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-
+    */
     public function add()
     {
         $arbeitspaket = $this->Arbeitspaket->newEntity();
@@ -122,7 +122,6 @@ class ArbeitspaketController extends AppController
         $angestellter = $this->Arbeitspaket->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('arbeitspaket', 'projekt', 'angestellter'));
     }
-     * */
 
     /**
      * Edit method

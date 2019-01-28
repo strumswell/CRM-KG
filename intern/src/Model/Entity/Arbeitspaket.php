@@ -32,6 +32,11 @@ class Arbeitspaket extends Entity
         'beschreibung' => true,
         'name' => true,
         'projekt_id' => true,
-        'zustaendiger' => true
+        'zustaendiger' => true,
+        'hinzugefuegt_am' => true,
+        'abgeschlossen_am' => true,
+        'frist' => true,
+        'projekt' => true,
+        'angestellter' => true
     ];
 }

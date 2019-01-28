@@ -278,7 +278,6 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
     <!-- Page content -->
     <div class="container-fluid mt--7">
         <div class="row">
-            <div class="col-lg-2"></div>
             <div class="col-xl-8 col-sm-12 col-md-12">
                 <div class="card bg-secondary shadow">
                     <div class="card-header border-0">
