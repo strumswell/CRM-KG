@@ -22,6 +22,7 @@ use Cake\View\Exception\MissingTemplateException;
 use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
 use Cake\I18n\I18n;
+use Cake\I18n\Time;
 
 /**
  * Application Controller

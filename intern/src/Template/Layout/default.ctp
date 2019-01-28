@@ -33,6 +33,7 @@ $cakeDescription = 'CRM K&G Webservice';
 
     <?= $this->Html->script('../vendor/jquery/dist/jquery.min.js', ['block' => 'scriptBottom']) ?>
     <?= $this->Html->script('../vendor/bootstrap/dist/js/bootstrap.bundle.min.js', ['block' => 'scriptBottom']) ?>
+    <?= $this->Html->script('../vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js', ['block' => 'scriptBottom']) ?>
     <?= $this->Html->script('../vendor/chart.js/dist/Chart.min.js', ['block' => 'scriptBottom']) ?>
     <?= $this->Html->script('../vendor/chart.js/dist/Chart.extension.js', ['block' => 'scriptBottom']) ?>
     <?= $this->Html->script('argon.js', ['block' => 'scriptBottom']) ?>

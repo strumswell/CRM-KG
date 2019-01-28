@@ -32,7 +32,7 @@
         <tbody>
             <?php foreach ($erreichbarkeit as $erreichbarkeit): ?>
             <tr>
-                <td><?= $this->Number->format($erreichbarkeit->erreichbarkeit_id) ?></td>
+                <td><?= $erreichbarkeit->has('erreichbarkeit') ? $this->Html->link($erreichbarkeit->erreichbarkeit->erreichbarkeit_id, ['controller' => 'Erreichbarkeit', 'action' => 'view', $erreichbarkeit->erreichbarkeit->erreichbarkeit_id]) : '' ?></td>
                 <td><?= h($erreichbarkeit->mo) ?></td>
                 <td><?= h($erreichbarkeit->di) ?></td>
                 <td><?= h($erreichbarkeit->mi) ?></td>

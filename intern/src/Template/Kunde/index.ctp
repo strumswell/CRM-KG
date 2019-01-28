@@ -103,6 +103,12 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-briefcase-24 text-primary'
+                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
                             'class' => 'ni ni-single-02 text-primary'
                         )).'Mitarbeiterverwaltung', '/angestellter', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
@@ -111,6 +117,12 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-briefcase-24 text-primary'
                         )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link active', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-chat-round text-primary'
+                        )).'Plaudereck', '/chat', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->

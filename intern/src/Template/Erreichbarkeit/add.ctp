@@ -8,6 +8,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Erreichbarkeit'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Erreichbarkeit'), ['controller' => 'Erreichbarkeit', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Erreichbarkeit'), ['controller' => 'Erreichbarkeit', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Angestellter'), ['controller' => 'Angestellter', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Angestellter'), ['controller' => 'Angestellter', 'action' => 'add']) ?></li>
     </ul>

@@ -9,6 +9,9 @@ use Cake\Validation\Validator;
 /**
  * Arbeitspaket Model
  *
+ * @property \App\Model\Table\ProjektTable|\Cake\ORM\Association\BelongsTo $Projekt
+ * @property \App\Model\Table\AngestellterTable|\Cake\ORM\Association\BelongsToMany $Angestellter
+ *
  * @method \App\Model\Entity\Arbeitspaket get($primaryKey, $options = [])
  * @method \App\Model\Entity\Arbeitspaket newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Arbeitspaket[] newEntities(array $data, array $options = [])
@@ -32,8 +35,19 @@ class ArbeitspaketTable extends Table
         parent::initialize($config);
 
         $this->setTable('arbeitspaket');
-        $this->setDisplayField('TaskID');
-        $this->setPrimaryKey('TaskID');
+        $this->setDisplayField('name');
+        $this->setPrimaryKey('arbeitspaket_id');
+
+        $this->belongsTo('Projekt', [
+            'foreignKey' => 'projekt_id',
+            'joinType' => 'INNER'
+        ]);
+        
+        $this->belongsToMany('Angestellter', [
+            'foreignKey' => 'arbeitspaket_id',
+            'targetForeignKey' => 'angestellter_id',
+            'joinTable' => 'angestellter_arbeitspaket'
+        ]);
     }
 
     /**
@@ -45,41 +59,62 @@ class ArbeitspaketTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('TaskID')
-            ->allowEmpty('TaskID', 'create');
+            ->integer('arbeitspaket_id')
+            ->allowEmpty('arbeitspaket_id', 'create');
 
         $validator
-            ->integer('Fortschritt')
-            ->requirePresence('Fortschritt', 'create')
-            ->notEmpty('Fortschritt');
+            ->integer('fortschritt')
+            ->requirePresence('fortschritt', 'create')
+            ->notEmpty('fortschritt');
 
         $validator
-            ->decimal('Kosten')
-            ->requirePresence('Kosten', 'create')
-            ->notEmpty('Kosten');
+            ->decimal('kosten')
+            ->requirePresence('kosten', 'create')
+            ->notEmpty('kosten');
 
         $validator
-            ->scalar('Beschreibung')
-            ->maxLength('Beschreibung', 255)
-            ->requirePresence('Beschreibung', 'create')
-            ->notEmpty('Beschreibung');
+            ->scalar('beschreibung')
+            ->maxLength('beschreibung', 255)
+            ->requirePresence('beschreibung', 'create')
+            ->notEmpty('beschreibung');
 
         $validator
-            ->scalar('Name')
-            ->maxLength('Name', 255)
-            ->requirePresence('Name', 'create')
-            ->notEmpty('Name');
+            ->scalar('name')
+            ->maxLength('name', 255)
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         $validator
-            ->integer('ProjektID')
-            ->requirePresence('ProjektID', 'create')
-            ->notEmpty('ProjektID');
+            ->integer('zustaendiger')
+            ->requirePresence('zustaendiger', 'create')
+            ->notEmpty('zustaendiger');
 
         $validator
-            ->integer('Zustaendiger')
-            ->requirePresence('Zustaendiger', 'create')
-            ->notEmpty('Zustaendiger');
+            ->dateTime('hinzugefuegt_am')
+            ->allowEmpty('hinzugefuegt_am');
+
+        $validator
+            ->dateTime('abgeschlossen_am')
+            ->allowEmpty('abgeschlossen_am');
+
+        $validator
+            ->date('frist')
+            ->allowEmpty('frist');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['projekt_id'], 'Projekt'));
+
+        return $rules;
     }
 }

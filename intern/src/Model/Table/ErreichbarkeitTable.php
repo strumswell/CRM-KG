@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Erreichbarkeit Model
  *
- * @property \App\Model\Table\ErreichbarkeitsTable|\Cake\ORM\Association\BelongsTo $Erreichbarkeits
+ * @property |\Cake\ORM\Association\BelongsTo $Erreichbarkeits
  * @property \App\Model\Table\AngestellterTable|\Cake\ORM\Association\BelongsTo $Angestellter
  *
  * @method \App\Model\Entity\Erreichbarkeit get($primaryKey, $options = [])

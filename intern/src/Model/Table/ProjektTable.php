@@ -42,11 +42,15 @@ class ProjektTable extends Table
             'foreignKey' => 'kunde_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsToMany('Angestellter', [
+        $this->belongsTo('Angestellter', [
             'foreignKey' => 'projekt_id',
             'targetForeignKey' => 'angestellter_id',
             'joinTable' => 'angestellter_projekt'
         ]);
+        $this->hasMany('Arbeitspaket')
+            ->setForeignKey(['projekt_id'])
+            ->setBindingKey(['projekt_id'])
+            ->setStrategy('subquery');
     }
 
     /**

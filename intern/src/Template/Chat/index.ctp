@@ -1,6 +1,7 @@
 <?php
-$this->assign('title', 'Dashboard');
+$this->assign('title', 'Plaudereck');
 $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['nachname'];
+$user = $this->request->getSession()->read('Auth.User')['username'];
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -11,7 +12,7 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="">
-            <img src="/~bolte/cakephp/intern/webroot/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <img src="./img/brand/blue.png" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -19,18 +20,12 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                 <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="ni ni-bell-55"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="/~bolte/cakephp/intern/webroot/img/theme/team-1-800x800.jpg">
+                <img alt="Image placeholder" src="/~bolte/cakephp/extern/webroot/img/profilbilder/<?=$user?>.jpg">
               </span>
                     </div>
                 </a>
@@ -70,7 +65,7 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="./index.html">
-                            <img src="/~bolte/cakephp/intern/webroot/img/brand/blue.png">
+                            <img src="./img/brand/blue.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -81,17 +76,6 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                     </div>
                 </div>
             </div>
-            <!-- Form -->
-            <form class="mt-4 mb-3 d-md-none">
-                <div class="input-group input-group-rounded input-group-merge">
-                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <span class="fa fa-search"></span>
-                        </div>
-                    </div>
-                </div>
-            </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li>
@@ -116,7 +100,13 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-briefcase-24 text-primary'
-                        )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link active', 'escape' => false)) ?>
+                        )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-chat-round text-primary'
+                        )).'Plaudereck', '/chat', array('class' => 'nav-link active', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->
@@ -150,28 +140,17 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
-            <!-- Form -->
-            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-                <div class="form-group mb-0">
-                    <div class="input-group input-group-alternative">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Search" type="text">
-                    </div>
-                </div>
-            </form>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Plaudereck</a>
             <!-- User -->
             <ul class="navbar-nav align-items-center d-none d-md-flex">
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="/~bolte/cakephp/intern/webroot/img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="/~bolte/cakephp/extern/webroot/img/profilbilder/<?=$user?>.jpg">
                 </span>
                             <div class="media-body ml-2 d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold"><?=$username?></span>
+                                <span id="username" class="mb-0 text-sm font-weight-bold"><?=$username?></span>
                             </div>
                         </div>
                     </a>
@@ -298,112 +277,39 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7">
-        <div class="row mt-5">
-            <div class="col">
-                <div class="card shadow">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-xl-8 col-sm-12 col-md-12">
+                <div class="card bg-secondary shadow">
                     <div class="card-header border-0">
-                        <h2 class="mb-0">Kunde bearbeiten</h2>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-default text-white rounded-circle shadow">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h2 class="mt-2">Plaudereck</h2>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-
-                        <?php echo $this->Form->create($kunde,['class'=>'form-horizontal']);?>
-                        <fieldset>
-                            <!-- Username-->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="textinput">Username</label>
-                                        <?php echo $this->Form->control('username', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                                <!-- Passwort-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="textinput">Passwort</label>
-                                        <?php echo $this->Form->control('password', ['type'=>'password', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Firmenname-->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="textinput">Firmenname</label>
-                                        <?php echo $this->Form->control('name', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Postleitzahl-->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="textinput">Postleitzahl</label>
-                                        <?php echo $this->Form->control('plz', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                                <!-- Ort-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="textinput">Ort</label>
-                                        <?php echo $this->Form->control('ort', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Straße-->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="textinput">Straße</label>
-                                        <?php echo $this->Form->control('strasse', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                            <!-- Ort-->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                    <label for="textinput">Hausnummer</label>
-                                    <?php echo $this->Form->control('hausnummer', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Telefon-->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="textinput">Telefon</label>
-                                        <?php echo $this->Form->control('telefon', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
-                                    </div>
-                                </div>
-                            <!-- E-mail-->
-                                <div class="col-md-6">
-                                 <div class="form-group">
-                                    <label for="textinput">E-Mail</label>
-                                    <?php echo $this->Form->control('email', ['type'=>'email', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false]); ?>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="textinput">Kunde seit</label>
-                                        <?php echo $this->Form->control('registriert_am', ['type'=>'text', 'id'=>'textinput', 'placeholder'=>'placeholder', 'class'=>'form-control ', 'div'=>false, 'label'=>false, 'disabled']); ?>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Button -->
-                            <div class="form-group">
-
-                                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Übernehmen</button>
-
-                            </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="" class="text-left">
+                                    <input class="form-control form-control-alternative" type="text" id="input" disabled="disabled" placeholder="Nachricht senden..."/>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <td>
+                                <div id="content" style="max-height: 20rem; min-height: 20rem"></div>
+                            </td>
+                            </tbody>
+                        </table>
                     </div>
-
-
-
-                    </fieldset>
-                    <?php echo $this->Form->end(); ?>
                 </div>
-
             </div>
         </div>
         <!-- Footer -->
@@ -411,7 +317,7 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-6">
                     <div class="copyright text-center text-xl-left text-muted">
-                        &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+                        &copy; 2018 <a href="https://www.kg-webservice.de" class="font-weight-bold ml-1" target="_blank">K&G Webservice</a>
                     </div>
                 </div>
                 <div class="col-xl-6">
@@ -434,3 +340,6 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
         </footer>
     </div>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="./js/chat.js"></script>
+

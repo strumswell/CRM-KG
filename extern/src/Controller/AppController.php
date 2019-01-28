@@ -69,7 +69,7 @@ class AppController extends Controller
         if (isset($language)) {
             I18n::setLocale($language);
         } else {
-            I18n::setLocale('en_US');
+            I18n::setLocale('de_DE');
         }
     }
 

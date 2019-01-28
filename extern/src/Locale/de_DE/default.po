@@ -1015,7 +1015,7 @@ msgstr "Alle laufenden Projekte"
 #: Template/Projekt/index.ctp:238
 #: Template/Projekt/view.ctp:44
 msgid "Abgeschlossen"
-msgstr "Abgeschlossen"
+msgstr "Status"
 
 #: Template/Projekt/index.ctp:239
 msgid "Hinzugefügt am"

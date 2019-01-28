@@ -417,7 +417,7 @@ msgstr "Welcome to the customer area."
 #: Template/Angestellter/login.ctp:18
 #: Template/Kunde/login.ctp:18
 msgid "Loggen Sie sich hier ein, um Zugriff auf Ihre Projekte zu erhalten."
-msgstr "Login here to get access fpr your projects."
+msgstr "Login here to get access for your projects."
 
 #: Template/Angestellter/view.ctp:36;121
 #: Template/Arbeitspaket/index.ctp:36;121
@@ -426,7 +426,7 @@ msgstr "Login here to get access fpr your projects."
 #: Template/Projekt/index.ctp:36;121
 #: Template/Termin/index.ctp:36;121
 msgid "Mein Profil"
-msgstr "MY Profile"
+msgstr "My Profile"
 
 #: Template/Angestellter/view.ctp:42;127
 #: Template/Arbeitspaket/index.ctp:42;127
@@ -462,7 +462,7 @@ msgstr "Dashboard"
 #: Template/Projekt/index.ctp:2;78;102;144
 #: Template/Termin/index.ctp:78;144
 msgid "Projekte"
-msgstr "project"
+msgstr "Projects"
 
 #: Template/Angestellter/view.ctp:84;164;184
 #: Template/Arbeitspaket/index.ctp:84;102;164;184
@@ -471,7 +471,7 @@ msgstr "project"
 #: Template/Projekt/index.ctp:84;164;184
 #: Template/Termin/index.ctp:84;164;184
 msgid "Arbeitspakete"
-msgstr "work package"
+msgstr "Tasks"
 
 #: Template/Angestellter/view.ctp:90
 #: Template/Arbeitspaket/index.ctp:90
@@ -480,11 +480,11 @@ msgstr "work package"
 #: Template/Projekt/index.ctp:90
 #: Template/Termin/index.ctp:2;90;102
 msgid "Termine"
-msgstr "meetings"
+msgstr "Meetings"
 
 #: Template/Angestellter/view.ctp:102
 msgid "Ihr Ansprechpartner"
-msgstr "your contact"
+msgstr "Your Contact"
 
 #: Template/Angestellter/view.ctp:154
 #: Template/Arbeitspaket/index.ctp:154
@@ -583,7 +583,7 @@ msgstr "new project"
 
 #: Template/AngestellterProjekt/index.ctp:18
 msgid "Angestellter Projekt"
-msgstr "project"
+msgstr "Projects"
 
 #: Template/AngestellterProjekt/view.ctp:11
 msgid "Delete Angestellter Projekt"
@@ -593,7 +593,7 @@ msgstr "delete project"
 #: Template/Arbeitspaket/view.ctp:32
 #: Template/Termin/view.ctp:32
 msgid "Projekt"
-msgstr "project"
+msgstr "Project"
 
 #: Template/AngestellterTermin/add.ctp:10
 #: Template/AngestellterTermin/edit.ctp:16
@@ -638,7 +638,7 @@ msgstr "edit work package"
 
 #: Template/Arbeitspaket/index.ctp:230
 msgid "Alle offenen Arbeitspakete"
-msgstr "open work package"
+msgstr "Open Tasks"
 
 #: Template/Arbeitspaket/index.ctp:236
 #: Template/Pages/home.ctp:390
@@ -646,7 +646,7 @@ msgstr "open work package"
 #: Template/Projekt/view.ctp:24
 #: Template/Termin/index.ctp:236
 msgid "Projektname"
-msgstr "project"
+msgstr "Project"
 
 #: Template/Arbeitspaket/index.ctp:238
 #: Template/Arbeitspaket/view.ctp:24
@@ -711,7 +711,7 @@ msgstr "delete work package"
 #: Template/Kunde/edit.ctp:221
 #: Template/Kunde/view.ctp:347
 msgid "Name"
-msgstr "name"
+msgstr "Name"
 
 #: Template/Arbeitspaket/view.ctp:36
 msgid "Arbeitspaket Id"
@@ -777,7 +777,7 @@ msgstr "E-mail"
 #: Template/Projekt/view.ctp:58
 #: Template/Termin/view.ctp:54
 msgid "Telefon"
-msgstr "phone"
+msgstr "Phone"
 
 #: Template/Arbeitspaket/view.ctp:75
 #: Template/Kunde/edit.ctp:215
@@ -917,16 +917,16 @@ msgstr "Street"
 #: Template/Kunde/edit.ctp:254
 #: Template/Kunde/view.ctp:383
 msgid "Hausnummer"
-msgstr "streetnumber"
+msgstr "Streetnumber"
 
 #: Template/Kunde/edit.ctp:262
 msgid "PLZ"
-msgstr "postal code"
+msgstr "Postal Code"
 
 #: Template/Kunde/edit.ctp:268
 #: Template/Kunde/view.ctp:351
 msgid "Ort"
-msgstr "location"
+msgstr "Location"
 
 #: Template/Kunde/index.ctp:10
 #: Template/Kunde/view.ctp:340
@@ -977,7 +977,7 @@ msgstr "back"
 
 #: Template/Pages/home.ctp:237
 msgid "Aufgabenübersicht"
-msgstr "task overview"
+msgstr "Task Overview"
 
 #: Template/Pages/home.ctp:245;321
 msgid "Anstehend"
@@ -985,15 +985,15 @@ msgstr "currently"
 
 #: Template/Pages/home.ctp:269;347
 msgid "Danach"
-msgstr "forward-looking"
+msgstr "Upcomming"
 
 #: Template/Pages/home.ctp:313
 msgid "Terminübersicht"
-msgstr "meeting overview"
+msgstr "Meeting Overview"
 
 #: Template/Pages/home.ctp:384
 msgid "Alle abgeschlossenen Tasks"
-msgstr "completed tasks"
+msgstr "Completed Tasks"
 
 #: Template/Pages/home.ctp:396
 msgid "Abgeschlossen am"
@@ -1010,12 +1010,12 @@ msgstr "edit project"
 
 #: Template/Projekt/index.ctp:230
 msgid "Alle laufenden Projekte"
-msgstr "running project"
+msgstr "Running Project"
 
 #: Template/Projekt/index.ctp:238
 #: Template/Projekt/view.ctp:44
 msgid "Abgeschlossen"
-msgstr "completed"
+msgstr "status"
 
 #: Template/Projekt/index.ctp:239
 msgid "Hinzugefügt am"
@@ -1031,7 +1031,7 @@ msgstr "delete project"
 
 #: Template/Projekt/view.ctp:36
 msgid "Projekt Id"
-msgstr "project"
+msgstr "Projects"
 
 #: Template/Projekt/view.ctp:45
 msgid "Yes"
@@ -1052,7 +1052,7 @@ msgstr "edit meeting"
 
 #: Template/Termin/index.ctp:230
 msgid "Alle anstehenden Tasks"
-msgstr "current tasks"
+msgstr "Current Tasks"
 
 #: Template/Termin/index.ctp:237
 #: Template/Termin/view.ctp:24

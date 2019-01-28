@@ -136,9 +136,6 @@ class PagesController extends AppController
         $this->set('openMeetingsDates', $openMeetingsDates);
         $this->set('openMeetings', $openMeetings);
 
-        //I18n::setLocale('de_DE');
-
-
 
         /**
          * Cost Of Current Projects

@@ -11,6 +11,8 @@
         <li><?= $this->Form->postLink(__('Delete Erreichbarkeit'), ['action' => 'delete', $erreichbarkeit->erreichbarkeit_id], ['confirm' => __('Are you sure you want to delete # {0}?', $erreichbarkeit->erreichbarkeit_id)]) ?> </li>
         <li><?= $this->Html->link(__('List Erreichbarkeit'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Erreichbarkeit'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Erreichbarkeit'), ['controller' => 'Erreichbarkeit', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Erreichbarkeit'), ['controller' => 'Erreichbarkeit', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Angestellter'), ['controller' => 'Angestellter', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Angestellter'), ['controller' => 'Angestellter', 'action' => 'add']) ?> </li>
     </ul>
@@ -18,6 +20,10 @@
 <div class="erreichbarkeit view large-9 medium-8 columns content">
     <h3><?= h($erreichbarkeit->erreichbarkeit_id) ?></h3>
     <table class="vertical-table">
+        <tr>
+            <th scope="row"><?= __('Erreichbarkeit') ?></th>
+            <td><?= $erreichbarkeit->has('erreichbarkeit') ? $this->Html->link($erreichbarkeit->erreichbarkeit->erreichbarkeit_id, ['controller' => 'Erreichbarkeit', 'action' => 'view', $erreichbarkeit->erreichbarkeit->erreichbarkeit_id]) : '' ?></td>
+        </tr>
         <tr>
             <th scope="row"><?= __('Mo') ?></th>
             <td><?= h($erreichbarkeit->mo) ?></td>
@@ -49,10 +55,6 @@
         <tr>
             <th scope="row"><?= __('Angestellter') ?></th>
             <td><?= $erreichbarkeit->has('angestellter') ? $this->Html->link($erreichbarkeit->angestellter->angestellter_id, ['controller' => 'Angestellter', 'action' => 'view', $erreichbarkeit->angestellter->angestellter_id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Erreichbarkeit Id') ?></th>
-            <td><?= $this->Number->format($erreichbarkeit->erreichbarkeit_id) ?></td>
         </tr>
     </table>
 </div>

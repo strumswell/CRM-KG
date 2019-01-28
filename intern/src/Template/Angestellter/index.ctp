@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', 'Dashboard');
+$this->assign('title', __('Angestellte'));
 $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['nachname'];
 ?>
 <!-- Sidenav -->
@@ -103,6 +103,12 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-briefcase-24 text-primary'
+                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
                             'class' => 'ni ni-single-02 text-primary'
                         )).'Mitarbeiterverwaltung', '/angestellter', array('class' => 'nav-link active', 'escape' => false)) ?>
                 </li>
@@ -111,6 +117,12 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-briefcase-24 text-primary'
                         )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-chat-round text-primary'
+                        )).'Plaudereck', '/chat', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->
@@ -296,7 +308,16 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Angestellte</h3>
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0"><?php echo __('Mitarbeiter')?></h3>
+                            </div>
+                            <div class="col-4 text-right">
+                                <button class="btn btn-sm btn-primary" type="button" onclick="location.href='./angestellter/add'">
+                                    <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>Hinzufügen
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">

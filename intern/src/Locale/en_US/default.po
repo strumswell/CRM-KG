@@ -1,0 +1,1080 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2019-01-14 14:24+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/AngestellterController.php:55;79
+msgid "The angestellter has been saved."
+msgstr "The employee has been saved"
+
+#: Controller/AngestellterController.php:59;83
+msgid "The angestellter could not be saved. Please, try again."
+msgstr "The angestellter could not be saved. Please, try again."
+
+#: Controller/AngestellterController.php:100
+msgid "The angestellter has been deleted."
+msgstr "The employee has been deleted."
+
+#: Controller/AngestellterController.php:102
+msgid "The angestellter could not be deleted. Please, try again."
+msgstr "The employee could not be deleted. Please, try again."
+
+#: Controller/ArbeitspaketController.php:55;79
+msgid "The arbeitspaket has been saved."
+msgstr "The work package has been saved."
+
+#: Controller/ArbeitspaketController.php:59;83
+msgid "The arbeitspaket could not be saved. Please, try again."
+msgstr "The work package could not be saved. Please, try again."
+
+#: Controller/ArbeitspaketController.php:100
+msgid "The arbeitspaket has been deleted."
+msgstr "The work package has been deleted."
+
+#: Controller/ArbeitspaketController.php:102
+msgid "The arbeitspaket could not be deleted. Please, try again."
+msgstr "The work package could not be deleted. Please, try again."
+
+#: Controller/EreignisController.php:55;79
+msgid "The ereigni has been saved."
+msgstr "The event has been saved."
+
+#: Controller/EreignisController.php:59;83
+msgid "The ereigni could not be saved. Please, try again."
+msgstr "The event could not be saved. Please, try again."
+
+#: Controller/EreignisController.php:100
+msgid "The ereigni has been deleted."
+msgstr "The event has been deleted"
+
+#: Controller/EreignisController.php:102
+msgid "The ereigni could not be deleted. Please, try again."
+msgstr "The event could not be deleted. Please, try again."
+
+#: Controller/KundeController.php:55;79
+msgid "The kunde has been saved."
+msgstr "The customer has been saved"
+
+#: Controller/KundeController.php:59;83
+msgid "The kunde could not be saved. Please, try again."
+msgstr "The customer could not be saved. Please, try again."
+
+#: Controller/KundeController.php:100
+msgid "The kunde has been deleted."
+msgstr "The customer has been deleted"
+
+#: Controller/KundeController.php:102
+msgid "The kunde could not be deleted. Please, try again."
+msgstr "The customer could not be deleted. Please, try again."
+
+#: Controller/ProjektController.php:55;79
+msgid "The projekt has been saved."
+msgstr "The project has been saved."
+
+#: Controller/ProjektController.php:59;83
+msgid "The projekt could not be saved. Please, try again."
+msgstr "The project could not been saved. Please, try again."
+
+#: Controller/ProjektController.php:100
+msgid "The projekt has been deleted."
+msgstr "The project has been deleted"
+
+#: Controller/ProjektController.php:102
+msgid "The projekt could not be deleted. Please, try again."
+msgstr "The project could not be deleted. Please, try again."
+
+#: Template/Angestellter/add.ctp:9
+#: Template/Angestellter/edit.ctp:377
+#: Template/Angestellter/index.ctp:307
+#: Template/Angestellter/view.ctp:9;73;107;137
+#: Template/Ereignis/add.ctp:9
+#: Template/Ereignis/edit.ctp:9
+#: Template/Ereignis/index.ctp:9;27
+#: Template/Ereignis/view.ctp:9;57
+#: Template/Erreichbarkeit/add.ctp:9
+#: Template/Erreichbarkeit/edit.ctp:9
+#: Template/Erreichbarkeit/index.ctp:9;29
+#: Template/Erreichbarkeit/view.ctp:9
+#: Template/Kunde/add.ctp:9
+#: Template/Kunde/edit.ctp:9
+#: Template/Kunde/index.ctp:9;29
+#: Template/Kunde/view.ctp:9
+#: Template/Projekt/add.ctp:9
+#: Template/Projekt/edit.ctp:9
+#: Template/Projekt/index.ctp:9;28
+#: Template/Projekt/view.ctp:9;61
+msgid "Actions"
+msgstr "Actions"
+
+#: Template/Angestellter/add.ctp:10
+#: Template/Angestellter/edit.ctp:384
+#: Template/Angestellter/view.ctp:12
+#: Template/Ereignis/add.ctp:13
+#: Template/Ereignis/edit.ctp:19
+#: Template/Ereignis/index.ctp:13
+#: Template/Ereignis/view.ctp:16
+#: Template/Erreichbarkeit/add.ctp:11
+#: Template/Erreichbarkeit/edit.ctp:17
+#: Template/Erreichbarkeit/index.ctp:11
+#: Template/Erreichbarkeit/view.ctp:14
+#: Template/Projekt/add.ctp:13
+#: Template/Projekt/edit.ctp:19
+#: Template/Projekt/index.ctp:13
+#: Template/Projekt/view.ctp:16
+msgid "List Angestellter"
+msgstr "list employee"
+
+#: Template/Angestellter/add.ctp:11
+#: Template/Angestellter/edit.ctp:385
+#: Template/Angestellter/view.ctp:14
+#: Template/Arbeitspaket/view.ctp:19
+msgid "List Arbeitspaket"
+msgstr "list work package"
+
+#: Template/Angestellter/add.ctp:12
+#: Template/Angestellter/edit.ctp:386
+#: Template/Angestellter/view.ctp:15
+#: Template/Arbeitspaket/view.ctp:20
+msgid "New Arbeitspaket"
+msgstr "new work package"
+
+#: Template/Angestellter/add.ctp:13
+#: Template/Angestellter/edit.ctp:387
+#: Template/Angestellter/view.ctp:16
+#: Template/Ereignis/add.ctp:10
+#: Template/Ereignis/edit.ctp:16
+#: Template/Ereignis/view.ctp:12
+msgid "List Ereignis"
+msgstr "list ereignis"
+
+#: Template/Angestellter/add.ctp:14
+#: Template/Angestellter/edit.ctp:388
+#: Template/Angestellter/view.ctp:17
+#: Template/Ereignis/index.ctp:10
+#: Template/Ereignis/view.ctp:13
+msgid "New Ereigni"
+msgstr "new event"
+
+#: Template/Angestellter/add.ctp:15
+#: Template/Angestellter/edit.ctp:389
+#: Template/Angestellter/view.ctp:18
+#: Template/Ereignis/add.ctp:11
+#: Template/Ereignis/edit.ctp:17
+#: Template/Ereignis/index.ctp:11
+#: Template/Ereignis/view.ctp:14
+#: Template/Projekt/add.ctp:10
+#: Template/Projekt/edit.ctp:16
+#: Template/Projekt/view.ctp:12
+msgid "List Projekt"
+msgstr "list project"
+
+#: Template/Angestellter/add.ctp:16
+#: Template/Angestellter/edit.ctp:390
+#: Template/Angestellter/view.ctp:19
+#: Template/Ereignis/add.ctp:12
+#: Template/Ereignis/edit.ctp:18
+#: Template/Ereignis/index.ctp:12
+#: Template/Ereignis/view.ctp:15
+#: Template/Projekt/index.ctp:10
+#: Template/Projekt/view.ctp:13
+msgid "New Projekt"
+msgstr "new project"
+
+#: Template/Angestellter/add.ctp:22
+msgid "Add Angestellter"
+msgstr "add employee"
+
+#: Template/Angestellter/add.ctp:36
+#: Template/Angestellter/edit.ctp:331;410
+#: Template/Ereignis/add.ctp:29
+#: Template/Ereignis/edit.ctp:35
+#: Template/Erreichbarkeit/add.ctp:29
+#: Template/Erreichbarkeit/edit.ctp:35
+#: Template/Kunde/add.ctp:30
+#: Template/Kunde/edit.ctp:36
+#: Template/Projekt/add.ctp:30
+#: Template/Projekt/edit.ctp:36
+#: View/Helper/FormHelper.php:1988
+msgid "Submit"
+msgstr "submit"
+
+#: Template/Angestellter/edit.ctp:310
+msgid "Username and password"
+msgstr "Username and password"
+
+#: Template/Angestellter/edit.ctp:320;396
+#: Template/Angestellter/view.ctp:10
+msgid "Edit Angestellter"
+msgstr "edit employee"
+
+#: Template/Angestellter/edit.ctp:379
+#: Template/Angestellter/index.ctp:323
+#: Template/Angestellter/view.ctp:90;119;150
+#: Template/Ereignis/edit.ctp:11
+#: Template/Ereignis/index.ctp:41
+#: Template/Ereignis/view.ctp:72
+#: Template/Erreichbarkeit/edit.ctp:11
+#: Template/Erreichbarkeit/index.ctp:47
+#: Template/Kunde/edit.ctp:11
+#: Template/Kunde/index.ctp:49
+#: Template/Projekt/edit.ctp:11
+#: Template/Projekt/index.ctp:43
+#: Template/Projekt/view.ctp:76
+msgid "Delete"
+msgstr "delete"
+
+#: Template/Angestellter/edit.ctp:381
+#: Template/Angestellter/index.ctp:323
+#: Template/Angestellter/view.ctp:11;90;119;150
+#: Template/Arbeitspaket/edit.ctp:20
+#: Template/Arbeitspaket/index.ctp:48
+#: Template/Arbeitspaket/view.ctp:18
+#: Template/Ereignis/edit.ctp:13
+#: Template/Ereignis/index.ctp:41
+#: Template/Ereignis/view.ctp:11;72
+#: Template/Erreichbarkeit/edit.ctp:13
+#: Template/Erreichbarkeit/index.ctp:47
+#: Template/Erreichbarkeit/view.ctp:11
+#: Template/Kunde/edit.ctp:13
+#: Template/Kunde/index.ctp:49
+#: Template/Kunde/view.ctp:11
+#: Template/Projekt/edit.ctp:13
+#: Template/Projekt/index.ctp:43
+#: Template/Projekt/view.ctp:11;76
+msgid "Are you sure you want to delete # {0}?"
+msgstr "Are you sure you want to delete # {0}"
+
+#: Template/Angestellter/index.ctp:322
+#: Template/Angestellter/view.ctp:89;118;149
+#: Template/Ereignis/index.ctp:40
+#: Template/Ereignis/view.ctp:71
+#: Template/Erreichbarkeit/index.ctp:46
+#: Template/Kunde/index.ctp:48
+#: Template/Projekt/index.ctp:42
+#: Template/Projekt/view.ctp:75
+msgid "Edit"
+msgstr "edit"
+
+#: Template/Angestellter/index.ctp:331
+msgid "Zurück .... "
+msgstr "back .... "
+
+#: Template/Angestellter/index.ctp:333
+msgid " .... Weiter"
+msgstr " .... next"
+
+#: Template/Angestellter/index.ctp:335
+msgid "Seite {{page}} von {{pages}} - Anzeigen von {{current}} Einträgen von insgesamt {{count}}"
+msgstr "Page {{page}} / {{pages}} - Records {{current}} / {{count}}"
+
+#: Template/Angestellter/login.ctp:17
+msgid "Willkommen!"
+msgstr "intern english version 84.3.2!"
+
+#: Template/Angestellter/login.ctp:18
+msgid "Loggen Sie sich hier ein, um Zugriff auf Ihre Projekte zu erhalten."
+msgstr "Please login to get access to your project."
+
+#: Template/Angestellter/view.ctp:11
+msgid "Delete Angestellter"
+msgstr "delete employee"
+
+#: Template/Angestellter/view.ctp:13
+#: Template/Ereignis/add.ctp:14
+#: Template/Ereignis/edit.ctp:20
+#: Template/Ereignis/index.ctp:14
+#: Template/Ereignis/view.ctp:17
+#: Template/Erreichbarkeit/add.ctp:12
+#: Template/Erreichbarkeit/edit.ctp:18
+#: Template/Erreichbarkeit/index.ctp:12
+#: Template/Erreichbarkeit/view.ctp:15
+#: Template/Projekt/add.ctp:14
+#: Template/Projekt/edit.ctp:20
+#: Template/Projekt/index.ctp:14
+#: Template/Projekt/view.ctp:17
+msgid "New Angestellter"
+msgstr "new employee"
+
+#: Template/Angestellter/view.ctp:26
+#: Template/Ereignis/view.ctp:49
+#: Template/Projekt/view.ctp:53
+msgid "Nachname"
+msgstr "surname"
+
+#: Template/Angestellter/view.ctp:30
+#: Template/Ereignis/view.ctp:50
+#: Template/Projekt/view.ctp:54
+msgid "Vorname"
+msgstr "first given name"
+
+#: Template/Angestellter/view.ctp:34
+#: Template/Ereignis/view.ctp:52
+#: Template/Projekt/view.ctp:56
+msgid "Position"
+msgstr "position"
+
+#: Template/Angestellter/view.ctp:38
+#: Template/Ereignis/view.ctp:53
+#: Template/Kunde/view.ctp:32
+#: Template/Projekt/view.ctp:57
+msgid "Email"
+msgstr "E-Mail"
+
+#: Template/Angestellter/view.ctp:42
+#: Template/Ereignis/view.ctp:54
+#: Template/Kunde/view.ctp:36
+#: Template/Projekt/view.ctp:58
+msgid "Telefon"
+msgstr "phone"
+
+#: Template/Angestellter/view.ctp:46
+#: Template/Ereignis/view.ctp:55
+#: Template/Kunde/view.ctp:40
+#: Template/Projekt/view.ctp:59
+msgid "Username"
+msgstr "Username"
+
+#: Template/Angestellter/view.ctp:50
+msgid "Password"
+msgstr "Password"
+
+#: Template/Angestellter/view.ctp:54
+#: Template/Ereignis/view.ctp:51
+#: Template/Projekt/view.ctp:55
+msgid "Angestellter Id"
+msgstr "employee"
+
+#: Template/Angestellter/view.ctp:59
+msgid "Related Arbeitspaket"
+msgstr "related work package"
+
+#: Template/Angestellter/view.ctp:63
+msgid "Arbeitspaket Id"
+msgstr "work package"
+
+#: Template/Angestellter/view.ctp:64
+#: Template/Arbeitspaket/view.ctp:39
+msgid "Fortschritt"
+msgstr "progress"
+
+#: Template/Angestellter/view.ctp:65
+#: Template/Arbeitspaket/view.ctp:43
+msgid "Kosten"
+msgstr "costs"
+
+#: Template/Angestellter/view.ctp:66;133
+#: Template/Arbeitspaket/view.ctp:27
+#: Template/Projekt/view.ctp:28
+msgid "Beschreibung"
+msgstr "description"
+
+#: Template/Angestellter/view.ctp:67
+#: Template/Arbeitspaket/view.ctp:31
+#: Template/Kunde/view.ctp:20
+msgid "Name"
+msgstr "name"
+
+#: Template/Angestellter/view.ctp:68;106;131
+#: Template/Projekt/view.ctp:36
+msgid "Projekt Id"
+msgstr "Project"
+
+#: Template/Angestellter/view.ctp:69
+#: Template/Arbeitspaket/view.ctp:51
+msgid "Zustaendiger"
+msgstr "responsible processor"
+
+#: Template/Angestellter/view.ctp:70;136
+#: Template/Projekt/view.ctp:40
+msgid "Hinzugefuegt Am"
+msgstr "added at the"
+
+#: Template/Angestellter/view.ctp:71
+msgid "Abgeschlossen Am"
+msgstr "completed at the"
+
+#: Template/Angestellter/view.ctp:72
+msgid "Frist"
+msgstr "deadline"
+
+#: Template/Angestellter/view.ctp:88;117;148
+#: Template/Ereignis/index.ctp:39
+#: Template/Ereignis/view.ctp:70
+#: Template/Erreichbarkeit/index.ctp:45
+#: Template/Kunde/index.ctp:47
+#: Template/Projekt/index.ctp:41
+#: Template/Projekt/view.ctp:74
+#: View/Helper/PaginatorHelper.php:1212
+msgid "View"
+msgstr "view"
+
+#: Template/Angestellter/view.ctp:98
+msgid "Related Ereignis"
+msgstr "related event"
+
+#: Template/Angestellter/view.ctp:102
+#: Template/Ereignis/view.ctp:36
+msgid "Ereignis Id"
+msgstr "event"
+
+#: Template/Angestellter/view.ctp:103
+#: Template/Ereignis/view.ctp:40
+msgid "Datum"
+msgstr "date"
+
+#: Template/Angestellter/view.ctp:104
+#: Template/Ereignis/view.ctp:24
+msgid "Art"
+msgstr "kind of"
+
+#: Template/Angestellter/view.ctp:105
+#: Template/Ereignis/view.ctp:28
+msgid "Bezeichnung"
+msgstr "description"
+
+#: Template/Angestellter/view.ctp:127
+msgid "Related Projekt"
+msgstr "related project"
+
+#: Template/Angestellter/view.ctp:132
+#: Template/Projekt/view.ctp:24
+msgid "Projektname"
+msgstr "Project"
+
+#: Template/Angestellter/view.ctp:134
+#: Template/Kunde/view.ctp:48
+msgid "Kunde Id"
+msgstr "employee"
+
+#: Template/Angestellter/view.ctp:135
+#: Template/Projekt/view.ctp:44
+msgid "Abgeschlossen"
+msgstr "completed"
+
+#: Template/Arbeitspaket/add.ctp:9
+#: Template/Arbeitspaket/edit.ctp:9
+#: Template/Arbeitspaket/index.ctp:9
+#: Template/Arbeitspaket/view.ctp:9
+msgid "Navigation"
+msgstr "navigation"
+
+#: Template/Arbeitspaket/add.ctp:10
+#: Template/Arbeitspaket/edit.ctp:10
+#: Template/Arbeitspaket/index.ctp:10
+#: Template/Arbeitspaket/view.ctp:10
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: Template/Arbeitspaket/add.ctp:11
+#: Template/Arbeitspaket/edit.ctp:11
+#: Template/Arbeitspaket/index.ctp:11
+#: Template/Arbeitspaket/view.ctp:11
+msgid "Projekte"
+msgstr "project"
+
+#: Template/Arbeitspaket/add.ctp:12
+#: Template/Arbeitspaket/edit.ctp:12
+#: Template/Arbeitspaket/index.ctp:12
+#: Template/Arbeitspaket/view.ctp:12
+msgid "Arbeitspakete"
+msgstr "work package"
+
+#: Template/Arbeitspaket/add.ctp:13
+#: Template/Arbeitspaket/edit.ctp:13
+#: Template/Arbeitspaket/index.ctp:13
+#: Template/Arbeitspaket/view.ctp:13
+msgid "Ereignisse"
+msgstr "event"
+
+#: Template/Arbeitspaket/add.ctp:14
+#: Template/Arbeitspaket/edit.ctp:14
+#: Template/Arbeitspaket/index.ctp:14
+#: Template/Arbeitspaket/view.ctp:14
+msgid "Kunden"
+msgstr "customer"
+
+#: Template/Arbeitspaket/add.ctp:15
+#: Template/Arbeitspaket/edit.ctp:15
+#: Template/Arbeitspaket/index.ctp:15
+#: Template/Arbeitspaket/view.ctp:15
+msgid "Angestellte"
+msgstr "employee"
+
+#: Template/Arbeitspaket/add.ctp:16
+#: Template/Arbeitspaket/edit.ctp:16
+#: Template/Arbeitspaket/index.ctp:16;32
+#: Template/Arbeitspaket/view.ctp:16
+msgid "Aktionen"
+msgstr "event"
+
+#: Template/Arbeitspaket/add.ctp:17
+#: Template/Arbeitspaket/edit.ctp:23
+msgid "Arbeitspaketliste"
+msgstr "work package list"
+
+#: Template/Arbeitspaket/add.ctp:23
+msgid "Arbeitspaket hinzufügen"
+msgstr "add work package"
+
+#: Template/Arbeitspaket/add.ctp:33
+#: Template/Arbeitspaket/edit.ctp:39
+msgid "Senden"
+msgstr "send"
+
+#: Template/Arbeitspaket/edit.ctp:18
+msgid "Arbeitspaket löschen"
+msgstr "delete work package"
+
+#: Template/Arbeitspaket/edit.ctp:29
+msgid "Arbeitspaket bearbeiten"
+msgstr "edit work package"
+
+#: Template/Arbeitspaket/index.ctp:17
+msgid "Arbeitspaket anlegen"
+msgstr "create work package"
+
+#: Template/Arbeitspaket/index.ctp:21
+msgid "Arbeitspaket"
+msgstr "work package"
+
+#: Template/Arbeitspaket/index.ctp:46
+msgid "Anzeigen"
+msgstr "show"
+
+#: Template/Arbeitspaket/index.ctp:47
+msgid "Bearbeiten"
+msgstr "edit"
+
+#: Template/Arbeitspaket/index.ctp:48
+msgid "Löschen"
+msgstr "delete"
+
+#: Template/Arbeitspaket/index.ctp:56
+#: Template/Ereignis/index.ctp:49
+#: Template/Erreichbarkeit/index.ctp:55
+#: Template/Kunde/index.ctp:57
+#: Template/Projekt/index.ctp:51
+msgid "first"
+msgstr "first"
+
+#: Template/Arbeitspaket/index.ctp:57
+#: Template/Ereignis/index.ctp:50
+#: Template/Erreichbarkeit/index.ctp:56
+#: Template/Kunde/index.ctp:58
+#: Template/Projekt/index.ctp:52
+msgid "previous"
+msgstr "previous"
+
+#: Template/Arbeitspaket/index.ctp:59
+#: Template/Ereignis/index.ctp:52
+#: Template/Erreichbarkeit/index.ctp:58
+#: Template/Kunde/index.ctp:60
+#: Template/Projekt/index.ctp:54
+msgid "next"
+msgstr "next"
+
+#: Template/Arbeitspaket/index.ctp:60
+#: Template/Ereignis/index.ctp:53
+#: Template/Erreichbarkeit/index.ctp:59
+#: Template/Kunde/index.ctp:61
+#: Template/Projekt/index.ctp:55
+msgid "last"
+msgstr "last"
+
+#: Template/Arbeitspaket/index.ctp:62
+#: Template/Ereignis/index.ctp:55
+#: Template/Erreichbarkeit/index.ctp:61
+#: Template/Kunde/index.ctp:63
+#: Template/Projekt/index.ctp:57
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr "Page {{page}} / {{pages}}, Records {{current}} / {{count}}"
+
+#: Template/Arbeitspaket/view.ctp:17
+msgid "Edit Arbeitspaket"
+msgstr "edit work package"
+
+#: Template/Arbeitspaket/view.ctp:18
+msgid "Delete Arbeitspaket"
+msgstr "delete work package"
+
+#: Template/Arbeitspaket/view.ctp:35
+msgid "TaskID"
+msgstr "Task"
+
+#: Template/Arbeitspaket/view.ctp:47
+msgid "ProjektID"
+msgstr "PROJECT"
+
+#: Template/Ereignis/add.ctp:20
+msgid "Add Ereigni"
+msgstr "add event"
+
+#: Template/Ereignis/edit.ctp:26
+#: Template/Ereignis/view.ctp:10
+msgid "Edit Ereigni"
+msgstr "edit event"
+
+#: Template/Ereignis/index.ctp:18
+msgid "Ereignis"
+msgstr "event"
+
+#: Template/Ereignis/view.ctp:11
+msgid "Delete Ereigni"
+msgstr "delete event"
+
+#: Template/Ereignis/view.ctp:32
+#: Template/Projekt/index.ctp:18
+msgid "Projekt"
+msgstr "project"
+
+#: Template/Ereignis/view.ctp:45
+#: Template/Projekt/view.ctp:49
+msgid "Related Angestellter"
+msgstr "related employee"
+
+#: Template/Ereignis/view.ctp:56
+#: Template/Kunde/view.ctp:44
+#: Template/Projekt/view.ctp:60
+msgid "Passwort"
+msgstr "password"
+
+#: Template/Erreichbarkeit/add.ctp:10
+#: Template/Erreichbarkeit/edit.ctp:16
+#: Template/Erreichbarkeit/view.ctp:12
+msgid "List Erreichbarkeit"
+msgstr "list availability"
+
+#: Template/Erreichbarkeit/add.ctp:18
+msgid "Add Erreichbarkeit"
+msgstr "add availability"
+
+#: Template/Erreichbarkeit/edit.ctp:24
+#: Template/Erreichbarkeit/view.ctp:10
+msgid "Edit Erreichbarkeit"
+msgstr "edit availability"
+
+#: Template/Erreichbarkeit/index.ctp:10
+#: Template/Erreichbarkeit/view.ctp:13
+msgid "New Erreichbarkeit"
+msgstr "new availability"
+
+#: Template/Erreichbarkeit/index.ctp:16
+msgid "Erreichbarkeit"
+msgstr "availability"
+
+#: Template/Erreichbarkeit/view.ctp:11
+msgid "Delete Erreichbarkeit"
+msgstr "delete availability"
+
+#: Template/Erreichbarkeit/view.ctp:22
+msgid "Mo"
+msgstr "Mo"
+
+#: Template/Erreichbarkeit/view.ctp:26
+msgid "Di"
+msgstr "Di"
+
+#: Template/Erreichbarkeit/view.ctp:30
+msgid "Mi"
+msgstr "Mi"
+
+#: Template/Erreichbarkeit/view.ctp:34
+msgid "Don"
+msgstr "Do"
+
+#: Template/Erreichbarkeit/view.ctp:38
+msgid "Fr"
+msgstr "Fr"
+
+#: Template/Erreichbarkeit/view.ctp:42
+msgid "Sa"
+msgstr "Sa"
+
+#: Template/Erreichbarkeit/view.ctp:46
+msgid "So"
+msgstr "So"
+
+#: Template/Erreichbarkeit/view.ctp:50
+msgid "Angestellter"
+msgstr "employee"
+
+#: Template/Erreichbarkeit/view.ctp:54
+msgid "Erreichbarkeit Id"
+msgstr "availability"
+
+#: Template/Kunde/add.ctp:10
+#: Template/Kunde/edit.ctp:16
+#: Template/Kunde/view.ctp:12
+#: Template/Projekt/add.ctp:11
+#: Template/Projekt/edit.ctp:17
+#: Template/Projekt/index.ctp:11
+#: Template/Projekt/view.ctp:14
+msgid "List Kunde"
+msgstr "list customer"
+
+#: Template/Kunde/add.ctp:16
+msgid "Add Kunde"
+msgstr "add customer"
+
+#: Template/Kunde/edit.ctp:22
+#: Template/Kunde/view.ctp:10
+msgid "Edit Kunde"
+msgstr "edit customer"
+
+#: Template/Kunde/index.ctp:10
+#: Template/Kunde/view.ctp:13
+#: Template/Projekt/add.ctp:12
+#: Template/Projekt/edit.ctp:18
+#: Template/Projekt/index.ctp:12
+#: Template/Projekt/view.ctp:15
+msgid "New Kunde"
+msgstr "new customer"
+
+#: Template/Kunde/index.ctp:14
+#: Template/Projekt/view.ctp:32
+msgid "Kunde"
+msgstr "customer"
+
+#: Template/Kunde/view.ctp:11
+msgid "Delete Kunde"
+msgstr "delete customer"
+
+#: Template/Kunde/view.ctp:24
+msgid "Ort"
+msgstr "location"
+
+#: Template/Kunde/view.ctp:28
+msgid "Straße"
+msgstr "Street"
+
+#: Template/Kunde/view.ctp:52
+msgid "Plz"
+msgstr "postal code"
+
+#: Template/Kunde/view.ctp:56
+msgid "Hausnummer"
+msgstr "streetnumber"
+
+#: Template/Kunde/view.ctp:60
+msgid "Registriert Am"
+msgstr "registered on"
+
+#: Template/Layout/error.ctp:35
+#: Template/Error/error400.ctp:36
+#: Template/Error/error500.ctp:41
+msgid "Error"
+msgstr "Error"
+
+#: Template/Layout/error.ctp:43
+msgid "Back"
+msgstr "back"
+
+#: Template/Projekt/add.ctp:20
+msgid "Add Projekt"
+msgstr "add project"
+
+#: Template/Projekt/edit.ctp:26
+#: Template/Projekt/view.ctp:10
+msgid "Edit Projekt"
+msgstr "edit project"
+
+#: Template/Projekt/view.ctp:11
+msgid "Delete Projekt"
+msgstr "delete project"
+
+#: Template/Projekt/view.ctp:45
+msgid "Yes"
+msgstr "yes"
+
+#: Template/Projekt/view.ctp:45
+msgid "No"
+msgstr "no"
+
+#: Template/Error/error400.ctp:37
+msgid "The requested address {0} was not found on this server."
+msgstr "The requested address {0} was not found on this server."
+
+#: Template/Error/error500.ctp:39
+msgid "An Internal Error Has Occurred"
+msgstr "Error"
+
+#: Controller/Component/AuthComponent.php:500
+msgid "You are not authorized to access that location."
+msgstr "You are not authorized to access that location."
+
+#: Controller/Component/CsrfComponent.php:162
+#: Http/Middleware/CsrfProtectionMiddleware.php:191
+msgid "Missing CSRF token cookie"
+msgstr "Missing cookie"
+
+#: Controller/Component/CsrfComponent.php:166
+#: Http/Middleware/CsrfProtectionMiddleware.php:195
+msgid "CSRF token mismatch."
+msgstr "CSRF token mismatch."
+
+#: Error/ExceptionRenderer.php:262
+msgid "Not Found"
+msgstr "Not found"
+
+#: Error/ExceptionRenderer.php:264
+msgid "An Internal Error Has Occurred."
+msgstr "Error"
+
+#: Http/Response.php:2620
+msgid "The requested file contains `..` and will not be read."
+msgstr "The requested file contains `..` and will not be read."
+
+#: Http/Response.php:2641
+msgid "The requested file was not found"
+msgstr "The requested file was not found"
+
+#: I18n/Number.php:90
+msgid "{0,number,#,###.##} KB"
+msgstr "{0,number,#,###.##} KB"
+
+#: I18n/Number.php:92
+msgid "{0,number,#,###.##} MB"
+msgstr "{0,number,#,###.##} MB"
+
+#: I18n/Number.php:94
+msgid "{0,number,#,###.##} GB"
+msgstr "{0,number,#,###.##} GB"
+
+#: I18n/Number.php:96
+msgid "{0,number,#,###.##} TB"
+msgstr "{0,number,#,###.##} TB"
+
+#: I18n/Number.php:88
+msgid "{0,number,integer} Byte"
+msgid_plural "{0,number,integer} Bytes"
+msgstr[0] "{0,number,integer} Byte"
+msgstr[1] "{0,number,integer} Bytes"
+
+#: I18n/RelativeTimeFormatter.php:80
+msgid "{0} from now"
+msgstr "{0} from now"
+
+#: I18n/RelativeTimeFormatter.php:80
+msgid "{0} ago"
+msgstr "{0} ago"
+
+#: I18n/RelativeTimeFormatter.php:83
+msgid "{0} after"
+msgstr "{0} after"
+
+#: I18n/RelativeTimeFormatter.php:83
+msgid "{0} before"
+msgstr "{0} before"
+
+#: I18n/RelativeTimeFormatter.php:114
+msgid "just now"
+msgstr "just now"
+
+#: I18n/RelativeTimeFormatter.php:151
+msgid "about a second ago"
+msgstr "about a second ago"
+
+#: I18n/RelativeTimeFormatter.php:152
+msgid "about a minute ago"
+msgstr "about a minute ago"
+
+#: I18n/RelativeTimeFormatter.php:153
+msgid "about an hour ago"
+msgstr "about an hour ago"
+
+#: I18n/RelativeTimeFormatter.php:154;332
+msgid "about a day ago"
+msgstr "about a day ago"
+
+#: I18n/RelativeTimeFormatter.php:155;333
+msgid "about a week ago"
+msgstr "about a week ago"
+
+#: I18n/RelativeTimeFormatter.php:156;334
+msgid "about a month ago"
+msgstr "about a month ago"
+
+#: I18n/RelativeTimeFormatter.php:157;335
+msgid "about a year ago"
+msgstr "about a year ago"
+
+#: I18n/RelativeTimeFormatter.php:168
+msgid "in about a second"
+msgstr "in about a second"
+
+#: I18n/RelativeTimeFormatter.php:169
+msgid "in about a minute"
+msgstr "in about a minute"
+
+#: I18n/RelativeTimeFormatter.php:170
+msgid "in about an hour"
+msgstr "in about an hour"
+
+#: I18n/RelativeTimeFormatter.php:171;346
+msgid "in about a day"
+msgstr "in about a day"
+
+#: I18n/RelativeTimeFormatter.php:172;347
+msgid "in about a week"
+msgstr "in about a week"
+
+#: I18n/RelativeTimeFormatter.php:173;348
+msgid "in about a month"
+msgstr "in about a month"
+
+#: I18n/RelativeTimeFormatter.php:174;349
+msgid "in about a year"
+msgstr "in about a year"
+
+#: I18n/RelativeTimeFormatter.php:304
+msgid "today"
+msgstr "today"
+
+#: I18n/RelativeTimeFormatter.php:370
+msgid "%s ago"
+msgstr "%s ago"
+
+#: I18n/RelativeTimeFormatter.php:371
+msgid "on %s"
+msgstr "on %s"
+
+#: I18n/RelativeTimeFormatter.php:47;126;316
+msgid "{0} year"
+msgid_plural "{0} years"
+msgstr[0] "{0} year"
+msgstr[1] "{0} years"
+
+#: I18n/RelativeTimeFormatter.php:51;129;319
+msgid "{0} month"
+msgid_plural "{0} months"
+msgstr[0] "{0} month"
+msgstr[1] "{0} months"
+
+#: I18n/RelativeTimeFormatter.php:57;132;322
+msgid "{0} week"
+msgid_plural "{0} weeks"
+msgstr[0] "{0} week"
+msgstr[1] "{0} weeks"
+
+#: I18n/RelativeTimeFormatter.php:59;135;325
+msgid "{0} day"
+msgid_plural "{0} days"
+msgstr[0] "{0} day"
+msgstr[1] "{0} days"
+
+#: I18n/RelativeTimeFormatter.php:64;138
+msgid "{0} hour"
+msgid_plural "{0} hours"
+msgstr[0] "{0} hour"
+msgstr[1] "{0} hours"
+
+#: I18n/RelativeTimeFormatter.php:68;141
+msgid "{0} minute"
+msgid_plural "{0} minutes"
+msgstr[0] "{0} minute"
+msgstr[1] "{0} minutes"
+
+#: I18n/RelativeTimeFormatter.php:72;144
+msgid "{0} second"
+msgid_plural "{0} seconds"
+msgstr[0] "{0} second"
+msgstr[1] "{0} seconds"
+
+#: ORM/RulesChecker.php:57
+msgid "This value is already in use"
+msgstr "This value is already in use"
+
+#: ORM/RulesChecker.php:104
+msgid "This value does not exist"
+msgstr "This value does not exist"
+
+#: ORM/RulesChecker.php:128
+msgid "The count does not match {0}{1}"
+msgstr "The count does not match {0}{1}"
+
+#: Utility/Text.php:917
+msgid "and"
+msgstr "and"
+
+#: Validation/Validator.php:111
+msgid "This field is required"
+msgstr "This field is required"
+
+#: Validation/Validator.php:112
+msgid "This field cannot be left empty"
+msgstr "This field cannot be left empty"
+
+#: Validation/Validator.php:2054
+msgid "The provided value is invalid"
+msgstr "The provided value is invalid"
+
+#: View/Helper/FormHelper.php:1099
+msgid "Edit {0}"
+msgstr "Edit {0}"
+
+#: View/Helper/FormHelper.php:1101
+msgid "New {0}"
+msgstr "New {0}"
+
+#: View/Helper/HtmlHelper.php:815
+msgid "Home"
+msgstr "Home"
+
+#: View/Widget/DateTimeWidget.php:540
+msgid "January"
+msgstr "January"
+
+#: View/Widget/DateTimeWidget.php:541
+msgid "February"
+msgstr "February"
+
+#: View/Widget/DateTimeWidget.php:542
+msgid "March"
+msgstr "March"
+
+#: View/Widget/DateTimeWidget.php:543
+msgid "April"
+msgstr "April"
+
+#: View/Widget/DateTimeWidget.php:544
+msgid "May"
+msgstr "May"
+
+#: View/Widget/DateTimeWidget.php:545
+msgid "June"
+msgstr "June"
+
+#: View/Widget/DateTimeWidget.php:546
+msgid "July"
+msgstr "July"
+
+#: View/Widget/DateTimeWidget.php:547
+msgid "August"
+msgstr "August"
+
+#: View/Widget/DateTimeWidget.php:548
+msgid "September"
+msgstr "September"
+
+#: View/Widget/DateTimeWidget.php:549
+msgid "October"
+msgstr "October"
+
+#: View/Widget/DateTimeWidget.php:550
+msgid "November"
+msgstr "November"
+
+#: View/Widget/DateTimeWidget.php:551
+msgid "December"
+msgstr "December"

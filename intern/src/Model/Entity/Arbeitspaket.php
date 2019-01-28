@@ -27,11 +27,11 @@ class Arbeitspaket extends Entity
      * @var array
      */
     protected $_accessible = [
-        'Fortschritt' => true,
-        'Kosten' => true,
-        'Beschreibung' => true,
-        'Name' => true,
-        'ProjektID' => true,
-        'Zustaendiger' => true
+        'fortschritt' => true,
+        'kosten' => true,
+        'beschreibung' => true,
+        'name' => true,
+        'projekt_id' => true,
+        'zustaendiger' => true
     ];
 }

@@ -1,6 +1,7 @@
 <?php
     $this->assign('title', 'Dashboard');
     $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['nachname'];
+    $user = $this->request->getSession()->read('Auth.User')['username'];
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -19,18 +20,12 @@
                 <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="ni ni-bell-55"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="./img/theme/team-1-800x800.jpg">
+                <img alt="Image placeholder" src="/~bolte/cakephp/extern/webroot/img/profilbilder/<?=$user?>.jpg">
               </span>
                     </div>
                 </a>
@@ -81,17 +76,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Form -->
-            <form class="mt-4 mb-3 d-md-none">
-                <div class="input-group input-group-rounded input-group-merge">
-                    <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <span class="fa fa-search"></span>
-                        </div>
-                    </div>
-                </div>
-            </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li>
@@ -99,6 +83,12 @@
                             $this->Html->tag('i', '', array(
                                     'class' => 'ni ni-tv-2 text-primary'
                             )).'Dashboard', '/', array('class' => 'nav-link active', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-briefcase-24 text-primary'
+                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
@@ -111,6 +101,12 @@
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-briefcase-24 text-primary'
                         )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-chat-round text-primary'
+                        )).'Plaudereck', '/chat', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->
@@ -145,27 +141,16 @@
         <div class="container-fluid">
             <!-- Brand -->
             <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
-            <!-- Form -->
-            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-                <div class="form-group mb-0">
-                    <div class="input-group input-group-alternative">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Search" type="text">
-                    </div>
-                </div>
-            </form>
             <!-- User -->
             <ul class="navbar-nav align-items-center d-none d-md-flex">
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="./img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="/~bolte/cakephp/extern/webroot/img/profilbilder/<?=$user?>.jpg">
                 </span>
                             <div class="media-body ml-2 d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold"><?=$username?></span>
+                                <span id="username" class="mb-0 text-sm font-weight-bold"><?=$username?></span>
                             </div>
                         </div>
                     </a>
@@ -332,219 +317,127 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-xl-8 mb-5 mb-xl-0">
+        <div class="row mt-4">
+            <!-- Aufgabenübersicht -->
+            <div class="col-sm-6">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Page visits</h3>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-default text-white rounded-circle shadow">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
                             </div>
-                            <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                            <div class="col">
+                                <h2 class="mt-2">Meine Aufgabenübersicht</h2>
                             </div>
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <!-- Projects table -->
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Page name</th>
-                                <th scope="col">Visitors</th>
-                                <th scope="col">Unique users</th>
-                                <th scope="col">Bounce rate</th>
+                                <th scope="col" class="text-left"><h5>Anstehend</h5></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <th scope="row">
-                                    /argon/
-                                </th>
-                                <td>
-                                    4,569
-                                </td>
-                                <td>
-                                    340
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                </td>
+                                <td><b><?php print($openTasksDeadlineDates[0]); ?></b> – <b><?php print($openTasksDeadline[0]['kundenname'])?></b>: <?php print($openTasksDeadline[0]['name'])?> (<?= $openTasksDeadline[0]['projektname']?>)</td>
+                                <?php array_splice($openTasksDeadlineDates, 0, 1); //Remove first element ?>
                             </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
                             <tr>
-                                <th scope="row">
-                                    /argon/index.html
-                                </th>
-                                <td>
-                                    3,985
-                                </td>
-                                <td>
-                                    319
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                                </td>
+                                <th scope="col" class="text-left"><h5>Danach</h5></th>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/charts.html
-                                </th>
-                                <td>
-                                    3,513
-                                </td>
-                                <td>
-                                    294
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/tables.html
-                                </th>
-                                <td>
-                                    2,050
-                                </td>
-                                <td>
-                                    147
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    /argon/profile.html
-                                </th>
-                                <td>
-                                    1,795
-                                </td>
-                                <td>
-                                    190
-                                </td>
-                                <td>
-                                    <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                                </td>
-                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $firstEvent = true;
+                            foreach ($openTasksDeadline as $item){
+                                if ($firstEvent) {
+                                    $firstEvent = false;
+                                    //Leave first date out because it was used in 'Anstehend' -> older dates needed!
+                                } else {
+                                    echo '<tr><td><b>';
+                                    print($openTasksDeadlineDates[0].'</b> – <b>');
+                                    //Remove first elment
+                                    array_splice($openTasksDeadlineDates, 0, 1);
+
+                                    print($item['kundenname']);
+                                    echo '</b> :'.$item['name'].' ('.$openTasksDeadline[0]['projektname'].')';
+                                    echo '</td></tr>';
+                                }
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4">
+            <!-- Terminübersicht -->
+            <div class="col-sm-6">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Social traffic</h3>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-default text-white rounded-circle shadow">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
                             </div>
-                            <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                            <div class="col">
+                                <h2 class="mt-2">Meine Terminübersicht</h2>
                             </div>
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <!-- Projects table -->
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Referral</th>
-                                <th scope="col">Visitors</th>
-                                <th scope="col"></th>
+                                <th scope="col" class="text-left"><h5>Anstehend</h5></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <th scope="row">
-                                    Facebook
-                                </th>
-                                <td>
-                                    1,480
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">60%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                <td><b><?php print($openMeetingsDates[0]);?></b> – <b><?php print($openMeetings[0]['name'])?></b>: <?php print($openMeetings[0]['bezeichnung'])?> (<?php print($openMeetings[0]['art'])?>)</td>
+                                <?php
+                                array_splice($openMeetingsDates, 0, 1); //Remove first element
+                                ?>
+
                             </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
                             <tr>
-                                <th scope="row">
-                                    Facebook
-                                </th>
-                                <td>
-                                    5,480
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">70%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                <th scope="col" class="text-left"><h5>Danach</h5></th>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    Google
-                                </th>
-                                <td>
-                                    4,807
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">80%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Instagram
-                                </th>
-                                <td>
-                                    3,678
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">75%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    twitter
-                                </th>
-                                <td>
-                                    2,645
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <span class="mr-2">30%</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $firstEvent = true;
+                            foreach ($openMeetings as $item){
+                                if ($firstEvent) {
+                                    $firstEvent = false;
+                                    //Leave first date out because it was used in 'Anstehend' -> older dates needed!
+                                } else {
+                                    echo '<tr><td><b>';
+                                    print($openMeetingsDates[0].'</b> – <b>');
+                                    //Remove first element
+                                    array_splice($openMeetingsDates, 0, 1); //Remove first element
+                                    print($item['name']);
+                                    echo '</b>: '.$item['bezeichnung'];
+                                    echo ' ('.$item['art'].') ';
+                                    echo '</td></tr>';
+                                }
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
@@ -556,7 +449,7 @@
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-6">
                     <div class="copyright text-center text-xl-left text-muted">
-                        &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+                        &copy; 2018 <a href="https://www.kg-webservice.de" class="font-weight-bold ml-1" target="_blank">K&G Webservice</a>
                     </div>
                 </div>
                 <div class="col-xl-6">
@@ -579,3 +472,6 @@
         </footer>
     </div>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="./js/chat.js"></script>
+

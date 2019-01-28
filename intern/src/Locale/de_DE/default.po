@@ -943,61 +943,61 @@ msgstr "heute"
 
 #: I18n/RelativeTimeFormatter.php:370
 msgid "%s ago"
-msgstr ""
+msgstr "vor %s"
 
 #: I18n/RelativeTimeFormatter.php:371
 msgid "on %s"
-msgstr ""
+msgstr "in %s"
 
 #: I18n/RelativeTimeFormatter.php:47;126;316
 msgid "{0} year"
 msgid_plural "{0} years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{0} Jahr"
+msgstr[1] "{0} Jahren"
 
 #: I18n/RelativeTimeFormatter.php:51;129;319
 msgid "{0} month"
 msgid_plural "{0} months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{0} Monat"
+msgstr[1] "{0} Monaten"
 
 #: I18n/RelativeTimeFormatter.php:57;132;322
 msgid "{0} week"
 msgid_plural "{0} weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{0} Woche"
+msgstr[1] "{0} Wochen"
 
 #: I18n/RelativeTimeFormatter.php:59;135;325
 msgid "{0} day"
 msgid_plural "{0} days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{0} Tag"
+msgstr[1] "{0} Tagen"
 
 #: I18n/RelativeTimeFormatter.php:64;138
 msgid "{0} hour"
 msgid_plural "{0} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{0} Stunde"
+msgstr[1] "{0} Stunden"
 
 #: I18n/RelativeTimeFormatter.php:68;141
 msgid "{0} minute"
 msgid_plural "{0} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{0} Minute"
+msgstr[1] "{0} Minuten"
 
 #: I18n/RelativeTimeFormatter.php:72;144
 msgid "{0} second"
 msgid_plural "{0} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{0} Sekunde"
+msgstr[1] "{0} Sekunden"
 
 #: ORM/RulesChecker.php:57
 msgid "This value is already in use"
-msgstr ""
+msgstr "Der Wert ist bereits in Nutzung."
 
 #: ORM/RulesChecker.php:104
 msgid "This value does not exist"
-msgstr ""
+msgstr "Der Wert existiert nicht."
 
 #: ORM/RulesChecker.php:128
 msgid "The count does not match {0}{1}"
@@ -1005,11 +1005,11 @@ msgstr ""
 
 #: Utility/Text.php:917
 msgid "and"
-msgstr ""
+msgstr "und"
 
 #: Validation/Validator.php:111
 msgid "This field is required"
-msgstr ""
+msgstr "Das Feld ist erforderlich."
 
 #: Validation/Validator.php:112
 msgid "This field cannot be left empty"

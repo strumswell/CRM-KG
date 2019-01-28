@@ -20,9 +20,51 @@ class ProjektController extends AppController
      */
     public function index()
     {
-        $projekt = $this->paginate($this->Projekt);
+        {
+            $this->paginate = [
+                'contain' => ['Kunde']
+            ];
 
-        $this->set(compact('projekt'));
+            $projekt = TableRegistry::get('Projekt');
+
+            /**
+             * DB Connection
+             */
+            $connection = ConnectionManager::get('default');
+
+            /**
+             * Finished Tasks
+             */
+            $finishedTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt = 100 AND projekt.abgeschlossen = 0')->fetchAll('assoc');
+            $this->set('finishedTasksCount', reset($finishedTasksCount[0]));
+
+            /**
+             * Cost Of Current Projects
+             */
+            $cost = $connection->execute('SELECT SUM(arbeitspaket.kosten) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND projekt.abgeschlossen = 0')->fetchAll('assoc');
+            $costFormatted = str_replace('.', ',', reset($cost[0]));
+            $this->set('cost', $costFormatted);
+
+            /**
+             * Open Projects
+             */
+            $openProjectsCount = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0 AND kunde_id = '.$kdnr)->fetchAll('assoc');
+            $this->set('openProjectsCount', reset($openProjectsCount[0]));
+
+            /**
+             * Open Tasks
+             */
+            $openTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0')->fetchAll('assoc');
+            $this->set('openTasksCount', reset($openTasksCount[0]));
+
+            /**
+             * Projekt List
+             */
+            $query = $projekt->find()->order(['Projekt.hinzugefuegt_am' => 'DESC']);;
+
+            $query = $this->paginate($query);
+
+            $this->set('query', $query);
     }
 
     /**
