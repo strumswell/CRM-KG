@@ -79,12 +79,10 @@ class ProjektTable extends Table
 
         $validator
             ->boolean('abgeschlossen')
-            ->requirePresence('abgeschlossen', 'create')
             ->notEmpty('abgeschlossen');
 
         $validator
             ->dateTime('hinzugefuegt_am')
-            ->requirePresence('hinzugefuegt_am', 'create')
             ->notEmpty('hinzugefuegt_am');
 
         return $validator;

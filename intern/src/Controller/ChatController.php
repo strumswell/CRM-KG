@@ -35,6 +35,30 @@ use Cake\I18n\I18n;
 class ChatController extends AppController
 {
     public function index() {
+        /**
+         * Username & KDNr
+         */
+        $angestellterid = $this->request->getSession()->read('Auth.User')['angestellter_id'];
+        
+        /**
+         * DB Connection
+         */
+        $connection = ConnectionManager::get('default');
 
+        /**
+         * Open Meeting
+         */
+
+        $openMeetings = $connection->execute('SELECT termin.*,kunde.name from termin, projekt, kunde, angestellter_termin where termin.projekt_id = projekt.projekt_id and projekt.kunde_id = kunde.kunde_id AND angestellter_termin.termin_id = termin.termin_id AND angestellter_termin.angestellter_id = '.$angestellterid.' AND termin.datum >= CURRENT_TIMESTAMP ORDER BY termin.datum ASC LIMIT 3')->fetchAll('assoc');
+
+        foreach ($openMeetings as $item) {
+            $time = new Time($item['datum']);
+            $time = $time->format('d.m.Y H:i');
+
+            $openMeetingsDates[] = $time;
+        }
+
+        $this->set('openMeetingsDates', $openMeetingsDates);
+        $this->set('openMeetings', $openMeetings);
     }
 }

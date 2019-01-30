@@ -2,6 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
+use Cake\Controller\Controller;
+
 
 /**
  * Termin Controller
@@ -20,12 +23,37 @@ class TerminController extends AppController
      */
     public function index()
     {
+
+        /**
+         * DB Connection
+         */
+        $connection = ConnectionManager::get('default');
+
         $this->paginate = [
             'contain' => ['Projekt']
         ];
+
         $termin = $this->paginate($this->Termin);
 
         $this->set(compact('termin'));
+
+        /**
+         * Convert zustaendiger id to name
+         */
+
+        $zustaendige = $connection->execute('SELECT angestellter_id, vorname, nachname, username FROM angestellter')->fetchAll('assoc');
+        $angestellterTermin = $connection->execute('SELECT angestellter_id, termin_id FROM angestellter_termin')->fetchAll('assoc');
+
+        /**
+         * Convert kunde id to name
+         */
+
+        $kundenliste = $connection->execute('SELECT kunde_id, username, name FROM kunde')->fetchAll('assoc');
+        $this->set('kundenliste', $kundenliste);
+
+        $this->set('zustaendige', $zustaendige);
+        $this->set('angestellterTermin', $angestellterTermin);
+
     }
 
     /**
@@ -61,9 +89,25 @@ class TerminController extends AppController
             }
             $this->Flash->error(__('The termin could not be saved. Please, try again.'));
         }
-        $projekt = $this->Termin->Projekt->find('list', ['limit' => 200]);
-        $angestellter = $this->Termin->Angestellter->find('list', ['limit' => 200]);
-        $this->set(compact('termin', 'projekt', 'angestellter'));
+
+        $this->set(compact('termin'));
+
+        Controller::loadModel('Angestellter');
+
+
+        $query = $this->Angestellter->find('list', [
+            'keyField' => 'angestellter_id',
+            'valueField' => 'username'
+        ]);
+        $this->set('users', $query);
+
+        $projekt = $this->Termin->Projekt->find('list', [
+            'keyField' => 'projekt_id',
+            'valueField' => 'projektname'
+        ]);
+        $this->set('projekt', $projekt);
+
+
     }
 
     /**
@@ -75,6 +119,20 @@ class TerminController extends AppController
      */
     public function edit($id = null)
     {
+        Controller::loadModel('Angestellter');
+
+        $query = $this->Angestellter->find('list', [
+            'keyField' => 'angestellter_id',
+            'valueField' => 'username'
+        ]);
+        $this->set('users', $query);
+
+        $projekt = $this->Termin->Projekt->find('list', [
+            'keyField' => 'projekt_id',
+            'valueField' => 'projektname'
+        ]);
+        $this->set('projekt', $projekt);
+
         $termin = $this->Termin->get($id, [
             'contain' => ['Angestellter']
         ]);
@@ -87,10 +145,16 @@ class TerminController extends AppController
             }
             $this->Flash->error(__('The termin could not be saved. Please, try again.'));
         }
-        $projekt = $this->Termin->Projekt->find('list', ['limit' => 200]);
-        $angestellter = $this->Termin->Angestellter->find('list', ['limit' => 200]);
+        $angestellter = $this->Termin->Angestellter->find('list', ['limit' => 200])->toArray();
         $this->set(compact('termin', 'projekt', 'angestellter'));
-    }
+
+        /**
+         * DB Connection
+         */
+        $connection = ConnectionManager::get('default');
+        $ange = $connection->execute('SELECT angestellter.angestellter_id FROM angestellter, angestellter_termin, termin WHERE angestellter.angestellter_id = angestellter_termin.angestellter_id AND angestellter_termin.termin_id = '.$termin->termin_id)->fetchAll('assoc');
+        $this->set('ange', $ange[0]['angestellter_id']);
+     }
 
     /**
      * Delete method

@@ -2,6 +2,11 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
+use Cake\Controller\Controller;
+use Cake\Event\Event;
+
 
 /**
  * Projekt Controller
@@ -20,51 +25,32 @@ class ProjektController extends AppController
      */
     public function index()
     {
-        {
-            $this->paginate = [
-                'contain' => ['Kunde']
-            ];
+        $connection = ConnectionManager::get('default');
+        $projekt = $this->paginate($this->Projekt);
 
-            $projekt = TableRegistry::get('Projekt');
+        $this->paginate = [
+            'contain' => ['Kunde']
+        ];
 
-            /**
-             * DB Connection
-             */
-            $connection = ConnectionManager::get('default');
+        $this->set('projekt', $projekt);
 
-            /**
-             * Finished Tasks
-             */
-            $finishedTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt = 100 AND projekt.abgeschlossen = 0')->fetchAll('assoc');
-            $this->set('finishedTasksCount', reset($finishedTasksCount[0]));
+        /**
+         * Convert zustaendiger id to name
+         */
 
-            /**
-             * Cost Of Current Projects
-             */
-            $cost = $connection->execute('SELECT SUM(arbeitspaket.kosten) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND projekt.abgeschlossen = 0')->fetchAll('assoc');
-            $costFormatted = str_replace('.', ',', reset($cost[0]));
-            $this->set('cost', $costFormatted);
+        $kunden = $connection->execute('SELECT kunde_id, name FROM kunde')->fetchAll('assoc');
+        $this->set('kunden', $kunden);
 
-            /**
-             * Open Projects
-             */
-            $openProjectsCount = $connection->execute('SELECT COUNT(projekt_id) FROM projekt WHERE abgeschlossen = 0 AND kunde_id = '.$kdnr)->fetchAll('assoc');
-            $this->set('openProjectsCount', reset($openProjectsCount[0]));
+        /**
+         * Open Task List
+         */
+        $openProjekt = $this->Projekt->find()
+            ->where(['Projekt.abgeschlossen' => 0])->order(['Projekt.hinzugefuegt_am' => 'ASC']);
 
-            /**
-             * Open Tasks
-             */
-            $openTasksCount = $connection->execute('SELECT COUNT(arbeitspaket_id) FROM arbeitspaket, projekt WHERE arbeitspaket.projekt_id = projekt.projekt_id AND arbeitspaket.fortschritt < 100 AND projekt.abgeschlossen = 0')->fetchAll('assoc');
-            $this->set('openTasksCount', reset($openTasksCount[0]));
+        $openProjekt = $this->paginate($openProjekt);
 
-            /**
-             * Projekt List
-             */
-            $query = $projekt->find()->order(['Projekt.hinzugefuegt_am' => 'DESC']);;
+        $this->set('openProjekt', $openProjekt);
 
-            $query = $this->paginate($query);
-
-            $this->set('query', $query);
     }
 
     /**
@@ -90,7 +76,9 @@ class ProjektController extends AppController
      */
     public function add()
     {
+        $connection = ConnectionManager::get('default');
         $projekt = $this->Projekt->newEntity();
+
         if ($this->request->is('post')) {
             $projekt = $this->Projekt->patchEntity($projekt, $this->request->getData());
             if ($this->Projekt->save($projekt)) {
@@ -100,7 +88,15 @@ class ProjektController extends AppController
             }
             $this->Flash->error(__('The projekt could not be saved. Please, try again.'));
         }
-        $this->set(compact('projekt'));
+
+        /**
+         * Convert zustaendiger id to name
+         */
+
+        $kunde = $this->Projekt->Kunde->find('list', ['limit' => 200]);
+        $this->set(compact('projekt', 'kunde'));
+
+
     }
 
     /**
@@ -124,7 +120,8 @@ class ProjektController extends AppController
             }
             $this->Flash->error(__('The projekt could not be saved. Please, try again.'));
         }
-        $this->set(compact('projekt'));
+        $kunde = $this->Projekt->Kunde->find('list', ['limit' => 200]);
+        $this->set(compact('projekt', 'kunde'));
     }
 
     /**
@@ -145,5 +142,18 @@ class ProjektController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function finish($id = null) {
+        $tabelle = TableRegistry::get('Projekt');
+        $this->Projekt = $tabelle->get($id);
+
+        $this->Projekt->abgeschlossen = 1;
+        $tabelle->save($this->Projekt);
+
+        $this->Flash->success(__('The projekt has been saved.'));
+        $this->redirect(['action' => 'index']);
+
+        $this->autoRender = false;
     }
 }

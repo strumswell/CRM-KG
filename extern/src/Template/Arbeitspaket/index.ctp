@@ -237,6 +237,7 @@
                                 <th scope="col"><?php echo __('Arbeitspaket')?></th>
                                 <th scope="col"><?php echo __('Beschreibung')?></th>
                                 <th scope="col"><?php echo __('Kosten')?></th>
+                                <th scope="col"><?php echo __('Kunde')?></th>
                                 <th scope="col"><?php echo __('Zuständig')?></th>
                                 <th scope="col"><?php echo __('Status')?></th>
                                 <th scope="col"><?php echo __('Frist')?></th>

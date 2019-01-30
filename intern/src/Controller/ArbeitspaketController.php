@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\Datasource\ConnectionManager;
 use Cake\ORM\TableRegistry;
 use Cake\Controller\Controller;
+use Cake\Event\Event;
 
 
 /**
@@ -61,6 +62,13 @@ class ArbeitspaketController extends AppController
 
         $zustaendige = $connection->execute('SELECT angestellter_id, vorname, nachname, username FROM angestellter')->fetchAll('assoc');
         $this->set('zustaendige', $zustaendige);
+
+        /**
+         * Convert kunde id to name
+         */
+
+        $kundenliste = $connection->execute('SELECT kunde_id, username, name FROM kunde')->fetchAll('assoc');
+        $this->set('kundenliste', $kundenliste);
 
         /**
          * Open Task List
@@ -159,7 +167,6 @@ class ArbeitspaketController extends AppController
             $arbeitspaket = $this->Arbeitspaket->patchEntity($arbeitspaket, $this->request->getData());
             if ($this->Arbeitspaket->save($arbeitspaket)) {
                 $this->Flash->success(__('The arbeitspaket has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The arbeitspaket could not be saved. Please, try again.'));
@@ -177,6 +184,19 @@ class ArbeitspaketController extends AppController
 
         $zustaendige = $connection->execute('SELECT angestellter_id, vorname, nachname, username FROM angestellter')->fetchAll('assoc');
         $this->set('zustaendige', $zustaendige);
+    }
+
+    public function finish($id = null) {
+        $tabelle = TableRegistry::get('Arbeitspaket');
+        $arbeitspaket = $tabelle->get($id);
+
+        $arbeitspaket->fortschritt = 100;
+        $tabelle->save($arbeitspaket);
+
+        $this->Flash->success(__('The arbeitspaket has been saved.'));
+        $this->redirect(['action' => 'index']);
+
+        $this->autoRender = false;
     }
 
     /**

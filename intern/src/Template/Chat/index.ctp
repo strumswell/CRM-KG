@@ -87,26 +87,38 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
-                            'class' => 'ni ni-briefcase-24 text-primary'
-                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                            'class' => 'ni ni-app text-primary'
+                        )).__('Projektverwaltung'), '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-bullet-list-67 text-primary'
+                        )).__('Arbeitspaketverwaltung'), '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-calendar-grid-58 text-primary'
+                        )).__('Terminverwaltung'), '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-single-02 text-primary'
-                        )).'Mitarbeiterverwaltung', '/angestellter', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).__('Mitarbeiterverwaltung'), '/angestellter', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-briefcase-24 text-primary'
-                        )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).__('Kundenverwaltung'), '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-chat-round text-primary'
-                        )).'Plaudereck', '/chat', array('class' => 'nav-link active', 'escape' => false)) ?>
+                        ))._('Plaudereck'), '/chat', array('class' => 'nav-link active', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->
@@ -278,7 +290,7 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
     <!-- Page content -->
     <div class="container-fluid mt--7">
         <div class="row">
-            <div class="col-xl-8 col-sm-12 col-md-12">
+            <div class="col-xl-6 col-sm-12 col-md-12">
                 <div class="card bg-secondary shadow">
                     <div class="card-header border-0">
                         <div class="row">
@@ -305,6 +317,70 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                             <td>
                                 <div id="content" style="max-height: 20rem; min-height: 20rem"></div>
                             </td>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Terminübersicht -->
+            <div class="col-xl-6 col-sm-12 col-md-12">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-default text-white rounded-circle shadow">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h2 class="mt-2">Meine Terminübersicht</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="text-left"><h5>Anstehend</h5></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><b><?php print($openMeetingsDates[0]);?></b> – <b><?php print($openMeetings[0]['name'])?></b>: <?php print($openMeetings[0]['bezeichnung'])?> (<?php print($openMeetings[0]['art'])?>)</td>
+                                <?php
+                                array_splice($openMeetingsDates, 0, 1); //Remove first element
+                                ?>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="text-left"><h5>Danach</h5></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $firstEvent = true;
+                            foreach ($openMeetings as $item){
+                                if ($firstEvent) {
+                                    $firstEvent = false;
+                                    //Leave first date out because it was used in 'Anstehend' -> older dates needed!
+                                } else {
+                                    echo '<tr><td><b>';
+                                    print($openMeetingsDates[0].'</b> – <b>');
+                                    //Remove first element
+                                    array_splice($openMeetingsDates, 0, 1); //Remove first element
+                                    print($item['name']);
+                                    echo '</b>: '.$item['bezeichnung'];
+                                    echo ' ('.$item['art'].') ';
+                                    echo '</td></tr>';
+                                }
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>

@@ -1,10 +1,6 @@
 <?php
 $this->assign('title', 'Angestellte');
 $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['nachname'];
-
-$g2['ddd'] = 0;
-$g['angestellter']['_ids'] = 0;
-print_r(array_merge($g2, $g));
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -107,20 +103,38 @@ print_r(array_merge($g2, $g));
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
-                            'class' => 'ni ni-briefcase-24 text-primary'
-                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                            'class' => 'ni ni-app text-primary'
+                        )).__('Projektverwaltung'), '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-bullet-list-67 text-primary'
+                        )).__('Arbeitspaketverwaltung'), '/arbeitspaket', array('class' => 'nav-link active', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-calendar-grid-58 text-primary'
+                        )).__('Terminverwaltung'), '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-single-02 text-primary'
-                        )).'Mitarbeiterverwaltung', '/angestellter', array('class' => 'nav-link active', 'escape' => false)) ?>
+                        )).'Mitarbeiterverwaltung', '/angestellter', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-briefcase-24 text-primary'
                         )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-chat-round text-primary'
+                        )).'Plaudereck', '/chat', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->

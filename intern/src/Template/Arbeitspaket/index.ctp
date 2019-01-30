@@ -103,8 +103,20 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
-                            'class' => 'ni ni-briefcase-24 text-primary'
-                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link active', 'escape' => false)) ?>
+                            'class' => 'ni ni-app text-primary'
+                        )).__('Projektverwaltung'), '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-bullet-list-67 text-primary'
+                        )).__('Arbeitspaketverwaltung'), '/arbeitspaket', array('class' => 'nav-link active', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-calendar-grid-58 text-primary'
+                        )).__('Terminverwaltung'), '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
@@ -324,9 +336,10 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
+                                <th scope="col"><?php echo __('Kunde')?></th>
                                 <th scope="col"><?php echo __('Projektname')?></th>
                                 <th scope="col"><?php echo __('Arbeitspaket')?></th>
-                                <th scope="col"><?php echo __('Beschreibung')?></th>
+                                <!--<th scope="col"><?php echo __('Beschreibung')?></th>-->
                                 <th scope="col"><?php echo __('Kosten')?></th>
                                 <th scope="col"><?php echo __('Zuständig')?></th>
                                 <th scope="col"><?php echo __('Status')?></th>
@@ -335,13 +348,27 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
 
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                             <?php foreach ($openTasksArbeitspaket as $item): ?>
                                 <?php foreach ($item->_matchingData as $item2): ?>
                                     <tr>
-                                        <td><b><?=$item->projektname?></b></td>
+                                        <td>
+                                            <div class="avatar-group">
+                                                <?php
+                                                foreach ($kundenliste as $k) {
+                                                    if ($item->kunde_id == $k['kunde_id']) {
+                                                        print('<a href="kunde/edit/'.$item->kunde_id.'" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="'.$k['name'].'">');
+                                                        print('<img alt="Image placeholder" src="/~bolte/cakephp/extern/webroot/img/profilbilder/'.$k['username'].'.jpg" class="rounded-circle">');
+                                                        print('</a>');
+                                                    }
+                                                }
+                                                ?>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <b><?=$item->projektname?></b></td>
                                         <td><?=$item2->name?></td>
-                                        <td><?=$item2->beschreibung?></td>
+                                        <!--<td><?=$item2->beschreibung?></td> -->
                                         <td><?=str_replace('.', ',', $item2->kosten)?> €</td>
                                         <td>
                                             <div class="avatar-group">
@@ -357,18 +384,32 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                                             </div>
                                         </td>
                                         <td>
-                                            <?php
-                                            if ($item2->fortschritt == 0) {
-                                                echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-danger\"></i>" . __('offen') . "</span>";
-                                            } else if ($item2->fortschritt < 100) {
-                                                echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-yellow\"></i>" . __('in Bearbeitung') . "</span>";
-                                            } else {
-                                                echo "<span class=\"badge badge-dot mr-4\"><i class=\"bg-success\"></i>" . __('beendet') . "</span>";
-                                            }
-                                            ?>
+                                            <div class="progress-info">
+                                                <div class="progress-label">
+                                                    <?php
+                                                        if ($item2->fortschritt == 0) {
+                                                            echo "<span>" . __('offen') . "</span>";
+                                                        } else if ($item2->fortschritt < 100) {
+                                                            echo "<span>" . __('in Bearbeitung') . "</span>";
+                                                        } else {
+                                                            echo "<span>" . __('beendet') . "</span>";
+                                                        }
+                                                    ?>
+                                                </div>
+                                                <div>
+                                                    <span><?=$item2->fortschritt?>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="<?=$item2->fortschritt?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$item2->fortschritt?>%;"></div>
+                                            </div>
                                         </td>
                                         <td><?=$item2->frist?></td>
                                         <td class="actions">
+                                            <?= $this->Html->link($this->Html->tag('i', '', array(
+                                                        'class' => 'fas fa-check-circle'
+                                                    )
+                                                ).__(''), ['action' => 'finish', $item2->arbeitspaket_id], array('escape' => false)) ?>
                                             <?= $this->Html->link($this->Html->tag('i', '', array(
                                                         'class' => 'fas fa-edit'
                                                     )

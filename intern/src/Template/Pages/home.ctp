@@ -87,8 +87,20 @@
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
-                            'class' => 'ni ni-briefcase-24 text-primary'
-                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                            'class' => 'ni ni-app text-primary'
+                        )).__('Projektverwaltung'), '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-bullet-list-67 text-primary'
+                        )).__('Arbeitspaketverwaltung'), '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-calendar-grid-58 text-primary'
+                        )).__('Terminverwaltung'), '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
@@ -444,6 +456,13 @@
                 </div>
             </div>
         </div>
+        <!---
+        <form enctype="multipart/form-data" action="upload.php" method="POST">
+            <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+            Diese Datei hochladen: <input name="userfile" type="file" />
+            <input type="submit" value="Send File" />
+        </form>
+        -->
         <!-- Footer -->
         <footer class="footer">
             <div class="row align-items-center justify-content-xl-between">

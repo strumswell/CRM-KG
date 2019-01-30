@@ -103,8 +103,20 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
-                            'class' => 'ni ni-briefcase-24 text-primary'
-                        )).'Arbeitspakete', '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                            'class' => 'ni ni-app text-primary'
+                        )).__('Projektverwaltung'), '/projekt', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-bullet-list-67 text-primary'
+                        )).__('Arbeitspaketverwaltung'), '/arbeitspaket', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-calendar-grid-58 text-primary'
+                        )).__('Terminverwaltung'), '/termin', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
@@ -117,6 +129,12 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-briefcase-24 text-primary'
                         )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                            'class' => 'ni ni-chat-round text-primary'
+                        )).'Plaudereck', '/chat', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->

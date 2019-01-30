@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Datasource\ConnectionManager;
 use Cake\ORM\TableRegistry;
+use Cake\Controller\Controller;
+
 
 
 /**
@@ -105,7 +107,7 @@ class ArbeitspaketController extends AppController
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-    */
+
     public function add()
     {
         $arbeitspaket = $this->Arbeitspaket->newEntity();
@@ -122,6 +124,7 @@ class ArbeitspaketController extends AppController
         $angestellter = $this->Arbeitspaket->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('arbeitspaket', 'projekt', 'angestellter'));
     }
+     * */
 
     /**
      * Edit method
@@ -135,6 +138,16 @@ class ArbeitspaketController extends AppController
         $arbeitspaket = $this->Arbeitspaket->get($id, [
             'contain' => ['Angestellter']
         ]);
+
+        Controller::loadModel('Angestellter');
+
+        $query = $this->Angestellter->find('list', [
+            'keyField' => 'angestellter_id',
+            'valueField' => 'username'
+        ]);
+        $users = $query->toArray();
+        $this->set('users', $users);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $arbeitspaket = $this->Arbeitspaket->patchEntity($arbeitspaket, $this->request->getData());
             if ($this->Arbeitspaket->save($arbeitspaket)) {
@@ -148,7 +161,7 @@ class ArbeitspaketController extends AppController
         $angestellter = $this->Arbeitspaket->Angestellter->find('list', ['limit' => 200]);
         $this->set(compact('arbeitspaket', 'projekt', 'angestellter'));
     }
-     * */
+     * **/
 
     /**
      * Delete method
