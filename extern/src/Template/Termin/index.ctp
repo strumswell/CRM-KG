@@ -244,19 +244,6 @@
                             <?php foreach ($termin as $item): ?>
                                 <?php foreach ($item->_matchingData as $item2): ?>
                                     <tr>
-                                        <td>
-                                            <div class="avatar-group">
-                                                <?php
-                                                foreach ($kundenliste as $k) {
-                                                    if ($item->kunde_id == $k['kunde_id']) {
-                                                        print('<a href="kunde/edit/'.$item->kunde_id.'" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="'.$k['name'].'">');
-                                                        print('<img alt="Image placeholder" src="/~bolte/cakephp/extern/webroot/img/profilbilder/'.$k['username'].'.jpg" class="rounded-circle">');
-                                                        print('</a>');
-                                                    }
-                                                }
-                                                ?>
-                                            </div>
-                                        </td>
                                         <td><?=$item2->projektname?></td>
                                         <td><?=$item->art?></td>
                                         <td><?=$item->bezeichnung?></td>

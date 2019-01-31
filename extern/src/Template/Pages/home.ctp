@@ -224,7 +224,7 @@ $this->assign('title', __('Dashboard'));
     <div class="container-fluid mt--7">
         <div class="row">
             <!-- Aufgabenübersicht -->
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-4 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row">

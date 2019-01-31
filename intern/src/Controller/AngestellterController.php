@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
+
 
 /**
  * Angestellter Controller
@@ -89,6 +91,17 @@ class AngestellterController extends AppController
         $termin = $this->Angestellter->Termin->find('list', ['limit' => 200]);
         $projekt = $this->Angestellter->Projekt->find('list', ['limit' => 200]);
         $this->set(compact('angestellter', 'arbeitspaket', 'termin', 'projekt'));
+
+        /**
+         * DB Connection
+         */
+        $connection = ConnectionManager::get('default');
+
+        /**
+         * Erreichbarkeit
+         */
+        $erreichbarkeit = $connection->execute('SELECT * FROM erreichbarkeit WHERE angestellter_id = '.'"' . $id . '"')->fetchAll('assoc');
+        $this->set('erreichbarkeit', $erreichbarkeit);
     }
 
     /**

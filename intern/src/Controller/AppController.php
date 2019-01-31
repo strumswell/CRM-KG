@@ -23,6 +23,8 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Event\Event;
 use Cake\I18n\I18n;
 use Cake\I18n\Time;
+use Cake\Controller\Component\CookieComponent;
+
 
 /**
  * Application Controller
@@ -46,6 +48,7 @@ class AppController extends Controller
      */
     public function initialize()
     {
+        $this->loadComponent('Cookie');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'authenticate' => [
@@ -67,6 +70,13 @@ class AppController extends Controller
         // Allow the display action so our pages controller
         // continues to work.
         $this->Auth->allow(['display']);
+
+        $language = $this->Cookie->read('website_language');
+        if (isset($language)) {
+            I18n::setLocale($language);
+        } else {
+            I18n::setLocale('de_DE');
+        }
     }
 
     function beforeRender(Event $event) {
@@ -151,11 +161,17 @@ class AppController extends Controller
         $this->set('openTasks', $openTasks);
     }
 
-    public function setLangToGerman() {
-        I18n::setLocale('de_DE');
-    }
-
-    public function setLangToEnglish() {
-        I18n::setLocale('en_US');
+    public function changeLanguage($lang) {
+        if (!empty($lang)) {
+            if ($lang == 'de') {
+                //$this->request->session()->write('website_language', 'hi_IN');
+                $this->Cookie->write('website_language', 'de_DE');
+            } else if ($lang == 'en') {
+                //$this->request->session()->write('website_language', 'en_US');
+                $this->Cookie->write('website_language', 'en_US');
+            }
+            //in order to redirect the user to the page from which it was called
+            $this->redirect($this->referer());
+        }
     }
 }

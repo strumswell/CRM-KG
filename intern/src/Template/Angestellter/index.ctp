@@ -1,6 +1,8 @@
 <?php
-$this->assign('title', __('Angestellte'));
+$this->assign('title', 'Mitarbeiter');
 $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['nachname'];
+$user = $this->request->getSession()->read('Auth.User')['username'];
+$id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -16,44 +18,22 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
             <li class="nav-item dropdown">
-                <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="ni ni-bell-55"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="./img/theme/team-1-800x800.jpg">
+                <img alt="Image placeholder" src="/~bolte/cakephp/extern/webroot/img/profilbilder/<?=$user?>.jpg">
               </span>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome!</h6>
+                        <h6 class="text-overflow m-0"><?php echo __('Willkommen')?></h6>
                     </div>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-single-02"></i>
-                        <span>My profile</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>Settings</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-calendar-grid-58"></i>
-                        <span>Activity</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-support-16"></i>
-                        <span>Support</span>
-                    </a>
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                                'class' => 'ni ni-single-02'
+                            )
+                        ).__('Mein Profil'), '/angestellter/edit/'.$id, array('class' => 'dropdown-item', 'escape' => false)) ?>
                     <div class="dropdown-divider"></div>
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
@@ -111,19 +91,19 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-single-02 text-primary'
-                        )).'Mitarbeiterverwaltung', '/angestellter', array('class' => 'nav-link active', 'escape' => false)) ?>
+                        )).__('Mitarbeiterverwaltung'), '/angestellter', array('class' => 'nav-link active', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-briefcase-24 text-primary'
-                        )).'Kundenverwaltung', '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).__('Kundenverwaltung'), '/kunde', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-chat-round text-primary'
-                        )).'Plaudereck', '/chat', array('class' => 'nav-link', 'escape' => false)) ?>
+                        )).__('Plaudereck'), '/chat', array('class' => 'nav-link', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->
@@ -157,51 +137,29 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
-            <!-- Form -->
-            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-                <div class="form-group mb-0">
-                    <div class="input-group input-group-alternative">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Search" type="text">
-                    </div>
-                </div>
-            </form>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html"><?=__('Mitarbeiter')?></a>
             <!-- User -->
             <ul class="navbar-nav align-items-center d-none d-md-flex">
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="./img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="/~bolte/cakephp/extern/webroot/img/profilbilder/<?=$user?>.jpg">
                 </span>
                             <div class="media-body ml-2 d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold"><?=$username?></span>
+                                <span id="username" class="mb-0 text-sm font-weight-bold"><?=$username?></span>
                             </div>
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                         <div class=" dropdown-header noti-title">
-                            <h6 class="text-overflow m-0">Welcome!</h6>
+                            <h6 class="text-overflow m-0"><?php echo __('Wilkommen!') ?></h6>
                         </div>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-single-02"></i>
-                            <span>My profile</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-settings-gear-65"></i>
-                            <span>Settings</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-calendar-grid-58"></i>
-                            <span>Activity</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-support-16"></i>
-                            <span>Support</span>
-                        </a>
+                        <?= $this->Html->link(
+                            $this->Html->tag('i', '', array(
+                                    'class' => 'ni ni-single-02'
+                                )
+                            ).__('Mein Profil'), '/angestellter/edit/'.$id, array('class' => 'dropdown-item', 'escape' => false)) ?>
                         <div class="dropdown-divider"></div>
                         <?= $this->Html->link(
                             $this->Html->tag('i', '', array(
@@ -305,7 +263,7 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7">
-        <div class="row mt-5">
+        <div class="row">
             <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
@@ -372,31 +330,25 @@ $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $
                 </div>
             </div>
         </div>
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-            <div class="col-xl-6">
-                <div class="copyright text-center text-xl-left text-muted">
-                    &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="row align-items-center justify-content-xl-between">
+                <div class="col-xl-6">
+                    <div class="copyright text-center text-xl-left text-muted">
+                        &copy; 2018 <a href="https://www.kg-webservice.de" class="font-weight-bold ml-1" target="_blank">K&G Webservice</a>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                        <li class="nav-item">
+                            <?php echo $this->Html->link("English", array("controller" => "App", "action" => "changeLanguage",'en'), array("class"=> "nav-link")); ?>
+                        </li>
+                        <li class="nav-item">
+                            <?php echo $this->Html->link("Deutsch", array("controller" => "App", "action" => "changeLanguage",'de'), array("class"=> "nav-link")); ?>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="col-xl-6">
-                <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+        </footer>
 </div>
 </div>

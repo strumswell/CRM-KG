@@ -38,7 +38,7 @@ class ProjektController extends AppController
          * Convert zustaendiger id to name
          */
 
-        $kunden = $connection->execute('SELECT kunde_id, name FROM kunde')->fetchAll('assoc');
+        $kunden = $connection->execute('SELECT kunde_id, name, username FROM kunde')->fetchAll('assoc');
         $this->set('kunden', $kunden);
 
         /**

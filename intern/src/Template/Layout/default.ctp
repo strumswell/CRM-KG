@@ -44,7 +44,12 @@ $cakeDescription = 'CRM K&G Webservice';
 <body>
     <?= $this->fetch('content') ?>
     <div class="container-fluid mt--7">
-        <?= $this->Flash->render() ?>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-6">
+                <?= $this->Flash->render() ?>
+            </div>
+        </div>
     </div>
     <?= $this->fetch('scriptBottom') ?>
 </body>

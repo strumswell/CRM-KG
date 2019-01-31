@@ -2,6 +2,8 @@
 $this->assign('title', 'Plaudereck');
 $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['nachname'];
 $user = $this->request->getSession()->read('Auth.User')['username'];
+$id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
+
 ?>
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -17,11 +19,6 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
             <li class="nav-item dropdown">
-                <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="ni ni-bell-55"></i>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
@@ -31,24 +28,13 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                 </a>
                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                     <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome!</h6>
+                        <h6 class="text-overflow m-0"><?php echo __('Willkommen')?></h6>
                     </div>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-single-02"></i>
-                        <span>My profile</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-settings-gear-65"></i>
-                        <span>Settings</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-calendar-grid-58"></i>
-                        <span>Activity</span>
-                    </a>
-                    <a href="./examples/profile.html" class="dropdown-item">
-                        <i class="ni ni-support-16"></i>
-                        <span>Support</span>
-                    </a>
+                    <?= $this->Html->link(
+                        $this->Html->tag('i', '', array(
+                                'class' => 'ni ni-single-02'
+                            )
+                        ).__('Mein Profil'), '/angestellter/edit/'.$id, array('class' => 'dropdown-item', 'escape' => false)) ?>
                     <div class="dropdown-divider"></div>
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
@@ -118,7 +104,7 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                     <?= $this->Html->link(
                         $this->Html->tag('i', '', array(
                             'class' => 'ni ni-chat-round text-primary'
-                        ))._('Plaudereck'), '/chat', array('class' => 'nav-link active', 'escape' => false)) ?>
+                        )).__('Plaudereck'), '/chat', array('class' => 'nav-link active', 'escape' => false)) ?>
                 </li>
             </ul>
             <!-- Divider -->
@@ -168,24 +154,13 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                     </a>
                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
                         <div class=" dropdown-header noti-title">
-                            <h6 class="text-overflow m-0">Welcome!</h6>
+                            <h6 class="text-overflow m-0"><?php echo __('Wilkommen!') ?></h6>
                         </div>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-single-02"></i>
-                            <span>My profile</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-settings-gear-65"></i>
-                            <span>Settings</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-calendar-grid-58"></i>
-                            <span>Activity</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-support-16"></i>
-                            <span>Support</span>
-                        </a>
+                        <?= $this->Html->link(
+                            $this->Html->tag('i', '', array(
+                                    'class' => 'ni ni-single-02'
+                                )
+                            ).__('Mein Profil'), '/angestellter/edit/'.$id, array('class' => 'dropdown-item', 'escape' => false)) ?>
                         <div class="dropdown-divider"></div>
                         <?= $this->Html->link(
                             $this->Html->tag('i', '', array(
@@ -208,8 +183,8 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Auftragsvolumen</h5>
-                                        <span class="h2 font-weight-bold mb-0"><?php echo $orderVolume[0];?> €</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?=__('Auftragsvolumen')?></h5>
+                                        <span class="h2 font-weight-bold mb-0"><?php echo $orderVolume[0]; ?> €</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -218,7 +193,7 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">im laufenden Monat</span>
+                                    <span class="text-nowrap"><?=__('im laufenden Monat')?></span>
                                 </p>
                             </div>
                         </div>
@@ -228,8 +203,8 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Projekte</h5>
-                                        <span class="h2 font-weight-bold mb-0"><?=$openProjectsCounts?></span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?=__('Projekte')?></h5>
+                                        <span class="h2 font-weight-bold mb-0"><?= $openProjectsCounts ?></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -238,7 +213,7 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">aktuell laufend</span>
+                                    <span class="text-nowrap"><?=__('aktuell laufend')?></span>
                                 </p>
                             </div>
                         </div>
@@ -248,8 +223,8 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Neukunden</h5>
-                                        <span class="h2 font-weight-bold mb-0"><?=$newCustomers?></span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?=__('Neukunden')?></h5>
+                                        <span class="h2 font-weight-bold mb-0"><?= $newCustomers ?></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -258,7 +233,7 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">seit Jahresbeginn</span>
+                                    <span class="text-nowrap"><?=__('seit Jahresbeginn')?></span>
                                 </p>
                             </div>
                         </div>
@@ -268,8 +243,8 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Tasks</h5>
-                                        <span class="h2 font-weight-bold mb-0"><?=$openTasks?></span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?=__('Arbeitspakete')?></h5>
+                                        <span class="h2 font-weight-bold mb-0"><?= $openTasks ?></span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -278,7 +253,7 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">aktuell offen</span>
+                                    <span class="text-nowrap"><?=__('aktuell offen')?></span>
                                 </p>
                             </div>
                         </div>
@@ -290,7 +265,7 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
     <!-- Page content -->
     <div class="container-fluid mt--7">
         <div class="row">
-            <div class="col-xl-6 col-sm-12 col-md-12">
+            <div class="col-xl-6 col-sm-12 col-md-12  mb-4 mb-xl-0">
                 <div class="card bg-secondary shadow">
                     <div class="card-header border-0">
                         <div class="row">
@@ -309,7 +284,7 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                             <thead class="thead-light">
                             <tr>
                                 <th scope="" class="text-left">
-                                    <input class="form-control form-control-alternative" type="text" id="input" disabled="disabled" placeholder="Nachricht senden..."/>
+                                    <input class="form-control form-control-alternative" type="text" id="input" disabled="disabled" placeholder="<?=__('Nachricht senden...')?>"/>
                                 </th>
                             </tr>
                             </thead>
@@ -398,16 +373,10 @@ $user = $this->request->getSession()->read('Auth.User')['username'];
                 <div class="col-xl-6">
                     <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
+                            <?php echo $this->Html->link("English", array("controller" => "App", "action" => "changeLanguage",'en'), array("class"=> "nav-link")); ?>
                         </li>
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+                            <?php echo $this->Html->link("Deutsch", array("controller" => "App", "action" => "changeLanguage",'de'), array("class"=> "nav-link")); ?>
                         </li>
                     </ul>
                 </div>
