@@ -318,13 +318,14 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                                         <?php echo $this->Form->control('fortschritt', ['type'=>'number', 'id'=>'input-fortschritt', 'placeholder'=>'Fortschritt', 'class'=>'form-control form-control-alternative', 'div'=>false, 'label'=>false]); ?>
                                         <?php echo $this->Form->control('angestellter._ids', ['id' => 'test','options' => $users, 'hidden', 'label'=>false]); ?>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
                                     <div class="form-group">
-                                        <div class="input-group input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                                            </div>
-                                            <input class="form-control datepicker" placeholder="Select date" type="text" value="06/20/2018">
-                                        </div>
+                                        <label class="form-control-label"
+                                               for="input-email"><?php echo __('Frist') ?></label>
+                                        <?php echo $this->Form->control('frist', ['id' => 'input-frist', 'placeholder' => 'Zuständiger', 'value' => $arbeitspaket->frist, 'class' => 'form-control form-control-alternative', 'div' => false, 'label' => false]); ?>
                                     </div>
                                 </div>
                             </div>

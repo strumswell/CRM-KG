@@ -191,6 +191,7 @@ class ArbeitspaketController extends AppController
         $arbeitspaket = $tabelle->get($id);
 
         $arbeitspaket->fortschritt = 100;
+        $arbeitspaket->abgeschlossen_am = date("Y-m-d H:i:s");
         $tabelle->save($arbeitspaket);
 
         $this->Flash->success(__('The arbeitspaket has been saved.'));

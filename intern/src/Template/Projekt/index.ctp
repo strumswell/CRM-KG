@@ -274,7 +274,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                             </div>
                             <div class="col-4 text-right">
                                 <button class="btn btn-sm btn-primary" type="button" onclick="location.href='./projekt/add'">
-                                    <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>Hinzufügen
+                                    <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span><?= __('Hinzufügen')?>
                                 </button>
                             </div>
                         </div>

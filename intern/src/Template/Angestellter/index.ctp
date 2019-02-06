@@ -182,7 +182,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Auftragsvolumen</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?= __('Auftragsvolumen')?></h5>
                                         <span class="h2 font-weight-bold mb-0"><?php echo $orderVolume[0];?> €</span>
                                     </div>
                                     <div class="col-auto">
@@ -192,7 +192,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">im laufenden Monat</span>
+                                    <span class="text-nowrap"><?= __('im laufenden Monat')?></span>
                                 </p>
                             </div>
                         </div>
@@ -202,7 +202,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Projekte</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?= __('Projekte')?></h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$openProjectsCounts?></span>
                                     </div>
                                     <div class="col-auto">
@@ -212,7 +212,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">aktuell laufend</span>
+                                    <span class="text-nowrap"><?= __('aktuell laufend')?></span>
                                 </p>
                             </div>
                         </div>
@@ -222,7 +222,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Neukunden</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?= __('Neukunden')?></h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$newCustomers?></span>
                                     </div>
                                     <div class="col-auto">
@@ -232,7 +232,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">seit Jahresbeginn</span>
+                                    <span class="text-nowrap"><?= __('seit Jahresbeginn')?></span>
                                 </p>
                             </div>
                         </div>
@@ -242,7 +242,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Tasks</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0"><?= __('Arbeitspakete')?></h5>
                                         <span class="h2 font-weight-bold mb-0"><?=$openTasks?></span>
                                     </div>
                                     <div class="col-auto">
@@ -252,7 +252,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap">aktuell offen</span>
+                                    <span class="text-nowrap"><?= __('aktuell offen')?></span>
                                 </p>
                             </div>
                         </div>
@@ -273,7 +273,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                             </div>
                             <div class="col-4 text-right">
                                 <button class="btn btn-sm btn-primary" type="button" onclick="location.href='./angestellter/add'">
-                                    <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>Hinzufügen
+                                    <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span><?= __('Hinzufügen')?>
                                 </button>
                             </div>
                         </div>
@@ -284,7 +284,6 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                             <tr>
                                 <th scope="col"><?= $this->Paginator->sort('nachname') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('vorname') ?></th>
-                                <th scope="col"><?= $this->Paginator->sort('angestellter_id') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('position') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                                 <th scope="col"><?= $this->Paginator->sort('telefon') ?></th>
@@ -297,7 +296,6 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                                 <tr>
                                     <td><?= h($angestellter->nachname) ?></td>
                                     <td><?= h($angestellter->vorname) ?></td>
-                                    <td><?= $this->Number->format($angestellter->angestellter_id) ?></td>
                                     <td><?= h($angestellter->position) ?></td>
                                     <td><?= h($angestellter->email) ?></td>
                                     <td><?= h($angestellter->telefon) ?></td>

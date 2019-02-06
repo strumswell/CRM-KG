@@ -658,7 +658,7 @@ msgstr "description"
 
 #: Template/Arbeitspaket/index.ctp:240
 msgid "Zuständig"
-msgstr "responsible"
+msgstr "Status"
 
 #: Template/Arbeitspaket/index.ctp:241
 #: Template/Pages/home.ctp:394
@@ -939,7 +939,7 @@ msgstr "new customer"
 #: Template/Kunde/index.ctp:14
 #: Template/Projekt/view.ctp:32
 msgid "Kunde"
-msgstr "customer"
+msgstr "Contact"
 
 #: Template/Kunde/view.ctp:337
 msgid "Edit Kunde"

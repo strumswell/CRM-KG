@@ -453,7 +453,7 @@ msgstr "Kundenbereich"
 #: Template/Projekt/index.ctp:72
 #: Template/Termin/index.ctp:72
 msgid "Dashboard"
-msgstr "Übersicht"
+msgstr "Dashboard"
 
 #: Template/Angestellter/view.ctp:78;144
 #: Template/Arbeitspaket/index.ctp:78;144
@@ -638,7 +638,7 @@ msgstr "Arbeitspaket bearbeiten"
 
 #: Template/Arbeitspaket/index.ctp:230
 msgid "Alle offenen Arbeitspakete"
-msgstr "offene Arbeitspakete"
+msgstr "Alle offene Arbeitspakete"
 
 #: Template/Arbeitspaket/index.ctp:236
 #: Template/Pages/home.ctp:390
@@ -658,7 +658,7 @@ msgstr "Beschreibung"
 
 #: Template/Arbeitspaket/index.ctp:240
 msgid "Zuständig"
-msgstr "Zuständig"
+msgstr "Status"
 
 #: Template/Arbeitspaket/index.ctp:241
 #: Template/Pages/home.ctp:394
@@ -939,7 +939,7 @@ msgstr "Neuer Kunde"
 #: Template/Kunde/index.ctp:14
 #: Template/Projekt/view.ctp:32
 msgid "Kunde"
-msgstr "Kunde"
+msgstr "zuständig"
 
 #: Template/Kunde/view.ctp:337
 msgid "Edit Kunde"
@@ -1052,7 +1052,7 @@ msgstr "Termin bearbeiten"
 
 #: Template/Termin/index.ctp:230
 msgid "Alle anstehenden Tasks"
-msgstr "Alle anstehenden Tasks"
+msgstr "Alle anstehenden Termine"
 
 #: Template/Termin/index.ctp:237
 #: Template/Termin/view.ctp:24

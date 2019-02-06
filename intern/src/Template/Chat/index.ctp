@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', 'Plaudereck');
+$this->assign('title', __('Plaudereck'));
 $username = $this->request->getSession()->read('Auth.User')['vorname'] . ' ' . $this->request->getSession()->read('Auth.User')['nachname'];
 $user = $this->request->getSession()->read('Auth.User')['username'];
 $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
@@ -138,7 +138,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Plaudereck</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html"><?= __('Plaudereck')?></a>
             <!-- User -->
             <ul class="navbar-nav align-items-center d-none d-md-flex">
                 <li class="nav-item dropdown">
@@ -275,7 +275,7 @@ $id = $this->request->getSession()->read('Auth.User')['angestellter_id'];
                                 </div>
                             </div>
                             <div class="col">
-                                <h2 class="mt-2">Plaudereck</h2>
+                                <h2 class="mt-2"><?= __('Plaudereck')?></h2>
                             </div>
                         </div>
                     </div>
